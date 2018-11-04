@@ -41,7 +41,7 @@
           "Добро пожаловать в бота!
           \n*Список доступных команд:*
           \n/start\n/help";
-      sendMessage($token2,$chat_id,$reply);
+      sendMessage($token,538296130,$reply);
   }
 
 
