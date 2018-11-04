@@ -40,8 +40,7 @@
           "Добро пожаловать в бота!
           \n*Список доступных команд:*
           \n/start\n/help";
-      $buttons = [[['text'=>"ОТПРАВИТЬ ГЕОЛОКАЦИЮ",'request_location'=>true]],["Категории"]];
-      sendKeyboard($token,$chat_id,$buttons,$reply);
+      sendMessage($token,$chat_id,$reply);
   }
 
 
@@ -53,44 +52,44 @@
       ];
       file_get_contents('https://api.telegram.org/bot' . $token . '/sendMessage?' . http_build_query($parameters).'&parse_mode=Markdown');
   }
-  function sendKeyboard($token,$chat_id,$buttons,$reply){
-      $keyboard =  json_encode($keyboard = ['keyboard' => $buttons, 
-                                            'resize_keyboard' => true, 
-                                            'one_time_keyboard' => false, 
-                                            'selective' => false]);  
-      $parameters = [
-          'chat_id' => $chat_id, 
-          'text' => $reply, 
-          'reply_markup' => $keyboard,
-      ];
-      file_get_contents('https://api.telegram.org/bot' . $token . '/sendMessage?' . http_build_query($parameters).'&parse_mode=Markdown');
-  }
-  function inlineKeyboard($token,$chat_id,$reply,$buttons){
-      $inlineKeyboard = json_encode(array("inline_keyboard" => $buttons),true);
-      $parameters = [
-          'chat_id' => $chat_id, 
-          'text' => $reply, 
-          'reply_markup' => $inlineKeyboard,
-      ];
-      file_get_contents('https://api.telegram.org/bot' . $token . '/sendMessage?' . http_build_query($parameters).'&parse_mode=Markdown');
-  }
-  function editMassage($token,$chat_id,$message_id,$message,$buttons){
-      $inlineKeyboard = array("inline_keyboard" => $buttons);
-      $inlineKeyboard = json_encode($inlineKeyboard,true);        
-      $parameters = [
-          'chat_id' => $chat_id, 
-          'message_id' => $message_id, 
-          'text' => $message,
-          'reply_markup' => $inlineKeyboard,
-      ];
-      file_get_contents('https://api.telegram.org/bot' . $token . '/editMessageText?' . http_build_query($parameters).'&parse_mode=Markdown');
-  }
-  function deleteMessage($token,$chat_id,$message_id){     
-      $parameters = [
-          'chat_id' => $chat_id, 
-          'message_id' => $message_id, 
-      ];
-      file_get_contents('https://api.telegram.org/bot' . $token . '/deleteMessage?' . http_build_query($parameters));
-  }
+//   function sendKeyboard($token,$chat_id,$buttons,$reply){
+//       $keyboard =  json_encode($keyboard = ['keyboard' => $buttons, 
+//                                             'resize_keyboard' => true, 
+//                                             'one_time_keyboard' => false, 
+//                                             'selective' => false]);  
+//       $parameters = [
+//           'chat_id' => $chat_id, 
+//           'text' => $reply, 
+//           'reply_markup' => $keyboard,
+//       ];
+//       file_get_contents('https://api.telegram.org/bot' . $token . '/sendMessage?' . http_build_query($parameters).'&parse_mode=Markdown');
+//   }
+//   function inlineKeyboard($token,$chat_id,$reply,$buttons){
+//       $inlineKeyboard = json_encode(array("inline_keyboard" => $buttons),true);
+//       $parameters = [
+//           'chat_id' => $chat_id, 
+//           'text' => $reply, 
+//           'reply_markup' => $inlineKeyboard,
+//       ];
+//       file_get_contents('https://api.telegram.org/bot' . $token . '/sendMessage?' . http_build_query($parameters).'&parse_mode=Markdown');
+//   }
+//   function editMassage($token,$chat_id,$message_id,$message,$buttons){
+//       $inlineKeyboard = array("inline_keyboard" => $buttons);
+//       $inlineKeyboard = json_encode($inlineKeyboard,true);        
+//       $parameters = [
+//           'chat_id' => $chat_id, 
+//           'message_id' => $message_id, 
+//           'text' => $message,
+//           'reply_markup' => $inlineKeyboard,
+//       ];
+//       file_get_contents('https://api.telegram.org/bot' . $token . '/editMessageText?' . http_build_query($parameters).'&parse_mode=Markdown');
+//   }
+//   function deleteMessage($token,$chat_id,$message_id){     
+//       $parameters = [
+//           'chat_id' => $chat_id, 
+//           'message_id' => $message_id, 
+//       ];
+//       file_get_contents('https://api.telegram.org/bot' . $token . '/deleteMessage?' . http_build_query($parameters));
+//   }
 //   $dbconnect->close();
 ?>
