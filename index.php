@@ -9,6 +9,7 @@
   define('EARTH_RADIUS', 6372795);
 
   $token = "780647425:AAH5bmyGITVXverN4VIns4Z4VlT03W-sGtM";
+  $token2 = "633839981:AAHmf8yb2TJ9oEIL9ia2qYnrbbaWb6ULaBQ";
   $output = json_decode(file_get_contents('php://input'),true);
   $inline_data = $output['callback_query']['data'];
   $message_id = $output['callback_query']['message']['message_id'];
@@ -40,7 +41,7 @@
           "Добро пожаловать в бота!
           \n*Список доступных команд:*
           \n/start\n/help";
-      sendMessage($token,$chat_id,$reply);
+      sendMessage($token2,$chat_id,$reply);
   }
 
 
