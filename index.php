@@ -8,8 +8,8 @@
 
   define('EARTH_RADIUS', 6372795);
 
-  $token = "780647425:AAH5bmyGITVXverN4VIns4Z4VlT03W-sGtM";
-  $token2 = "633839981:AAHmf8yb2TJ9oEIL9ia2qYnrbbaWb6ULaBQ";
+  $restoran = "780647425:AAH5bmyGITVXverN4VIns4Z4VlT03W-sGtM";
+  $klient = "738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI";
   $output = json_decode(file_get_contents('php://input'),true);
   $inline_data = $output['callback_query']['data'];
   $message_id = $output['callback_query']['message']['message_id'];
@@ -37,11 +37,14 @@
 
 
   if($button =='/start'){        
-      $reply = "Привет ".$first_name.".\n".
+      $reply_klient = "Привет ".$first_name.".\n".
           "Добро пожаловать в бота!
           \n*Список доступных команд:*
           \n/start\n/help";
-      sendMessage($token,538296130,$reply);
+      $reply_restoran = "Подключение к Боту\n
+      *Имя:*".$first_name;
+      sendMessage($klient,$chat_id,$reply_klient);
+      sendMessage($restoran,538296130,$reply_restoran);
   }
 
 
