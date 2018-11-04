@@ -1,10 +1,10 @@
 <?php
 
-  $servername="db4free.net: 3306";
-  $username="promocoder";
-  $password="zdraste1234";
-  $dbname="promocoder";
-  $dbconnect = new mysqli($servername, $username, $password, $dbname);
+//   $servername="db4free.net: 3306";
+//   $username="promocoder";
+//   $password="zdraste1234";
+//   $dbname="promocoder";
+//   $dbconnect = new mysqli($servername, $username, $password, $dbname);
 
   define('EARTH_RADIUS', 6372795);
 
@@ -16,7 +16,7 @@
   $longitude = $output['message']['location']['longitude'];
   $first_name = $output['message']['from']['first_name'];
 
-  include 'BD.php';
+//   include 'BD.php';
 
   if(isset($inline_data)){
       $chat_id = $output['callback_query']['message']['chat']['id'];
@@ -92,5 +92,5 @@
       ];
       file_get_contents('https://api.telegram.org/bot' . $token . '/deleteMessage?' . http_build_query($parameters));
   }
-  $dbconnect->close();
+//   $dbconnect->close();
 ?>
