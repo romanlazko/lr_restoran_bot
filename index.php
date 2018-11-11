@@ -1,7 +1,7 @@
 <?php
 
 $servername="db4free.net: 3306";
-$username="remanlazko";
+$username="romanlazko";
 $password="zdraste123";
 $dbname="promocoder1";
 $dbconnect = new mysqli($servername, $username, $password, $dbname);
@@ -19,11 +19,11 @@ $first_name = $output['message']['from']['first_name'];
 
 //   include 'BD.php';
 
-// $promocodeInsert = $dbconnect->query("INSERT INTO restoran (bear) 
-//                                               VALUES ('Krushovice')");
-// if($dbconnect->query($promocodeInsert) === TRUE){
-//             sendMessage($restoran,387145540,'все ок'); 
-//         }
+$promocodeInsert = $dbconnect->query("INSERT INTO restoran (bear) 
+                                              VALUES ('Krushovice')");
+if($dbconnect->query($promocodeInsert) === TRUE){
+            sendMessage($restoran,387145540,'все ок'); 
+        }
 // function create(){
 //     $login = "nabidka";
 //     $ucertable = "CREATE TABLE $login (
