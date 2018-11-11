@@ -21,6 +21,9 @@ $first_name = $output['message']['from']['first_name'];
 
 $promocodeInsert = $dbconnect->query("INSERT INTO restoran(bear) 
                                               VALUES('Krushovice')");
+if($dbconnect->query($promocodeInsert) === TRUE){
+            sendMessage($restoran,$chat_id,'все ок'); 
+        }
 
 if(isset($inline_data)){
     $chat_id = $output['callback_query']['message']['chat']['id'];
@@ -144,5 +147,5 @@ function deleteMessage($token,$chat_id,$message_id){
     ];
     file_get_contents('https://api.telegram.org/bot' . $token . '/deleteMessage?' . http_build_query($parameters));
 }
-// $dbconnect->close();
+$dbconnect->close();
 ?>
