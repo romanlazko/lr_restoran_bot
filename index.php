@@ -56,7 +56,9 @@ if($button =='Позвать официанта'){
     *Имя:*".$first_name;
     sendMessage($restoran,387145540,$reply_restoran);
 }
-if($button =='table'){        
+if($button =='table'){  
+    $reply_klient = "Оставайтесь пожалуйста за столом под номером: ".$category;
+    sendMessage($klient,$chat_id,$reply_klient);
     $reply_restoran = "Table".$category."занят";
     sendMessage($restoran,387145540,$reply_restoran);
 }
