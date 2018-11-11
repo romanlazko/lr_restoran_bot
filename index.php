@@ -28,7 +28,7 @@ function create(){
     $login = "nabidka";
     $ucertable = "CREATE TABLE $login (
                     bearname INT(30) NOT NULL,
-                    brarfoto VARCHAR(30) NOT NULL,)";
+                    brarfoto INT(30) NOT NULL,)";
     if($dbconnect->query($ucertable) === TRUE){
         sendMessage($restoran,387145540,'Создана таблица');
     } 
