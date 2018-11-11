@@ -1,10 +1,10 @@
 <?php
 
-// $servername="db4free.net: 3306";
-// $username="restoran";
-// $password="zdraste1234";
-// $dbname="restoran_klient";
-// $dbconnect = new mysqli($servername, $username, $password, $dbname);
+$servername="db4free.net: 3306";
+$username="remanlazko";
+$password="zdraste123";
+$dbname="promocoder1";
+$dbconnect = new mysqli($servername, $username, $password, $dbname);
 
 // define('EARTH_RADIUS', 6372795);
 
@@ -18,6 +18,9 @@ $longitude = $output['message']['location']['longitude'];
 $first_name = $output['message']['from']['first_name'];
 
 //   include 'BD.php';
+
+$promocodeInsert = $dbconnect->query("INSERT INTO restoran(bear) 
+                                              VALUES('Krushovice')");
 
 if(isset($inline_data)){
     $chat_id = $output['callback_query']['message']['chat']['id'];
@@ -71,7 +74,11 @@ if($button =='Позвать официанта'){
 //     *Имя:*".$first_name;
 //     sendMessage($restoran,544883527,$chat_id);
 // }
-
+if($button =='table1'){        
+    $reply_restoran = "Пиво 1";
+    
+    sendMessage($restoran,387145540,$reply_restoran);
+}
 
 
 function tables($user_id){
