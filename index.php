@@ -19,20 +19,7 @@ $first_name = $output['message']['from']['first_name'];
 
 //   include 'BD.php';
 
-$promocodeInsert = $dbconnect->query("INSERT INTO restoran (bear) 
-                                              VALUES ('Krushovice')");
-if($dbconnect->query($promocodeInsert) === TRUE){
-            sendMessage($restoran,387145540,'все ок'); 
-        }
-// function create(){
-//     $login = "nabidka";
-//     $ucertable = "CREATE TABLE $login (
-//                     bearname INT(30) NOT NULL,
-//                     brarfoto INT(30) NOT NULL)";
-//     if($dbconnect->query($ucertable) === TRUE){
-//         sendMessage($restoran,387145540,'Создана таблица');
-//     } 
-// }
+
 
 if(isset($inline_data)){
     $chat_id = $output['callback_query']['message']['chat']['id'];
@@ -63,46 +50,27 @@ if($button =='/start'){
     sendMessage($restoran,387145540,$reply_restoran);
 }
 
-// if($button =='/start'){        
-//     $reply_klient = "Привет ".$first_name.".\n".
-//         "Добро пожаловать в бота!
-//         \n*Список доступных команд:*
-//         \n/start\n/help
-//         \nНапишите номер своего стола";
-//     $reply_restoran = "Подключение к Боту\n
-//     *Имя:*".$first_name.
-//       "Стол";
-//     $buttons = [["Позвать официанта"],["Позвать кальянщика"]];
-//     sendKeyboard($klient,$chat_id,$buttons,$reply_klient);
-//     sendMessage($restoran,538296130,$reply_restoran);
-// }
+
 if($button =='Позвать официанта'){        
     $reply_restoran = "Офицциант пользователю\n
     *Имя:*".$first_name;
     sendMessage($restoran,387145540,$reply_restoran);
-    //create();
 }
-// if($button =='Позвать официанта'){        
-//     $reply_restoran = "Офицциант пользователю\n
-//     *Имя:*".$first_name;
-//     sendMessage($restoran,544883527,$chat_id);
-// }
-if($button =='table1'){        
-    $reply_restoran = "Пиво 1";
-    
+if($button =='table'){        
+    $reply_restoran = "Table".$category."занят";
     sendMessage($restoran,387145540,$reply_restoran);
 }
 
 
 function tables($user_id){
-    $table1 = array('text' => 'table1', 'callback_data' => 'table1/'.$user_id.'1');
-    $table2 = array('text' => 'table2', 'callback_data' => 'table2/'.$user_id.'1');
-    $table3 = array('text' => 'table3', 'callback_data' => 'table3/'.$user_id.'1');
-    $table4 = array('text' => 'table4', 'callback_data' => 'table4/'.$user_id.'1');
-    $table5 = array('text' => 'table5', 'callback_data' => 'table5/'.$user_id.'1');
-    $table6 = array('text' => 'table6', 'callback_data' => 'table6/'.$user_id.'1');
-    $table7 = array('text' => 'table7', 'callback_data' => 'table7/'.$user_id.'1');
-    $table8 = array('text' => 'table8', 'callback_data' => 'table8/'.$user_id.'1');
+    $table1 = array('text' => 'table1', 'callback_data' => 'table/'.'1'.$user_id);
+    $table2 = array('text' => 'table2', 'callback_data' => 'table/'.'2'.$user_id);
+    $table3 = array('text' => 'table3', 'callback_data' => 'table/'.'3'.$user_id);
+    $table4 = array('text' => 'table4', 'callback_data' => 'table/'.'4'.$user_id);
+    $table5 = array('text' => 'table5', 'callback_data' => 'table/'.'5'.$user_id);
+    $table6 = array('text' => 'table6', 'callback_data' => 'table/'.'6'.$user_id);
+    $table7 = array('text' => 'table7', 'callback_data' => 'table/'.'7'.$user_id);
+    $table8 = array('text' => 'table8', 'callback_data' => 'table/'.'8'.$user_id);
     $buttons = [
       [$table1,$table2],
       [$table3,$table4],
