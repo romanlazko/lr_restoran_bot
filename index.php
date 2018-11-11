@@ -45,7 +45,7 @@ if($button =='/start'){
     inlineKeyboard($klient,$chat_id,'Выберете номер своего стола',tables($user_id));
     $reply_restoran = "Подключение к Боту\n
     *Имя:*".$first_name;
-    sendMessage($restoran,544883527,$reply_restoran);
+    sendMessage($restoran,387145540,$reply_restoran);
 }
 
 // if($button =='/start'){        
