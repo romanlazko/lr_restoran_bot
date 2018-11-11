@@ -67,7 +67,7 @@ if($button =='Позвать официанта'){
     *Имя:*".$first_name;
     $buttons = [["Позвать официанта"],["Позвать кальянщика"]];
     sendKeyboard($klient,$chat_id,$buttons,$reply_klient);
-    sendMessage($restoran,$chat_id,$reply_restoran);
+    sendMessage($restoran,$chat_id,$chat_id);
 }
 
 
