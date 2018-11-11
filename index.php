@@ -1,12 +1,12 @@
 <?php
 
-$servername="db4free.net: 3306";
-$username="restoran";
-$password="zdraste1234";
-$dbname="restoran_klient";
-$dbconnect = new mysqli($servername, $username, $password, $dbname);
+// $servername="db4free.net: 3306";
+// $username="restoran";
+// $password="zdraste1234";
+// $dbname="restoran_klient";
+// $dbconnect = new mysqli($servername, $username, $password, $dbname);
 
-define('EARTH_RADIUS', 6372795);
+// define('EARTH_RADIUS', 6372795);
 
 $restoran = "780647425:AAH5bmyGITVXverN4VIns4Z4VlT03W-sGtM";
 $klient = "738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI";
