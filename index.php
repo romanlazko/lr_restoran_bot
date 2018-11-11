@@ -61,16 +61,16 @@ if($button =='/start'){
 //     sendKeyboard($klient,$chat_id,$buttons,$reply_klient);
 //     sendMessage($restoran,538296130,$reply_restoran);
 // }
-// if($button =='Позвать официанта'){        
-//     $reply_restoran = "Офицциант пользователю\n
-//     *Имя:*".$first_name;
-//     sendMessage($restoran,544883527,$reply_restoran);
-// }
 if($button =='Позвать официанта'){        
     $reply_restoran = "Офицциант пользователю\n
     *Имя:*".$first_name;
-    sendMessage($restoran,544883527,$chat_id);
+    sendMessage($restoran,387145540,$reply_restoran);
 }
+// if($button =='Позвать официанта'){        
+//     $reply_restoran = "Офицциант пользователю\n
+//     *Имя:*".$first_name;
+//     sendMessage($restoran,544883527,$chat_id);
+// }
 
 
 
