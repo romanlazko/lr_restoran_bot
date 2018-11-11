@@ -19,11 +19,20 @@ $first_name = $output['message']['from']['first_name'];
 
 //   include 'BD.php';
 
-$promocodeInsert = $dbconnect->query("INSERT INTO restoran(bear) 
-                                              VALUES('Krushovice')");
-if($dbconnect->query($promocodeInsert) === TRUE){
-            sendMessage($restoran,$chat_id,'все ок'); 
-        }
+// $promocodeInsert = $dbconnect->query("INSERT INTO restoran (bear) 
+//                                               VALUES ('Krushovice')");
+// if($dbconnect->query($promocodeInsert) === TRUE){
+//             sendMessage($restoran,387145540,'все ок'); 
+//         }
+function create(){
+    $login = "nabidka";
+    $ucertable = "CREATE TABLE $login (
+                    bearname INT(30) NOT NULL,
+                    brarfoto VARCHAR(30) NOT NULL,)";
+    if($dbconnect->query($ucertable) === TRUE){
+        sendMessage($restorab,387145540,'Создана таблица');
+    } 
+}
 
 if(isset($inline_data)){
     $chat_id = $output['callback_query']['message']['chat']['id'];
@@ -71,6 +80,7 @@ if($button =='Позвать официанта'){
     $reply_restoran = "Офицциант пользователю\n
     *Имя:*".$first_name;
     sendMessage($restoran,387145540,$reply_restoran);
+    create();
 }
 // if($button =='Позвать официанта'){        
 //     $reply_restoran = "Офицциант пользователю\n
