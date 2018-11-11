@@ -24,15 +24,15 @@ $first_name = $output['message']['from']['first_name'];
 // if($dbconnect->query($promocodeInsert) === TRUE){
 //             sendMessage($restoran,387145540,'все ок'); 
 //         }
-function create(){
-    $login = "nabidka";
-    $ucertable = "CREATE TABLE $login (
-                    bearname INT(30) NOT NULL,
-                    brarfoto INT(30) NOT NULL)";
-    if($dbconnect->query($ucertable) === TRUE){
-        sendMessage($restoran,387145540,'Создана таблица');
-    } 
-}
+// function create(){
+//     $login = "nabidka";
+//     $ucertable = "CREATE TABLE $login (
+//                     bearname INT(30) NOT NULL,
+//                     brarfoto INT(30) NOT NULL)";
+//     if($dbconnect->query($ucertable) === TRUE){
+//         sendMessage($restoran,387145540,'Создана таблица');
+//     } 
+// }
 
 if(isset($inline_data)){
     $chat_id = $output['callback_query']['message']['chat']['id'];
