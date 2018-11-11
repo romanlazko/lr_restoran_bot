@@ -80,7 +80,7 @@ if($button =='Позвать официанта'){
     $reply_restoran = "Офицциант пользователю\n
     *Имя:*".$first_name;
     sendMessage($restoran,387145540,$reply_restoran);
-    create();
+    //create();
 }
 // if($button =='Позвать официанта'){        
 //     $reply_restoran = "Офицциант пользователю\n
