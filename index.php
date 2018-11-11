@@ -43,6 +43,9 @@ if($button =='/start'){
     $buttons = [["Позвать официанта"],["Позвать кальянщика"]];
     sendKeyboard($klient,$chat_id,$buttons,$reply_klient);
     inlineKeyboard($klient,$chat_id,'Выберете номер своего стола',tables($user_id));
+    $reply_restoran = "Подключение к Боту\n
+    *Имя:*".$first_name;
+    sendMessage($restoran,544883527,$reply_restoran);
 }
 
 // if($button =='/start'){        
@@ -59,7 +62,7 @@ if($button =='/start'){
 //     sendMessage($restoran,538296130,$reply_restoran);
 // }
 if($button =='Позвать официанта'){        
-    $reply_restoran = "Подключение к Боту\n
+    $reply_restoran = "Офицциант пользователю\n
     *Имя:*".$first_name;
     sendMessage($restoran,544883527,$reply_restoran);
 }
