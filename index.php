@@ -59,15 +59,9 @@ if($button =='/start'){
 //     sendMessage($restoran,538296130,$reply_restoran);
 // }
 if($button =='Позвать официанта'){        
-    $reply_klient = "Привет ".$first_name.".\n".
-        "Добро пожаловать в бота!
-        \n*Список доступных команд:*
-        \n/start\n/help";
     $reply_restoran = "Подключение к Боту\n
     *Имя:*".$first_name;
-    $buttons = [["Позвать официанта"],["Позвать кальянщика"]];
-    sendKeyboard($klient,$chat_id,$buttons,$reply_klient);
-    sendMessage($restoran,$chat_id,$chat_id);
+    sendMessage($restoran,544883527,$reply_restoran);
 }
 
 
