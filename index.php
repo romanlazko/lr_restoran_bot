@@ -63,14 +63,14 @@ if($button =='table'){
 
 
 function tables($user_id){
-    $table1 = array('text' => 'table1', 'callback_data' => 'table/'.'1'.$user_id);
-    $table2 = array('text' => 'table2', 'callback_data' => 'table/'.'2'.$user_id);
-    $table3 = array('text' => 'table3', 'callback_data' => 'table/'.'3'.$user_id);
-    $table4 = array('text' => 'table4', 'callback_data' => 'table/'.'4'.$user_id);
-    $table5 = array('text' => 'table5', 'callback_data' => 'table/'.'5'.$user_id);
-    $table6 = array('text' => 'table6', 'callback_data' => 'table/'.'6'.$user_id);
-    $table7 = array('text' => 'table7', 'callback_data' => 'table/'.'7'.$user_id);
-    $table8 = array('text' => 'table8', 'callback_data' => 'table/'.'8'.$user_id);
+    $table1 = array('text' => 'table1', 'callback_data' => 'table/'.'1/'.$user_id);
+    $table2 = array('text' => 'table2', 'callback_data' => 'table/'.'2/'.$user_id);
+    $table3 = array('text' => 'table3', 'callback_data' => 'table/'.'3/'.$user_id);
+    $table4 = array('text' => 'table4', 'callback_data' => 'table/'.'4/'.$user_id);
+    $table5 = array('text' => 'table5', 'callback_data' => 'table/'.'5/'.$user_id);
+    $table6 = array('text' => 'table6', 'callback_data' => 'table/'.'6/'.$user_id);
+    $table7 = array('text' => 'table7', 'callback_data' => 'table/'.'7/'.$user_id);
+    $table8 = array('text' => 'table8', 'callback_data' => 'table/'.'8/'.$user_id);
     $buttons = [
       [$table1,$table2],
       [$table3,$table4],
