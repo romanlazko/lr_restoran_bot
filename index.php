@@ -30,7 +30,7 @@ function create(){
                     bearname INT(30) NOT NULL,
                     brarfoto VARCHAR(30) NOT NULL,)";
     if($dbconnect->query($ucertable) === TRUE){
-        sendMessage($restorab,387145540,'Создана таблица');
+        sendMessage($restoran,387145540,'Создана таблица');
     } 
 }
 
