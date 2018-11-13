@@ -62,21 +62,21 @@ function handleFiles(f)
         reader.readAsDataURL(f[i]);	
     }
 }
-
-function initCanvas(ww,hh)
-{
-    gCanvas = document.getElementById("qr-canvas");
-    var w = ww;
-    var h = hh;
-    gCanvas.style.width = w + "px";
-    gCanvas.style.height = h + "px";
-    gCanvas.width = w;
-    gCanvas.height = h;
-    gCtx = gCanvas.getContext("2d");
-    gCtx.clearRect(0, 0, w, h);
-    imageData = gCtx.getImageData( 0,0,320,240);
-}
-
+// ...............
+// function initCanvas(ww,hh)
+// {
+//     gCanvas = document.getElementById("qr-canvas");
+//     var w = ww;
+//     var h = hh;
+//     gCanvas.style.width = w + "px";
+//     gCanvas.style.height = h + "px";
+//     gCanvas.width = w;
+//     gCanvas.height = h;
+//     gCtx = gCanvas.getContext("2d");
+//     gCtx.clearRect(0, 0, w, h);
+//     imageData = gCtx.getImageData( 0,0,320,240);
+// }
+// ...........
 // function passLine(stringPixels) { 
 
 //     var coll = stringPixels.split("-");
