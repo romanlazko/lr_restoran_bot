@@ -149,14 +149,14 @@ function htmlEntities(str) {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-function read(a)
-{
-    var html="<br>";
-    if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0)
-        html+="<a target='_blank' href='"+a+"'>"+a+"</a><br>";
-    html+="<b>"+htmlEntities(a)+"</b><br><br>";
-    document.getElementById("result").innerHTML=html;
-}	
+// function read(a)
+// {
+//     var html="<br>";
+//     if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0)
+//         html+="<a target='_blank' href='"+a+"'>"+a+"</a><br>";
+//     html+="<b>"+htmlEntities(a)+"</b><br><br>";
+//     document.getElementById("result").innerHTML=html;
+// }	
 
 function isCanvasSupported(){
   var elem = document.createElement('canvas');
@@ -182,22 +182,22 @@ function error(error) {
     return;
 }
 
-// function load()
-// {
-// 	if(isCanvasSupported() && window.File && window.FileReader)
-// 	{
-// 		initCanvas(800,600);
-// 		qrcode.callback = read;
-// 		document.getElementById("mainbody").style.display="inline";
-// 	}
-// 	else
-// 	{
-// 		document.getElementById("mainbody").style.display="inline";
-// 		document.getElementById("mainbody").innerHTML='<p id="mp1">QR code scanner for HTML5 capable browsers</p><br>'+
-//         '<br><p id="mp2">sorry your browser is not supported</p><br><br>'+
-//         '<p id="mp1">try <a href="http://www.mozilla.com/firefox"><img src="firefox.png"/></a> or <a href="http://chrome.google.com"><img src="chrome_logo.gif"/></a> or <a href="http://www.opera.com"><img src="Opera-logo.png"/></a></p>';
-// 	}
-// }
+function load()
+{
+	if(isCanvasSupported() && window.File && window.FileReader)
+	{
+		initCanvas(800,600);
+		qrcode.callback = read;
+		document.getElementById("mainbody").style.display="inline";
+	}
+	else
+	{
+		document.getElementById("mainbody").style.display="inline";
+		document.getElementById("mainbody").innerHTML='<p id="mp1">QR code scanner for HTML5 capable browsers</p><br>'+
+        '<br><p id="mp2">sorry your browser is not supported</p><br><br>'+
+        '<p id="mp1">try <a href="http://www.mozilla.com/firefox"><img src="firefox.png"/></a> or <a href="http://chrome.google.com"><img src="chrome_logo.gif"/></a> or <a href="http://www.opera.com"><img src="Opera-logo.png"/></a></p>';
+	}
+}
 
 
 function setimg()
