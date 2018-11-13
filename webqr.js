@@ -45,23 +45,23 @@ var imghtml='<div id="qrfile"><canvas id="out-canvas" width="320" height="240"><
 //   }
 // }
 
-function handleFiles(f)
-{
-	var o=[];
+// function handleFiles(f)
+// {
+// 	var o=[];
 	
-	for(var i =0;i<f.length;i++)
-	{
-        var reader = new FileReader();
-        reader.onload = (function(theFile) {
-        return function(e) {
-            gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
+// 	for(var i =0;i<f.length;i++)
+// 	{
+//         var reader = new FileReader();
+//         reader.onload = (function(theFile) {
+//         return function(e) {
+//             gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
 
-			qrcode.decode(e.target.result);
-        };
-        })(f[i]);
-        reader.readAsDataURL(f[i]);	
-    }
-}
+// 			qrcode.decode(e.target.result);
+//         };
+//         })(f[i]);
+//         reader.readAsDataURL(f[i]);	
+//     }
+// }
 
 function initCanvas(ww,hh)
 {
