@@ -199,45 +199,7 @@ function load()
 	}
 }
 
-function setwebcam()
-{
-	document.getElementById("result").innerHTML="- scanning -";
-    if(stype==1)
-    {
-        setTimeout(captureToCanvas, 500);    
-        return;
-    }
-    var n=navigator;
-    if(n.getUserMedia)
-    {
-        document.getElementById("outdiv").innerHTML = vidhtml;
-        v=document.getElementById("v");
-        n.getUserMedia({video: true, audio: false}, success, error);
-    }
-    else
-    if(n.webkitGetUserMedia)
-    {
-        document.getElementById("outdiv").innerHTML = vidhtml;
-        v=document.getElementById("v");
-        webkit=true;
-        n.webkitGetUserMedia({video: true, audio: false}, success, error);
-    }
-    else
-    if(n.mozGetUserMedia)
-    {
-        document.getElementById("outdiv").innerHTML = vidhtml;
-        v=document.getElementById("v");
-        moz=true;
-        n.mozGetUserMedia({video: true, audio: false}, success, error);
-        
-    }
-    else
-        document.getElementById("outdiv").innerHTML = camhtml;
-    document.getElementById("qrimg").src="qrimg2.png";
-    document.getElementById("webcamimg").src="webcam.png";
-    stype=1;
-    setTimeout(captureToCanvas, 500);
-}
+
 function setimg()
 {
 	document.getElementById("result").innerHTML="";
