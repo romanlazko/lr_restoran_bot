@@ -206,11 +206,9 @@ function setimg()
     if(stype==2)
         return;
     document.getElementById("outdiv").innerHTML = imghtml;
-    document.getElementById("qrimg").src="qrimg.png";
-    document.getElementById("webcamimg").src="webcam2.png";
-    var qrfile = document.getElementById("qrfile");
-    qrfile.addEventListener("dragenter", dragenter, false);  
-    qrfile.addEventListener("dragover", dragover, false);  
-    qrfile.addEventListener("drop", drop, false);
+//     var qrfile = document.getElementById("qrfile");
+//     qrfile.addEventListener("dragenter", dragenter, false);  
+//     qrfile.addEventListener("dragover", dragover, false);  
+//     qrfile.addEventListener("drop", drop, false);
     stype=2;
 }
