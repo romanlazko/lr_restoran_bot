@@ -19,31 +19,31 @@ var imghtml='<div id="qrfile"><canvas id="out-canvas" width="320" height="240"><
 
 
 
-function dragenter(e) {
-  e.stopPropagation();
-  e.preventDefault();
-}
+// function dragenter(e) {
+//   e.stopPropagation();
+//   e.preventDefault();
+// }
 
-function dragover(e) {
-  e.stopPropagation();
-  e.preventDefault();
-}
-function drop(e) {
-  e.stopPropagation();
-  e.preventDefault();
+// function dragover(e) {
+//   e.stopPropagation();
+//   e.preventDefault();
+// }
+// function drop(e) {
+//   e.stopPropagation();
+//   e.preventDefault();
 
-  var dt = e.dataTransfer;
-  var files = dt.files;
-  if(files.length>0)
-  {
-	handleFiles(files);
-  }
-  else
-  if(dt.getData('URL'))
-  {
-	qrcode.decode(dt.getData('URL'));
-  }
-}
+//   var dt = e.dataTransfer;
+//   var files = dt.files;
+//   if(files.length>0)
+//   {
+// 	handleFiles(files);
+//   }
+//   else
+//   if(dt.getData('URL'))
+//   {
+// 	qrcode.decode(dt.getData('URL'));
+//   }
+// }
 
 function handleFiles(f)
 {
