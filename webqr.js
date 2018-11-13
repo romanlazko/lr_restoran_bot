@@ -50,9 +50,9 @@ function initCanvas(ww,hh)
     imageData = gCtx.getImageData( 0,0,320,240);
 }
 
-function htmlEntities(str) {
-    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
+// function htmlEntities(str) {
+//     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+// }
 
 function read(a)
 {
