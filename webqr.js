@@ -140,9 +140,9 @@ function initCanvas(ww,hh)
 //     }
 // }
 
-// function htmlEntities(str) {
-//     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-// }
+function htmlEntities(str) {
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
 
 function read(a)
 {
@@ -153,10 +153,10 @@ function read(a)
     document.getElementById("result").innerHTML=html;
 }	
 
-function isCanvasSupported(){
-  var elem = document.createElement('canvas');
-  return !!(elem.getContext && elem.getContext('2d'));
-}
+// function isCanvasSupported(){
+//   var elem = document.createElement('canvas');
+//   return !!(elem.getContext && elem.getContext('2d'));
+// }
 // function success(stream) {
 //     if(webkit)
 //         v.src = window.webkitURL.createObjectURL(stream);
