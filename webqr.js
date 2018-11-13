@@ -9,12 +9,7 @@ var webkit=false;
 var moz=false;
 var v=null;
 
-var camhtml='  	<object  id="iembedflash" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" width="320" height="240"> '+
-  		'<param name="movie" value="camcanvas.swf" />'+
-  		'<param name="quality" value="high" />'+
-		'<param name="allowScriptAccess" value="always" />'+
-  		'<embed  allowScriptAccess="always"  id="embedflash" src="camcanvas.swf" quality="high" width="320" height="240" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" mayscript="true"  />'+
-    '</object>';
+
 var imghtml='<div id="qrfile"><canvas id="out-canvas" width="320" height="240"></canvas>'+
     '<div id="imghelp">'+
 	'Select a file'+
@@ -22,7 +17,7 @@ var imghtml='<div id="qrfile"><canvas id="out-canvas" width="320" height="240"><
 	'</div>'+
 '</div>';
 
-var vidhtml = '<video id="v" autoplay></video>';
+
 
 function dragenter(e) {
   e.stopPropagation();
@@ -162,20 +157,20 @@ function isCanvasSupported(){
   var elem = document.createElement('canvas');
   return !!(elem.getContext && elem.getContext('2d'));
 }
-function success(stream) {
-    if(webkit)
-        v.src = window.webkitURL.createObjectURL(stream);
-    else
-    if(moz)
-    {
-        v.mozSrcObject = stream;
-        v.play();
-    }
-    else
-        v.src = stream;
-    gUM=true;
-    setTimeout(captureToCanvas, 500);
-}
+// function success(stream) {
+//     if(webkit)
+//         v.src = window.webkitURL.createObjectURL(stream);
+//     else
+//     if(moz)
+//     {
+//         v.mozSrcObject = stream;
+//         v.play();
+//     }
+//     else
+//         v.src = stream;
+//     gUM=true;
+//     setTimeout(captureToCanvas, 500);
+// }
 		
 function error(error) {
     gUM=false;
@@ -206,9 +201,5 @@ function setimg()
     if(stype==2)
         return;
     document.getElementById("outdiv").innerHTML = imghtml;
-//     var qrfile = document.getElementById("qrfile");
-//     qrfile.addEventListener("dragenter", dragenter, false);  
-//     qrfile.addEventListener("dragover", dragover, false);  
-//     qrfile.addEventListener("drop", drop, false);
     stype=2;
 }
