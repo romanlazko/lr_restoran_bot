@@ -18,33 +18,6 @@ var imghtml='<div id="qrfile"><canvas id="out-canvas" width="320" height="240"><
 '</div>';
 
 
-
-// function dragenter(e) {
-//   e.stopPropagation();
-//   e.preventDefault();
-// }
-
-// function dragover(e) {
-//   e.stopPropagation();
-//   e.preventDefault();
-// }
-// function drop(e) {
-//   e.stopPropagation();
-//   e.preventDefault();
-
-//   var dt = e.dataTransfer;
-//   var files = dt.files;
-//   if(files.length>0)
-//   {
-// 	handleFiles(files);
-//   }
-//   else
-//   if(dt.getData('URL'))
-//   {
-// 	qrcode.decode(dt.getData('URL'));
-//   }
-// }
-
 function handleFiles(f)
 {
 	var o=[];
@@ -76,69 +49,6 @@ function initCanvas(ww,hh)
     gCtx.clearRect(0, 0, w, h);
     imageData = gCtx.getImageData( 0,0,320,240);
 }
-// ...........
-// function passLine(stringPixels) { 
-
-//     var coll = stringPixels.split("-");
-
-//     for(var i=0;i<320;i++) { 
-//         var intVal = parseInt(coll[i]);
-//         r = (intVal >> 16) & 0xff;
-//         g = (intVal >> 8) & 0xff;
-//         b = (intVal ) & 0xff;
-//         imageData.data[c+0]=r;
-//         imageData.data[c+1]=g;
-//         imageData.data[c+2]=b;
-//         imageData.data[c+3]=255;
-//         c+=4;
-//     } 
-
-//     if(c>=320*240*4) { 
-//         c=0;
-//         gCtx.putImageData(imageData, 0,0);
-//         try{
-//             qrcode.decode();
-//         }
-//         catch(e){       
-//             console.log(e);
-//             setTimeout(captureToCanvas, 500);
-//         };
-//     } 
-// } 
-
-// function captureToCanvas() {
-//     if(stype!=1)
-//         return;
-//     if(gUM)
-//     {
-//         try{
-//             gCtx.drawImage(v,0,0);
-//             try{
-//                 qrcode.decode();
-//             }
-//             catch(e){       
-//                 console.log(e);
-//                 setTimeout(captureToCanvas, 500);
-//             };
-//         }
-//         catch(e){       
-//                 console.log(e);
-//                 setTimeout(captureToCanvas, 500);
-//         };
-//     }
-//     else
-//     {
-//         flash = document.getElementById("embedflash");
-//         try{
-//             flash.ccCapture();
-//         }
-//         catch(e)
-//         {
-//             console.log(e);
-//             setTimeout(captureToCanvas, 1000);
-//         }
-//     }
-// }
 
 function htmlEntities(str) {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -153,25 +63,11 @@ function read(a)
     document.getElementById("result").innerHTML=html;
 }	
 
-// function isCanvasSupported(){
-//   var elem = document.createElement('canvas');
-//   return !!(elem.getContext && elem.getContext('2d'));
-// }
-// function success(stream) {
-//     if(webkit)
-//         v.src = window.webkitURL.createObjectURL(stream);
-//     else
-//     if(moz)
-//     {
-//         v.mozSrcObject = stream;
-//         v.play();
-//     }
-//     else
-//         v.src = stream;
-//     gUM=true;
-//     setTimeout(captureToCanvas, 500);
-// }
-		
+function isCanvasSupported(){
+  var elem = document.createElement('canvas');
+  return !!(elem.getContext && elem.getContext('2d'));
+}
+	
 function error(error) {
     gUM=false;
     return;
@@ -200,6 +96,6 @@ function setimg()
 	document.getElementById("result").innerHTML="";
     if(stype==2)
         return;
-    document.getElementById("outdiv").innerHTML = imghtml;
+//     document.getElementById("outdiv").innerHTML = imghtml;
     stype=2;
 }
