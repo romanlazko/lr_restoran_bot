@@ -45,23 +45,23 @@ var imghtml='<div id="qrfile"><canvas id="out-canvas" width="320" height="240"><
 //   }
 // }
 
-// function handleFiles(f)
-// {
-// 	var o=[];
+function handleFiles(f)
+{
+	var o=[];
 	
-// 	for(var i =0;i<f.length;i++)
-// 	{
-//         var reader = new FileReader();
-//         reader.onload = (function(theFile) {
-//         return function(e) {
-//             gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
+	for(var i =0;i<f.length;i++)
+	{
+        var reader = new FileReader();
+        reader.onload = (function(theFile) {
+        return function(e) {
+            gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
 
-// 			qrcode.decode(e.target.result);
-//         };
-//         })(f[i]);
-//         reader.readAsDataURL(f[i]);	
-//     }
-// }
+			qrcode.decode(e.target.result);
+        };
+        })(f[i]);
+        reader.readAsDataURL(f[i]);	
+    }
+}
 
 function initCanvas(ww,hh)
 {
@@ -77,34 +77,34 @@ function initCanvas(ww,hh)
     imageData = gCtx.getImageData( 0,0,320,240);
 }
 
-function passLine(stringPixels) { 
+// function passLine(stringPixels) { 
 
-    var coll = stringPixels.split("-");
+//     var coll = stringPixels.split("-");
 
-    for(var i=0;i<320;i++) { 
-        var intVal = parseInt(coll[i]);
-        r = (intVal >> 16) & 0xff;
-        g = (intVal >> 8) & 0xff;
-        b = (intVal ) & 0xff;
-        imageData.data[c+0]=r;
-        imageData.data[c+1]=g;
-        imageData.data[c+2]=b;
-        imageData.data[c+3]=255;
-        c+=4;
-    } 
+//     for(var i=0;i<320;i++) { 
+//         var intVal = parseInt(coll[i]);
+//         r = (intVal >> 16) & 0xff;
+//         g = (intVal >> 8) & 0xff;
+//         b = (intVal ) & 0xff;
+//         imageData.data[c+0]=r;
+//         imageData.data[c+1]=g;
+//         imageData.data[c+2]=b;
+//         imageData.data[c+3]=255;
+//         c+=4;
+//     } 
 
-    if(c>=320*240*4) { 
-        c=0;
-        gCtx.putImageData(imageData, 0,0);
-        try{
-            qrcode.decode();
-        }
-        catch(e){       
-            console.log(e);
-            setTimeout(captureToCanvas, 500);
-        };
-    } 
-} 
+//     if(c>=320*240*4) { 
+//         c=0;
+//         gCtx.putImageData(imageData, 0,0);
+//         try{
+//             qrcode.decode();
+//         }
+//         catch(e){       
+//             console.log(e);
+//             setTimeout(captureToCanvas, 500);
+//         };
+//     } 
+// } 
 
 function captureToCanvas() {
     if(stype!=1)
