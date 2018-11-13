@@ -63,19 +63,19 @@ function handleFiles(f)
     }
 }
 // ...............
-// function initCanvas(ww,hh)
-// {
-//     gCanvas = document.getElementById("qr-canvas");
-//     var w = ww;
-//     var h = hh;
-//     gCanvas.style.width = w + "px";
-//     gCanvas.style.height = h + "px";
-//     gCanvas.width = w;
-//     gCanvas.height = h;
-//     gCtx = gCanvas.getContext("2d");
-//     gCtx.clearRect(0, 0, w, h);
-//     imageData = gCtx.getImageData( 0,0,320,240);
-// }
+function initCanvas(ww,hh)
+{
+    gCanvas = document.getElementById("qr-canvas");
+    var w = ww;
+    var h = hh;
+    gCanvas.style.width = w + "px";
+    gCanvas.style.height = h + "px";
+    gCanvas.width = w;
+    gCanvas.height = h;
+    gCtx = gCanvas.getContext("2d");
+    gCtx.clearRect(0, 0, w, h);
+    imageData = gCtx.getImageData( 0,0,320,240);
+}
 // ...........
 // function passLine(stringPixels) { 
 
@@ -106,39 +106,39 @@ function handleFiles(f)
 //     } 
 // } 
 
-function captureToCanvas() {
-    if(stype!=1)
-        return;
-    if(gUM)
-    {
-        try{
-            gCtx.drawImage(v,0,0);
-            try{
-                qrcode.decode();
-            }
-            catch(e){       
-                console.log(e);
-                setTimeout(captureToCanvas, 500);
-            };
-        }
-        catch(e){       
-                console.log(e);
-                setTimeout(captureToCanvas, 500);
-        };
-    }
-    else
-    {
-        flash = document.getElementById("embedflash");
-        try{
-            flash.ccCapture();
-        }
-        catch(e)
-        {
-            console.log(e);
-            setTimeout(captureToCanvas, 1000);
-        }
-    }
-}
+// function captureToCanvas() {
+//     if(stype!=1)
+//         return;
+//     if(gUM)
+//     {
+//         try{
+//             gCtx.drawImage(v,0,0);
+//             try{
+//                 qrcode.decode();
+//             }
+//             catch(e){       
+//                 console.log(e);
+//                 setTimeout(captureToCanvas, 500);
+//             };
+//         }
+//         catch(e){       
+//                 console.log(e);
+//                 setTimeout(captureToCanvas, 500);
+//         };
+//     }
+//     else
+//     {
+//         flash = document.getElementById("embedflash");
+//         try{
+//             flash.ccCapture();
+//         }
+//         catch(e)
+//         {
+//             console.log(e);
+//             setTimeout(captureToCanvas, 1000);
+//         }
+//     }
+// }
 
 function htmlEntities(str) {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
