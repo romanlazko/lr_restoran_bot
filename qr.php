@@ -134,7 +134,12 @@ setimg();
 
 
 <div id="outdiv">
-
+	<div id="qrfile"><canvas id="out-canvas" width="320" height="240"></canvas>
+    <div id="imghelp">
+	Select a file
+	<input type="file" onchange="handleFiles(this.files)"/>
+	</div>
+</div>
 </div>
 <div id="result"></div>
 </div></div>           <canvas id="qr-canvas" width="800" height="600"></canvas>        </p>            
