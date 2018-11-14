@@ -75,9 +75,10 @@ function error(error) {
 
 function load()
 {
-	if(isCanvasSupported() && window.File && window.FileReader)
+// 	isCanvasSupported() &&
+	if( window.File && window.FileReader)
 	{
-		initCanvas(800,600);
+		//initCanvas(800,600);
 		qrcode.callback = read;
 		document.getElementById("mainbody").style.display="inline";
 	}
