@@ -58,7 +58,7 @@ function read(a)
 {
     var html="<br>";
     
-        html+="+a+";
+        html+=a;
 //     html+="<b>"+htmlEntities(a)+"</b><br><br>";
     document.getElementById("result").innerHTML=html;
 }	
