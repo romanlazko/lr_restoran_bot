@@ -82,6 +82,6 @@ function setimg()
 	//document.getElementById("result").innerHTML="";
 //     if(stype==2)
 //         return;
-    document.getElementById("outdiv").innerHTML = imghtml;
-    stype=2;
+//     document.getElementById("outdiv").innerHTML = imghtml;
+//     stype=2;
 }
