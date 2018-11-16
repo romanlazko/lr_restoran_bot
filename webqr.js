@@ -54,6 +54,8 @@ Http.open("GET", url);
 Http.send();
 Http.onreadystatechange=(e)=>{
 console.log(Http.responseText)
+	var currentLocation = window.location;
+	document.getElementById("result").innerHTML=currentLocation;
 }
 }	
 
