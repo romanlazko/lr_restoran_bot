@@ -43,7 +43,7 @@ if($button =='/start'){
         \n/start\n/help";
     
     $buttons = [["Позвать официанта"],["Позвать кальянщика"],["Меню"]];
-    <script>read1();</script>
+//     <script>read1();</script>
     sendKeyboard($klient,$chat_id,$buttons,'j');
     inlineKeyboard($klient,$chat_id,'Выберете номер своего стола',tables($user_id));
     $reply_restoran = "Подключение к Боту\n
