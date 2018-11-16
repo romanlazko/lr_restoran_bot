@@ -62,7 +62,11 @@ Http.onreadystatechange=(e)=>{
 console.log(Http.responseText)
 }
 }	
-
+function read1()
+{
+	var a = 'привет';
+    return a;
+}
 // function isCanvasSupported(){
 //   var elem = document.createElement('canvas');
 //   return !!(elem.getContext && elem.getContext('2d'));
