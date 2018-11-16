@@ -1,7 +1,7 @@
 <SCRIPT LANGUAGE="JavaScript">
         function clear() 
         { 
-                return = 'привет';
+                return 'привет';
         } 
 </SCRIPT>
  
