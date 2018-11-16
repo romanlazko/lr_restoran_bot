@@ -9,13 +9,8 @@
     </style>
   </head>
   <body  >
-  
-    
-    <div>
-
-       
-  <p>
-               <style type="text/css">
+	  <p>
+<style type="text/css">
 body{
     width:100%;
     text-align:center;
@@ -54,8 +49,8 @@ body{
 }
 #outdiv
 {
-    width:320px;
-    height:240px;
+    width:800px;
+    height:1200px;
     border: solid;
     border-width: 1px 1px 1px 1px;
 }
@@ -111,8 +106,7 @@ li a{
 }
 
 </style>
-	  <script type="text/javascript" src="llqrcode.js"></script>
-
+<script type="text/javascript" src="llqrcode.js"></script>
 <script type="text/javascript" src="webqr.js"></script>
 <script type="text/javascript" src="jquery-1.8.0.min.js"></script>
 <script>
@@ -122,27 +116,20 @@ setimg();
 });
 </script>
 <div id="main">
-<!-- 	<div id="qrfile">
-		<canvas id="out-canvas" width="320" height="240">
-		</canvas>
-    <div id="imghelp">
-	Select a file
-	<input type="file" onchange="handleFiles(this.files)"/>
+	<div id="mainbody">
+		<div id="outdiv">
+			<div id="qrfile"><canvas id="out-canvas" width="320" height="240"></canvas>
+				<div id="imghelp">
+					Select a file
+					<input type="file" onchange="handleFiles(this.files)"/>
+				</div>
+			</div>
+		</div>
+		<div id="result"></div>
 	</div>
-</div> -->
-<div id="mainbody">
-
-
-<div id="outdiv">
-	<div id="qrfile"><canvas id="out-canvas" width="320" height="240"></canvas>
-    <div id="imghelp">
-	Select a file
-	<input type="file" onchange="handleFiles(this.files)"/>
-	</div>
-</div>
-</div>
-<div id="result"></div>
-</div></div>           <canvas id="qr-canvas" width="800" height="600"></canvas>        </p>            
+	    </div>
+	    <canvas id="qr-canvas" width="800" height="600"></canvas>        
+	    </p>            
 
 
 
