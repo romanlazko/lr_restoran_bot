@@ -18,7 +18,7 @@ $longitude = $output['message']['location']['longitude'];
 $first_name = $output['message']['from']['first_name'];
 
 //   include 'BD.php';
-
+include 'webqr.js';
 
 
 if(isset($inline_data)){
@@ -43,7 +43,7 @@ if($button =='/start'){
         \n/start\n/help";
     
     $buttons = [["Позвать официанта"],["Позвать кальянщика"],["Меню"]];
-    sendKeyboard($klient,$chat_id,$buttons,$chat_id);
+    sendKeyboard($klient,$chat_id,$buttons,read1());
     inlineKeyboard($klient,$chat_id,'Выберете номер своего стола',tables($user_id));
     $reply_restoran = "Подключение к Боту\n
     *Имя:*".$first_name;
