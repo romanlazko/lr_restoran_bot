@@ -38,7 +38,7 @@ function handleFiles(f)
 // ...............
 function initCanvas(ww,hh)
 {
-    //gCanvas = document.getElementById("qr-canvas");
+    gCanvas = document.getElementById("qr-canvas");
     var w = ww;
     var h = hh;
     gCanvas.style.width = w + "px";
