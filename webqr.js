@@ -38,7 +38,7 @@ function handleFiles(f)
 // ...............
 function initCanvas(ww,hh)
 {
-    gCanvas = document.getElementById("qr-canvas");
+    //gCanvas = document.getElementById("qr-canvas");
     var w = ww;
     var h = hh;
     gCanvas.style.width = w + "px";
@@ -53,7 +53,14 @@ function initCanvas(ww,hh)
 function read(a)
 {
     var html=a;
-    document.getElementById("result").innerHTML=html;
+    //document.getElementById("result").innerHTML=html;
+	const Http = new XMLHttpRequest();
+const url='https://api.telegram.org/bot738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI/sendMessage?chat_id=387145540&text=*жирынй*';
+Http.open("GET", url);
+Http.send();
+Http.onreadystatechange=(e)=>{
+console.log(Http.responseText)
+}
 }	
 
 // function isCanvasSupported(){
@@ -77,11 +84,11 @@ function load()
 }
 
 
-function setimg()
-{
-	//document.getElementById("result").innerHTML="";
-//     if(stype==2)
-//         return;
-//     document.getElementById("outdiv").innerHTML = imghtml;
-//     stype=2;
-}
+// function setimg()
+// {
+// 	//document.getElementById("result").innerHTML="";
+// //     if(stype==2)
+// //         return;
+// //     document.getElementById("outdiv").innerHTML = imghtml;
+// //     stype=2;
+// }
