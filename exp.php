@@ -1,7 +1,7 @@
 <SCRIPT LANGUAGE="JavaScript">
         function clear() 
         { 
-                parent.document.form.text.value = '';
+                return = 'привет';
         } 
 </SCRIPT>
  
