@@ -55,7 +55,7 @@ function read(a)
 // Http.onreadystatechange=(e)=>{
 // console.log(Http.responseText)
 	var currentLocation = window.location;
-	var b = currentLocation.split('?')[0];
+	var b = currentLocation.split('?')[1];
 	document.getElementById("result").innerHTML=b;
 // }
 }	
