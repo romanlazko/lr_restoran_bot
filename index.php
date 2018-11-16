@@ -41,7 +41,7 @@ if($button =='/start'){
         "Добро пожаловать в бота!
         \n*Список доступных команд:*
         \n/start\n/help\n".
-        "https://lrrestoranbot.herokuapp.com/qr.php?".$chat_id;
+        "https://lrrestoranbot.herokuapp.com/qr.php?chat_id=".$chat_id;
     
     $buttons = [["Позвать официанта"],["Позвать кальянщика"],["Меню"]];
 //     <script>read1();</script>
