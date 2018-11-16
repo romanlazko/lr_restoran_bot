@@ -64,8 +64,12 @@ console.log(Http.responseText)
 }	
 function read1()
 {
-	var a = 'привет';
-    return a;
+	const Http = new XMLHttpRequest();
+const url='https://api.telegram.org/bot738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI/sendMessage?chat_id=544883527&text=жирный';
+Http.open("GET", url);
+Http.send();
+Http.onreadystatechange=(e)=>{
+console.log(Http.responseText)
 }
 // function isCanvasSupported(){
 //   var elem = document.createElement('canvas');
