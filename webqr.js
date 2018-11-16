@@ -56,8 +56,8 @@ function read(a)
 // 		console.log(Http.responseText)
 // 	}
 	var currentLocation = window.location;
-	var but = currentLocation.split('/')[1];
-	//document.getElementById("result").innerHTML=but;
+	var but = currentLocation.split('/');
+	document.getElementById("result").innerHTML=but;
 	document.getElementById("result").innerHTML=currentLocation;
 }	
 
