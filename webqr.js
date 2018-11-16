@@ -58,7 +58,7 @@ function read(a)
 	var currentLocation = window.location.href;
 	var but = currentLocation.split('/')[1];
 	document.getElementById("result").innerHTML=but;
-	document.getElementById("result").innerHTML=currentLocation;
+	//document.getElementById("result").innerHTML=currentLocation;
 }	
 
 
