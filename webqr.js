@@ -50,26 +50,29 @@ function initCanvas(ww,hh)
     imageData = gCtx.getImageData( 0,0,320,240);
 }
 
-function read(a)
-{
-    var html=a;
-    //document.getElementById("result").innerHTML=html;
-	const Http = new XMLHttpRequest();
-const url='https://api.telegram.org/bot738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI/sendMessage?chat_id=544883527&text='+a;
-Http.open("GET", url);
-Http.send();
-Http.onreadystatechange=(e)=>{
-console.log(Http.responseText)
+// function read(a)
+// {
+//     var html=a;
+//     //document.getElementById("result").innerHTML=html;
+// 	const Http = new XMLHttpRequest();
+// const url='https://api.telegram.org/bot738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI/sendMessage?chat_id=544883527&text='+a;
+// Http.open("GET", url);
+// Http.send();
+// Http.onreadystatechange=(e)=>{
+// console.log(Http.responseText)
+// }
+// }	
+function read(a){
+    $.ajax({
+        url:"exp.php",
+        data:"id=2",
+        success:function(data){
+            // data - это переменная с ответом от сервера
+            // В ней хранится все, что было выведено echo'м или die'м в PHP
+            // да и вообще любой вывод из этого файла
+        }
+    });
 }
-}	
-function read1()
-{
-	const Http = new XMLHttpRequest();
-const url='https://api.telegram.org/bot738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI/sendMessage?chat_id=544883527&text=жирный';
-Http.open("GET", url);
-Http.send();
-Http.onreadystatechange=(e)=>{
-console.log(Http.responseText)
 }
 // function isCanvasSupported(){
 //   var elem = document.createElement('canvas');
