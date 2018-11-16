@@ -40,11 +40,12 @@ if($button =='/start'){
     $reply_klient = "Привет ".$first_name.".\n".
         "Добро пожаловать в бота!
         \n*Список доступных команд:*
-        \n/start\n/help";
+        \n/start\n/help\n".
+        "https://lrrestoranbot.herokuapp.com/qr.php?".$chat_id;
     
     $buttons = [["Позвать официанта"],["Позвать кальянщика"],["Меню"]];
 //     <script>read1();</script>
-    sendKeyboard($klient,$chat_id,$buttons,'j');
+    sendKeyboard($klient,$chat_id,$buttons,$reply_klient);
     inlineKeyboard($klient,$chat_id,'Выберете номер своего стола',tables($user_id));
     $reply_restoran = "Подключение к Боту\n
     *Имя:*".$first_name;
