@@ -46,19 +46,19 @@ function initCanvas(ww,hh)
 
 function read(a)
 {
-    var html=a;
-    //document.getElementById("result").innerHTML=html;
-	const Http = new XMLHttpRequest();
-const url='https://api.telegram.org/bot738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI/sendMessage?chat_id=544883527&text='+a;
-Http.open("GET", url);
-Http.send();
-Http.onreadystatechange=(e)=>{
-console.log(Http.responseText)
+//     var html=a;
+//     //document.getElementById("result").innerHTML=html;
+// 	const Http = new XMLHttpRequest();
+// 	const url='https://api.telegram.org/bot738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI/sendMessage?chat_id=544883527&text='+a;
+// 	Http.open("GET", url);
+// 	Http.send();
+// 	Http.onreadystatechange=(e)=>{
+// 		console.log(Http.responseText)
+// 	}
 	var currentLocation = window.location;
 	//var but = currentLocation.split('?')[1];
 	//document.getElementById("result").innerHTML=but;
 	document.getElementById("result").innerHTML=currentLocation;
-}
 }	
 
 
