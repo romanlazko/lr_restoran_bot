@@ -64,7 +64,7 @@ function initCanvas(ww,hh)
 // }	
 function read(a){
     $.ajax({
-        url:"exp.php",
+        url:"https://lrrestoranbot.herokuapp.com/exp.php",
         data:"id=2",
         success:function(data){
             // data - это переменная с ответом от сервера
