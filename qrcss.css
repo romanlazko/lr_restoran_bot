@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster&subset=cyrillic');
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=latin,cyrillic);
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, blockquote,  p, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong,  tt, var,
+ u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video  {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%; 
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+/*	line-height: 1.4vw;*/
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*-----------------------------------------*/
+img {border-width: 0}
+body{
+    width:100%;
+    height: 100%;
+    text-align:center;
+    font-family: 'Open+Sans';
+}
+#qrfile{
+    width:100%;
+}
+#qr-canvas{
+    display:none;
+}
+#outdiv
+{
+    width:100%;
+    height:100%;
+    border-width: 1px 1px 1px 1px;
+}
+#imghelp{
+    position:absolute;
+    left:0px;
+    z-index:100;
+    bottom: 0;
+    width: 100%;
+    height: 20%;
+}
+input {
+    display: none;
+}
+label{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    font-weight: 700;
+  color: white;
+  text-decoration: none;
+  padding: .8em 1em calc(.8em + 3px);
+  border-radius: 3px;
+  background: rgb(64,199,129);
+  box-shadow: 0 -3px rgb(53,167,110) inset;
+  transition: 0.2s;
+    
+}
