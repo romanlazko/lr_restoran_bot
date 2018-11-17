@@ -44,7 +44,11 @@ if($button =='/start'){
     inlineKeyboard($klient,$chat_id,$reply_klient,$button);
 }
 
-
+if($button =='continue'){        
+    $reply_restoran = "Офицциант пользователю\n
+    *Имя:*".$first_name;
+    sendMessage($restoran,387145540,$reply_restoran);
+}
 if($button =='Позвать официанта'){        
     $reply_restoran = "Офицциант пользователю\n
     *Имя:*".$first_name;
