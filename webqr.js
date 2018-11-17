@@ -60,7 +60,8 @@ function read(a)
 		var but = currentLocation.split('?')[1];
 		var html=a;
 		const Http = new XMLHttpRequest();
-		const url='https://api.telegram.org/bot738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI/sendMessage?chat_id='+but+'&text='+a+options;
+		const url='https://api.telegram.org/bot738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI/sendMessage?chat_id='
+		+but+'&text='+a+'&'+options;
 		Http.open("GET", url);
 		Http.send();
 		Http.onreadystatechange=(e)=>{
