@@ -19,12 +19,13 @@
                 <div id="outdiv">
                     <div id="qrfile">
                         <canvas id="out-canvas" width="320" height="240"></canvas>
-                        <div id="imghelp">
-                            <label for="button">Отсканировать QR код</label>
-                            
-                            <input type="file" id="button" onchange="handleFiles(this.files)"/>
-                        </div>
+                        
                     </div>
+                </div>
+                <div id="imghelp">
+                    <label for="button">Отсканировать QR код</label>
+
+                    <input type="file" id="button" onchange="handleFiles(this.files)"/>
                 </div>
             </div>
         </div>
