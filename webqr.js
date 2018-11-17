@@ -64,7 +64,7 @@ function read(a)
 	
 	//var but = currentLocation.split('/')[1];
 	//document.getElementById("result").innerHTML=but;
-	document.getElementById("result").innerHTML=but;
+// 	document.getElementById("result").innerHTML=but;
 }	
 
 
