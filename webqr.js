@@ -47,18 +47,15 @@ function read(a)
 		var error = 'Ошибка считывания, попробуйте еще раз';
 		document.getElementById("result").innerHTML=error;
 	}else{
-		var options = "&reply_markup": {
-            "inline_keyboard": [[
-                {
-                    "text": "A",
-                    "callback_data": "A1"            
-                }, 
-                {
-                    "text": "B",
-                    "callback_data": "C1"            
-                }]
-            ]
-        };
+		var options = {
+  reply_markup: JSON.stringify({
+    inline_keyboard: [
+      [{ text: 'Some button text 1', callback_data: '1' }],
+      [{ text: 'Some button text 2', callback_data: '2' }],
+      [{ text: 'Some button text 3', callback_data: '3' }]
+    ]
+  })
+};
 		var currentLocation = window.location.search;
 		var but = currentLocation.split('?')[1];
 		var html=a;
