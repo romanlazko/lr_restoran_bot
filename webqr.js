@@ -48,7 +48,7 @@ function read(a)
 {
 	if(a=='error decoding QR Code'){
 		var html= 'error decoding QR Code';
-		document.getElementById("result").innerHTML=html;
+		document.getElementById("qr-canvas").innerHTML=html;
 	}
 	var currentLocation = window.location.search;
 	var but = currentLocation.split('?')[1];
