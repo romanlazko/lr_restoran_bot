@@ -47,8 +47,8 @@ function initCanvas(ww,hh)
 function read(a)
 {
 	if(a=='error decoding QR Code'){
-		
-		document.getElementById("result").innerHTML=a;
+		var error = 'Ошибка считывания, попробуйте еще раз';
+		document.getElementById("result").innerHTML=error;
 	}else{
 		var currentLocation = window.location.search;
 		var but = currentLocation.split('?')[1];
@@ -60,7 +60,8 @@ function read(a)
 		Http.onreadystatechange=(e)=>{
 			console.log(Http.responseText)
 		}
-		document.location.replace("https://t.me/lr_klient_bot");
+		var ok = 'QR код отсканирован. Нажмите "Готово" что бы продолжить';
+		document.getElementById("result").innerHTML=ok;
 	}
 	
 }	
