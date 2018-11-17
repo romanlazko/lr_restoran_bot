@@ -53,18 +53,7 @@ function read(a)
 		var html=a;
 		const Http = new XMLHttpRequest();
 		const url='https://api.telegram.org/bot738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI/sendMessage?chat_id='
-		+but+'&text='+a+'&reply_markup={
-		    "inline_keyboard": [[
-			{
-			    "text": "A",
-			    "callback_data": "A1"            
-			}, 
-			{
-			    "text": "B",
-			    "callback_data": "C1"            
-			}]
-		    ]
-		}';
+		+but+'&text='+a+'&reply_markup={%20"inline_keyboard":%20[[%20{%20"text":%20"Продолжить",%20"callback_data":%20%27'+a+but+'%27%20}%20]%20]%20}';
 		Http.open("GET", url);
 		Http.send();
 		Http.onreadystatechange=(e)=>{
