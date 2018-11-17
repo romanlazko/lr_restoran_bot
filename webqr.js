@@ -47,7 +47,7 @@ function read(a)
 		var error = 'Ошибка считывания, попробуйте еще раз';
 		document.getElementById("result").innerHTML=error;
 	}else{
-		var options = "reply_markup": {
+		var options = "&reply_markup": {
             "inline_keyboard": [[
                 {
                     "text": "A",
@@ -64,7 +64,7 @@ function read(a)
 		var html=a;
 		const Http = new XMLHttpRequest();
 		const url='https://api.telegram.org/bot738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI/sendMessage?chat_id='
-		+but+'&text='+a+'&reply_markup='+options;
+		+but+'&text='+a+options;
 		Http.open("GET", url);
 		Http.send();
 		Http.onreadystatechange=(e)=>{
