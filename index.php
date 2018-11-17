@@ -41,7 +41,7 @@ if($button =='/start'){
     $button = [
       [array('text' => 'Сканировать QR код', 'url' => 'https://lrrestoranbot.herokuapp.com/qr.php?'.$chat_id)]
     ];
-    inlineKeyboard($klient,$chat_id,$reply_klient,$button);
+    inlineKeyboard($klient,$chat_id,$chat_id,$button);
 }
 
 
