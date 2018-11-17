@@ -85,7 +85,7 @@ function inlineKeyboard($token,$chat_id,$reply,$buttons){
     $inlineKeyboard = json_encode(array("inline_keyboard" => $buttons),true);
     $parameters = [
         'chat_id' => $chat_id, 
-        'text' => $inlineKeyboard.$reply, 
+        'text' => $reply, 
         'reply_markup' => $inlineKeyboard,
     ];
     file_get_contents('https://api.telegram.org/bot' . $token . '/sendMessage?' . http_build_query($parameters).'&parse_mode=Markdown');
