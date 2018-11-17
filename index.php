@@ -39,13 +39,12 @@ if($button =='/start'){
     
     $reply_klient = "Привет ".$first_name.".\n".
         "Добро пожаловать в бота!\n
-        Что бы начать заказывать, отсканируй QR код на столе. \n
-        [Отсканировать](https://lrrestoranbot.herokuapp.com/qr.php?".$chat_id.")";
-    $table8 = array('text' => 'Сканировать QR код', 'url' => 'https://lrrestoranbot.herokuapp.com/qr.php?'.$chat_id);
-    $buttons = [
-      [$table8]
+        Что бы начать заказывать, отсканируй QR код на столе. \n";
+//     $qrbutton = array('text' => 'Сканировать QR код', 'url' => 'https://lrrestoranbot.herokuapp.com/qr.php?'.$chat_id);
+    $button = [
+      [array('text' => 'Сканировать QR код', 'url' => 'https://lrrestoranbot.herokuapp.com/qr.php?'.$chat_id)]
     ];
-    inlineKeyboard($klient,$chat_id,$reply_klient,$buttons);
+    inlineKeyboard($klient,$chat_id,$reply_klient,$button);
                     
     
 //     $buttons = [["Позвать официанта"],["Позвать кальянщика"],["Меню"]];
