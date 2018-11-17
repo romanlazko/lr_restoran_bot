@@ -18,7 +18,6 @@ $longitude = $output['message']['location']['longitude'];
 $first_name = $output['message']['from']['first_name'];
 
 //   include 'BD.php';
-include 'webqr.js';
 
 
 if(isset($inline_data)){
