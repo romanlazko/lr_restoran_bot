@@ -60,7 +60,7 @@ function read(a)
 		Http.onreadystatechange=(e)=>{
 			console.log(Http.responseText)
 		}
-		document.location.replace("https://javascript.ru/forum/misc/2445-perekhod-po-ssylke-i-vypolnenie-skripta.html");
+		document.location.replace("tg://resolve?domain=@lr_klient_bot");
 	}
 	
 }	
