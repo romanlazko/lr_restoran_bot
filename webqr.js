@@ -15,21 +15,18 @@ var v=null;
 function handleFiles(f)
 {
 	var o=[];
-	
 	for(var i =0;i<f.length;i++)
 	{
-        var reader = new FileReader();
-        reader.onload = (function(theFile) {
-        return function(e) {
-            gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
-
-			qrcode.decode(e.target.result);
-        };
-        })(f[i]);
-        reader.readAsDataURL(f[i]);	
-    }
+		var reader = new FileReader();
+		reader.onload = (function(theFile) {
+			return function(e) {
+				gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
+				qrcode.decode(e.target.result);
+			};
+		})(f[i]);
+		reader.readAsDataURL(f[i]);
+	}
 }
-// ...............
 function initCanvas(ww,hh)
 {
     gCanvas = document.getElementById("qr-canvas");
@@ -62,37 +59,15 @@ function read(a)
 		}
 		var ok = 'QR код отсканирован. Нажмите "Готово" что бы продолжить';
 		document.getElementById("result").innerHTML=ok;
-	}
-	
+	}	
 }	
-
-
-// function isCanvasSupported(){
-//   var elem = document.createElement('canvas');
-//   return !!(elem.getContext && elem.getContext('2d'));
-// }
-	
-// function error(error) {
-//     gUM=false;
-//     return;
-// }
 
 function load()
 {
 	if( window.File && window.FileReader)
 	{
-		initCanvas(800,600);
+		//initCanvas(800,600);
 		qrcode.callback = read;
 		document.getElementById("mainbody").style.display="inline";
 	}
 }
-
-
-// function setimg()
-// {
-// 	//document.getElementById("result").innerHTML="";
-// //     if(stype==2)
-// //         return;
-// //     document.getElementById("outdiv").innerHTML = imghtml;
-// //     stype=2;
-// }
