@@ -27,6 +27,8 @@
 
                     <input type="file" id="button" onchange="handleFiles(this.files)"/>
                 </div>
+                <div id="result">
+                </div>
             </div>
         </div>
         <canvas id="qr-canvas" width="800" height="600"></canvas>      
