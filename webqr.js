@@ -49,12 +49,12 @@ function read(a)
 	}else{
 		var options = {};
 		var currentLocation = window.location.search;
-		var but = currentLocation.split('?')[1];
+		var user = currentLocation.split('?')[1];
 		var table = a.split('?')[1];
-		var html='Вы сидите за столом'+table;
+		var html='Вы сидите за столом '+table;
 		const Http = new XMLHttpRequest();
 		const url='https://api.telegram.org/bot738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI/sendMessage?chat_id='
-		+but+'&text='+html+'&reply_markup={"inline_keyboard":[[{"text":"Продолжить","callback_data":"continue/'+a+'/'+but+'"}]]}';
+		+but+'&text='+html+'&reply_markup={"inline_keyboard":[[{"text":"Продолжить","callback_data":"continue/'+table+'/'+user+'"}]]}';
 		Http.open("GET", url);
 		Http.send();
 		Http.onreadystatechange=(e)=>{
