@@ -36,10 +36,11 @@ if(isset($inline_data)){
 }
 
 if($button =='/start'){        
+    
     $reply_klient = "Привет ".$first_name.".\n".
-        "Добро пожаловать в бота!
-        \n*Список доступных команд:*
-        \n/start\n/help\nhttps://lrrestoranbot.herokuapp.com/qr.php?".$chat_id;
+        "Добро пожаловать в бота!\n
+        Что бы начать заказывать, отсканируй QR код на столе. \n
+        [Отсканировать](https://lrrestoranbot.herokuapp.com/qr.php?".$chat_id.")";
     
     $buttons = [["Позвать официанта"],["Позвать кальянщика"],["Меню"]];
 //     <script>read1();</script>
