@@ -76,14 +76,17 @@ input {
     display: none;
 }
 label{
+
     top: 20vw;
+    width: 100%;
+    left: 0;
     text-align: center;
-    position: relative;
+    position: absolute;
     font-weight: 700;
-    font-size: 3em;
+    font-size: 3.5em;
     color: white;
     text-decoration: none;
-    padding: 1vw 5vw 1vw 5vw;
+    padding: 1vw 1vw 1vw 1vw;
     border-radius: 3px;
     background: rgb(64,199,129);
     
