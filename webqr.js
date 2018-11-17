@@ -60,7 +60,7 @@ function read(a)
 		Http.onreadystatechange=(e)=>{
 			console.log(Http.responseText)
 		}
-		document.location.replace("t.me/lr_klient_bot");
+		document.location.replace("https://t.me/lr_klient_bot");
 	}
 	
 }	
