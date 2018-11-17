@@ -47,7 +47,7 @@ function read(a)
 		var error = 'Ошибка считывания, попробуйте еще раз';
 		document.getElementById("result").innerHTML=error;
 	}else{
-		var options = {
+		var options = "{
 		    "inline_keyboard": [[
 			{
 			    "text": "A",
@@ -58,7 +58,7 @@ function read(a)
 			    "callback_data": "C1"            
 			}]
 		    ]
-		}
+		}"
 		var currentLocation = window.location.search;
 		var but = currentLocation.split('?')[1];
 		var html=a;
