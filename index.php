@@ -79,7 +79,7 @@ function order($table,$bear){
 }
 
 function confirm($table,$bear){
-    $confirm = array('text' => "Подтвердить заказ", 'callback_data' => 'confirm/'.$table.'/'.$bear);
+    $confirm = array('text' => "Подтвердить заказ", 'callback_data' => 'confirm/'.$table.'/'.$pos_id);
     $buttons = [
          [$confirm]
     ];  
