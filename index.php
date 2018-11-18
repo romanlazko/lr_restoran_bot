@@ -17,7 +17,7 @@ $latitude = $output['message']['location']['latitude'];
 $longitude = $output['message']['location']['longitude'];
 $first_name = $output['message']['from']['first_name'];
 
-//   include 'BD.php';
+   include 'db.php';
 
 
 if(isset($inline_data)){
@@ -25,10 +25,9 @@ if(isset($inline_data)){
     $user_id = $output['callback_query']['from']['id'];
 
     $str = substr($inline_data, 0, strrpos($inline_data, '/'));
-    $category = substr($str, strrpos($str,"/")+1);
     $button = substr($str, 0, strrpos($str, '/'));
+    $table = substr($str, strrpos($str,"/")+1);    
     $pos_id = substr($inline_data, strrpos($inline_data,"/")+1);
-
 }else{
     $button = $output['message']['text'];
     $chat_id = $output['message']['chat']['id'];
@@ -45,27 +44,21 @@ if($button =='/start'){
 }
 
 if($button =='continue'){        
-    $reply_restoran = "Офицциант пользователю\n
-    *Имя:*".$first_name;
-    sendMessage($restoran,387145540,$reply_restoran);
-}
-if($button =='Позвать официанта'){        
-    $reply_restoran = "Офицциант пользователю\n
-    *Имя:*".$first_name;
-    sendMessage($restoran,387145540,$reply_restoran);
-}
-if($button =='table'){  
-    $reply_klient = "Оставайтесь пожалуйста за столом под номером: ".$category;
-    sendMessage($klient,$chat_id,$reply_klient);
+    $reply_klient = "Что бы вы хотели выбрать?";
     
-    $reply_restoran = "Table".$category."занят";
-    sendMessage($restoran,387145540,$reply_restoran);
-}
-if($button =='Меню'){  
-    $reply_klient = "Оставайтесь пожалуйста за столом под номером: ".$category;
-    sendMessage($klient,$chat_id,$reply_klient);
+    editMassage($klient,$chat_id,$message_id,$reply_klient,choose($table,$user_id));
     
+    //sendMessage($restoran,387145540,$reply_restoran);
 }
+
+function choose($table,$user_id){
+    $menu = array('text' => 'Меню', 'callback_data' => 'menu/'.$table.'/'.$user_id);
+    $buttons = [
+         [$menu]
+    ];  
+    return $buttons;
+}
+
 function sendMessage($token,$chat_id,$reply){
     $parameters = [
         'chat_id' => $chat_id, 
