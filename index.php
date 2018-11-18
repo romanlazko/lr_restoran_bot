@@ -4,7 +4,6 @@ $servername="db4free.net: 3306";
 $username="romanlazko";
 $password="zdraste123";
 $dbname="promocoder1";
-$dbconnect = new mysqli($servername, $username, $password, $dbname);
 
 // define('EARTH_RADIUS', 6372795);
 
@@ -45,24 +44,17 @@ if($button =='/start'){
 
 if($button =='continue'){
     $reply_klient = "Что бы вы хотели выбрать?";
-    
     inlineKeyboard($klient,$chat_id,$reply_klient,choose($table,$user_id));
-    
     //sendMessage($restoran,387145540,$reply_restoran);
 }
 if($button =='menu'){
     deleteMessage($klient,$chat_id,$message_id);
     $dbconnect = new mysqli($servername, $username, $password, $dbname);
     showPos($klient,$dbconnect,$chat_id,$table);
-    
-    
 }
 if($button =='order'){
     $replay_klient = "Вы точно хотите заказать ".$pos_id." ?";
-    
     editMassage($klient,$chat_id,$message_id,$replay_klient,confirm($table,$pod_id));
-    
-    
 }
 
 function choose($table,$user_id){
