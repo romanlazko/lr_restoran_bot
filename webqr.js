@@ -50,7 +50,7 @@ function read(a)
 		var currentLocation = window.location.search;
 		var user = currentLocation.split('?')[1];
 		var table = a.split('?')[1];
-		var html='Нажимая на кнопку продолжить, Вы подтверждаете что согласны с условиями использования бота. \nВы находитесь за столом под номером '+table+'\nПожалуйста оставайсь за столом под номером '+table;
+		var html='Нажимая на кнопку продолжить, Вы подтверждаете что согласны с условиями использования бота. Вы находитесь за столом под номером '+table+'. Пожалуйста оставайсь за столом под номером '+table;
 		const Http = new XMLHttpRequest();
 		const url='https://api.telegram.org/bot738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI/sendMessage?chat_id='
 		+user+'&text='+html+'&reply_markup={"inline_keyboard":[[{"text":"Согласен","callback_data":"continue/'+table+'/'+user+'"}]]}';
