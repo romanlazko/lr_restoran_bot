@@ -43,18 +43,30 @@ if($button =='/start'){
     inlineKeyboard($klient,$chat_id,$reply_klient,$button);
 }
 
-if($button =='continue'){        
+if($button =='continue'){
     $reply_klient = "Что бы вы хотели выбрать?";
     
     inlineKeyboard($klient,$chat_id,$reply_klient,choose($table,$user_id));
     
     //sendMessage($restoran,387145540,$reply_restoran);
 }
+if($button =='menu'){
+    
+    editMassage($klient,$chat_id,$message_id,$reply_klient,$buttons);
+    
+}
 
 function choose($table,$user_id){
     $menu = array('text' => 'Меню', 'callback_data' => 'menu/'.$table.'/'.$user_id);
     $buttons = [
          [$menu]
+    ];  
+    return $buttons;
+}
+function order($table,$bear){
+    $order = array('text' => $bear, 'callback_data' => 'order/'.$table.'/'.$bear);
+    $buttons = [
+         [$order]
     ];  
     return $buttons;
 }
