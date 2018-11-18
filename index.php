@@ -55,6 +55,13 @@ if($button =='menu'){
     
     
 }
+if($button =='order'){
+    $replay_klient = "Вы точно хотите заказать ".$bear." ?";
+    
+    editMassage($klient,$chat_id,$message_id,$replay_klient,confirm($table,$bear))
+    
+    
+}
 
 function choose($table,$user_id){
     $menu = array('text' => 'Меню', 'callback_data' => 'menu/'.$table.'/'.$user_id);
@@ -67,6 +74,14 @@ function order($table,$bear){
     $order = array('text' => $bear, 'callback_data' => 'order/'.$table.'/'.$bear);
     $buttons = [
          [$order]
+    ];  
+    return $buttons;
+}
+
+function confirm($table,$bear){
+    $confirm = array('text' => "Подтвердить заказ", 'callback_data' => 'confirm/'.$table.'/'.$bear);
+    $buttons = [
+         [$confirm]
     ];  
     return $buttons;
 }
@@ -118,10 +133,11 @@ function deleteMessage($token,$chat_id,$message_id){
     file_get_contents('https://api.telegram.org/bot' . $token . '/deleteMessage?' . http_build_query($parameters));
 }
 $dbconnect->close();
-?>
 //     $buttons = [["Позвать официанта"],["Позвать кальянщика"],["Меню"]];
 //     sendKeyboard($klient,$chat_id,$buttons,$reply_klient);
 //     inlineKeyboard($klient,$chat_id,'Выберете номер своего стола',tables($user_id));
 //     $reply_restoran = "Подключение к Боту\n
 //     *Имя:*".$first_name;
 //     sendMessage($restoran,387145540,$reply_restoran);
+?>
+
