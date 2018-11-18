@@ -63,7 +63,7 @@ function choose($table,$user_id){
     return $buttons;
 }
 function order($table,$bear){
-    $order = array('text' => $bear, 'callback_data' => 'order/'.$table.'/'.$bear);
+    $order = array('text' => "Заказать", 'callback_data' => 'order/'.$table.'/'.$bear);
     $buttons = [
          [$order]
     ];  
@@ -72,6 +72,7 @@ function order($table,$bear){
 
 function confirm($table,$bear){
     $confirm = array('text' => "Подтвердить заказ", 'callback_data' => 'confirm/'.$table.'/'.$bear);
+    $noconfirm = array('text' => "Подтвердить заказ", 'callback_data' => 'noconfirm/'.$table.'/'.$bear);
     $buttons = [
          [$confirm]
     ];  
