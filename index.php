@@ -46,11 +46,13 @@ if($button =='/start'){
 if($button =='continue'){
     $reply_klient = "Что бы вы хотели выбрать?";
     
-    editMassage($klient,$chat_id,$message_id,$replay_klient,choose($table,$user_id));
+    inlineKeyboard($klient,$chat_id,$reply_klient,choose($table,$user_id));
     
     //sendMessage($restoran,387145540,$reply_restoran);
 }
 if($button =='menu'){
+    deleteMessage($klient,$chat_id,$message_id);
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
     showPos($klient,$dbconnect,$chat_id,$table);
     
     
