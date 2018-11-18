@@ -47,9 +47,7 @@ if($button =='continue'){
     inlineKeyboard($klient,$chat_id,$reply_klient,choose($table,$user_id));
     //sendMessage($restoran,387145540,$reply_restoran);
 }
-if($button =='menu'){
-    deleteMessage($klient,$chat_id,$message_id);
-    
+if($button =='menu'){    
     showPos($klient,$dbconnect,$chat_id,$table);
 }
 if($button =='order'){
