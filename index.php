@@ -51,8 +51,8 @@ if($button =='continue'){
     //sendMessage($restoran,387145540,$reply_restoran);
 }
 if($button =='menu'){
+    showPos($klient,$dbconnect,$chat_id,$table);
     
-    editMassage($klient,$chat_id,$message_id,$reply_klient,$buttons);
     
 }
 
