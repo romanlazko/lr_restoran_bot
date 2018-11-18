@@ -1,38 +1,38 @@
 <?php
-function userfunc($token,$chat_id,$user_id,$dbconnect){
-    $new_user = true;
-    $result = $dbconnect->query("SELECT user_id FROM users");
-    while($row = $result->fetch_assoc()){
+// function userfunc($token,$chat_id,$user_id,$dbconnect){
+//     $new_user = true;
+//     $result = $dbconnect->query("SELECT user_id FROM users");
+//     while($row = $result->fetch_assoc()){
         
-        if($row['user_id']==$user_id){
-            $new_user = false;
-            break;
-        }
-    }   
-    if($new_user === false){
-        sendMessage($token,$chat_id,'ТЫ СТАРЫЙ ПОЛЬЗОВАТЕЛЬ');
-    }
-    else{
-        $createUser = "INSERT INTO users(user_id,userLat,userLong,position,posName,pos_id) VALUES('$user_id','0','0','0','a','0')";            
-        if($dbconnect->query($createUser) === TRUE){
-            sendMessage($token,$chat_id,'ТЫ НОВЫЙ ПОЛЬЗОВАТЕЛЬ'); 
-        }
-    }
+//         if($row['user_id']==$user_id){
+//             $new_user = false;
+//             break;
+//         }
+//     }   
+//     if($new_user === false){
+//         sendMessage($token,$chat_id,'ТЫ СТАРЫЙ ПОЛЬЗОВАТЕЛЬ');
+//     }
+//     else{
+//         $createUser = "INSERT INTO users(user_id,userLat,userLong,position,posName,pos_id) VALUES('$user_id','0','0','0','a','0')";            
+//         if($dbconnect->query($createUser) === TRUE){
+//             sendMessage($token,$chat_id,'ТЫ НОВЫЙ ПОЛЬЗОВАТЕЛЬ'); 
+//         }
+//     }
    
-};
-function showPos($position,$token,$dbconnect,$chat_id,$category){
-    $result = $dbconnect->query("SELECT posName, pos_id FROM $category WHERE position = '$position'");
+// };
+function showPos($token,$dbconnect,$chat_id,$table){
+    $result = $dbconnect->query("SELECT bear FROM restoran");
     while($row = $result->fetch_assoc()){
-        inlineKeyboard($token,$chat_id,$row['posName'],More($row['pos_id'],$category));        
+        inlineKeyboard($token,$chat_id,$row['bear'],order($table,$row['bear']));        
     }   
 }
-function posData($pos_id,$dbconnect,$from){
+// function posData($pos_id,$dbconnect,$from){
     
-    $result = $dbconnect->query("SELECT more,posName FROM $from WHERE pos_id = '$pos_id'");
-    while($row = $result->fetch_assoc()){        
-        return $row;
-    }   
-}
+//     $result = $dbconnect->query("SELECT more,posName FROM $from WHERE pos_id = '$pos_id'");
+//     while($row = $result->fetch_assoc()){        
+//         return $row;
+//     }   
+// }
 // function promocodeInsert($token,$chat_id,$dbconnect,$pos_id,$user_id,$promocode){
 //     $promocodeInsert = "INSERT INTO promocodes(pos_id,user_id,promocode) VALUES('$pos_id','$user_id','$promocode')";            
 //     if($dbconnect->query($promocodeInsert) === TRUE){
