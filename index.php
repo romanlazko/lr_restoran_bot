@@ -58,7 +58,7 @@ if($button =='menu'){
 if($button =='order'){
     $replay_klient = "Вы точно хотите заказать ".$bear." ?";
     
-    editMassage($klient,$chat_id,$message_id,$replay_klient,confirm($table,$bear))
+    editMassage($klient,$chat_id,$message_id,$replay_klient,confirm($table,$bear));
     
     
 }
