@@ -4,7 +4,7 @@ $servername="db4free.net: 3306";
 $username="romanlazko";
 $password="zdraste123";
 $dbname="promocoder1";
-
+$dbconnect = new mysqli($servername, $username, $password, $dbname);
 // define('EARTH_RADIUS', 6372795);
 
 $restoran = "780647425:AAH5bmyGITVXverN4VIns4Z4VlT03W-sGtM";
@@ -49,7 +49,7 @@ if($button =='continue'){
 }
 if($button =='menu'){
     deleteMessage($klient,$chat_id,$message_id);
-    $dbconnect = new mysqli($servername, $username, $password, $dbname);
+    
     showPos($klient,$dbconnect,$chat_id,$table);
 }
 if($button =='order'){
