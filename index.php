@@ -46,7 +46,7 @@ if($button =='/start'){
 if($button =='continue'){        
     $reply_klient = "Что бы вы хотели выбрать?";
     
-    editMassage($klient,$chat_id,$message_id,$reply_klient,choose($table,$user_id));
+    inlineKeyboard($klient,$chat_id,$reply_klient,choose($table,$user_id));
     
     //sendMessage($restoran,387145540,$reply_restoran);
 }
