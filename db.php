@@ -20,19 +20,6 @@ function userfunc($token,$chat_id,$user_id,$dbconnect){
     }
    
 };
-function updateLocation($token,$chat_id,$dbconnect,$user_id,$latitude,$longitude){
-    $putLocation = "UPDATE `users` SET `userLat` = '$latitude', `userLong` = '$longitude' WHERE `user_id` = '$user_id'";
-    if($dbconnect->query($putLocation) === TRUE){
-        if(distance('48.4420860','35.0160808',$latitude,$longitude) < 20000){
-            $reply = 'Ваш город Днепр';        
-        }
-        else {
-            $reply = 'Ваш город в Пизде мира';
-        }
-        $buttons = [["Настройки"],["Категории"]];
-        sendKeyboard($token,$chat_id,$buttons,$reply);
-    }
-}
 function showPos($position,$token,$dbconnect,$chat_id,$category){
     $result = $dbconnect->query("SELECT posName, pos_id FROM $category WHERE position = '$position'");
     while($row = $result->fetch_assoc()){
@@ -52,24 +39,7 @@ function posData($pos_id,$dbconnect,$from){
 //         sendMessage($token,$chat_id,'Промо-код записан'); 
 //     }
 // }
-function promocodeExam($dbconnect,$pos_id,$user_id){
-    include 'promocode.php';
-    $promocode = promocode();
-    $result = $dbconnect->query("SELECT promocode
-                                 FROM promocodes 
-                                 WHERE pos_id = '$pos_id' AND user_id = '$user_id'");
-    
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()){        
-            return $row['promocode'];
-        } 
-    }
-    else {
-        $promocodeInsert = $dbconnect->query("INSERT INTO promocodes(pos_id,user_id,promocode) 
-                                              VALUES('$pos_id','$user_id','$promocode')");
-        return $promocode;
-    }   
-}
+
 // function create($token,$chat_id,$dbconnect){
 //     $login = "promocodes";
 //     $ucertable = "CREATE TABLE $login (
