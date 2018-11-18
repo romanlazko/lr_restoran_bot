@@ -56,9 +56,9 @@ if($button =='menu'){
     
 }
 if($button =='order'){
-    $replay_klient = "Вы точно хотите заказать ".$bear." ?";
+    $replay_klient = "Вы точно хотите заказать ".$pos_id." ?";
     
-    editMassage($klient,$chat_id,$message_id,$replay_klient,confirm($table,$bear));
+    editMassage($klient,$chat_id,$message_id,$replay_klient,confirm($table,$pod_id));
     
     
 }
@@ -79,7 +79,7 @@ function order($table,$bear){
 }
 
 function confirm($table,$bear){
-    $confirm = array('text' => "Подтвердить заказ", 'callback_data' => 'confirm/'.$table.'/'.$pos_id);
+    $confirm = array('text' => "Подтвердить заказ", 'callback_data' => 'confirm/'.$table.'/'.$bear);
     $buttons = [
          [$confirm]
     ];  
