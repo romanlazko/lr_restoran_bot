@@ -54,7 +54,17 @@ if($button =='order'){
     $replay_klient = "Вы точно хотите заказать ".$pos_id." ?";
     editMassage($klient,$chat_id,$message_id,$replay_klient,confirm($table,$pod_id));
 }
-
+if($button =='confirm'){
+    $replay_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id;
+    inlineKeyboard($restoran,$chat_id,$reply_restoran,choose($table,$user_id));
+}
+function choose($table,$user_id){
+    $menu = array('text' => 'Меню', 'callback_data' => 'menu/'.$table.'/'.$user_id);
+    $buttons = [
+         [$menu]
+    ];  
+    return $buttons;
+}
 function choose($table,$user_id){
     $menu = array('text' => 'Меню', 'callback_data' => 'menu/'.$table.'/'.$user_id);
     $buttons = [
