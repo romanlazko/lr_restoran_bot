@@ -52,7 +52,7 @@ if($button =='menu'){
 }
 if($button =='order'){
     $replay_klient = "Вы точно хотите заказать ".$pos_id." ?";
-    editMassage($klient,$chat_id,$message_id,$replay_klient,confirm($table,$pod_id));
+    editMassage($klient,$chat_id,$message_id,$replay_klient,confirm($table,$pos_id));
 }
 if($button =='confirm'){
     $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id;
