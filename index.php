@@ -41,22 +41,25 @@ if($button =='/start'){
     ];
     inlineKeyboard($klient,$chat_id,$reply_klient,$button);
 }
-
-if($button =='continue'){
+elseif($button =='continue'){
     $reply_klient = "Что бы вы хотели выбрать?";
     inlineKeyboard($klient,$chat_id,$reply_klient,choose($table,$user_id));
     //sendMessage($restoran,387145540,$reply_restoran);
 }
-if($button =='menu'){    
+elseif($button =='menu'){    
     showPos($klient,$dbconnect,$chat_id,$table);
 }
-if($button =='order'){
-    $replay_klient = "Вы точно хотите заказать ".$pos_id." ?";
-    editMassage($klient,$chat_id,$message_id,$replay_klient,confirm($table,$pos_id));
+elseif($button =='order'){
+    $reply_klient = "Вы точно хотите заказать ".$pos_id." ?";
+    editMassage($klient,$chat_id,$message_id,$reply_klient,confirm($table,$pos_id));
 }
-if($button =='confirm'){
+elseif($button =='confirm'){
     $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id;
-    inlineKeyboard($restoran,$chat_id,$reply_restoran,choose($table,$user_id));
+    inlineKeyboard($restoran,$chat_id,$reply_restoran,accept($table,$pos_id));
+}
+elseif($button =='accept'){
+    $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id;
+    editMassage($restoran,$chat_id,$message_id,$reply_restoran,done($table,$pos_id));
 }
 
 function choose($table,$user_id){
@@ -73,11 +76,24 @@ function order($table,$bear){
     ];  
     return $buttons;
 }
-
 function confirm($table,$pos_id){
     $confirm = array('text' => "Подтвердить заказ", 'callback_data' => 'confirm/'.$table.'/'.$pos_id);
     $buttons = [
          [$confirm]
+    ];  
+    return $buttons;
+}
+function accept($table,$pos_id){
+    $accept = array('text' => "Принять заказ", 'callback_data' => 'accept/'.$table.'/'.$pos_id);
+    $buttons = [
+         [$accept]
+    ];  
+    return $buttons;
+}
+function done($table,$pos_id){
+    $done = array('text' => "Готово", 'callback_data' => 'done/'.$table.'/'.$pos_id);
+    $buttons = [
+         [$done]
     ];  
     return $buttons;
 }
