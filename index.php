@@ -55,7 +55,7 @@ if($button =='order'){
     editMassage($klient,$chat_id,$message_id,$replay_klient,confirm($table,$pod_id));
 }
 if($button =='confirm'){
-    $replay_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id;
+    $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id;
     inlineKeyboard($restoran,$chat_id,$reply_restoran,choose($table,$user_id));
 }
 
