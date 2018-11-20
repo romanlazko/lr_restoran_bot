@@ -63,11 +63,11 @@ if($button =='menu'){
 }
 if($button =='plus'){
     $pos_name=$pos_name+1;
-    if($pos_name < 5)editMassage($klient,$chat_id,$message_id,posData($pos_id,$dbconnect)['pos_name'],order($table,$pos_name,$pos_id));
+    if($pos_name < 5)editMassage($klient,$chat_id,$message_id,$message,order($table,$pos_name,$pos_id));
 }
 if($button =='minus'){
     $pos_name=$pos_name-1;
-    if($pos_name > 0)editMassage($klient,$chat_id,$message_id,posData($pos_id,$dbconnect)['pos_name'],order($table,$pos_name,$pos_id));
+    if($pos_name > 0)editMassage($klient,$chat_id,$message_id,$message,order($table,$pos_name,$pos_id));
 }
 if($button =='order'){
 //     $reply_klient = "Ваш заказ:\n".posData($pos_id,$dbconnect)['pos_name']."\n
@@ -81,7 +81,7 @@ if($button =='order'){
     editMassage($klient,$chat_id,$message_id,$reply_klient,$buttons);
 }
 if($button =='noconfirm'){
-    $reply_klient = posData($pos_id,$dbconnect)['pos_name'];
+    $reply_klient = $message;
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
 }
 if($button =='confirm'){
