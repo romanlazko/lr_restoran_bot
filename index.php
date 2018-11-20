@@ -51,18 +51,18 @@ elseif($button =='continue'){
     //sendMessage($restoran,387145540,$reply_restoran);
 }
 elseif($button =='menu'){    
-//     showPos($klient,$dbconnect,$chat_id,$table);
-    $reply_klient = showPos($dbconnect)['bear'];
+// //     showPos($klient,$dbconnect,$chat_id,$table);
+//     $reply_klient = showPos($dbconnect)['bear'];
     
-    inlineKeyboard($klient,$chat_id,$reply_klient,order($table,showPos($dbconnect)['bear']));
+//     inlineKeyboard($klient,$chat_id,$reply_klient,order($table,showPos($dbconnect)['bear']));
 }
 elseif($button =='order'){
     $reply_klient = "Вы точно хотите заказать ".$pos_id." ?";
     $confirm = array('text' => "Подтвердить заказ", 'callback_data' => 'confirm/'.$table.'/'.$pos_id);
-    $noconfirm = array('text' => "Отмена", 'callback_data' => 'noconfirm/'.$table.'/'.$pos_id);
+//     $noconfirm = array('text' => "Отмена", 'callback_data' => 'noconfirm/'.$table.'/'.$pos_id);
     $button = [
-         [$confirm],
-         [$noconfirm]
+         [$confirm]
+//          [$noconfirm]
     ]; 
     editMassage($klient,$chat_id,$message_id,$reply_klient,$button);
 }
