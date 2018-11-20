@@ -65,9 +65,9 @@ if($button =='continue'){
     $reply_klient = "Что бы вы хотели выбрать?";
     inlineKeyboard($klient,$chat_id,$reply_klient,menu($table,$pos_name,$pos_id));
 }
-if($button =='menu'){     
-    showPos($klient,$chat_id,$dbconnect,$table);
-}
+// if($button =='menu'){     
+//     showPos($klient,$chat_id,$dbconnect,$table);
+// }
 if($button =='plus'){
     $pos_name=$pos_name+1;
     if($pos_name < 5)editMassage($klient,$chat_id,$message_id,$message,order($table,$pos_name,$pos_id));
@@ -102,12 +102,12 @@ if($button =='accept'){
     ];
     editMassage($restoran,$chat_id,$message_id,$reply_restoran,$buttons);
 }
-function menu($table,$pos_name,$pos_id){
-    $buttons = [
-         [array('text' => "Меню", 'callback_data' => 'menu/'.$table.'/'.$pos_name.'/'.$pos_id)]
-    ];  
-    return $buttons;
-}
+// function menu($table,$pos_name,$pos_id){
+//     $buttons = [
+//          [array('text' => "Меню", 'callback_data' => 'menu/'.$table.'/'.$pos_name.'/'.$pos_id)]
+//     ];  
+//     return $buttons;
+// }
 function order($table,$pos_num,$pos_id){
     $buttons = [
          [array('text' => 'Заказать', 'callback_data' => 'order/'.$table.'/'.$pos_num.'/'.$pos_id)],
@@ -124,18 +124,18 @@ function sendMessage($token,$chat_id,$reply){
     ];
     file_get_contents('https://api.telegram.org/bot' . $token . '/sendMessage?' . http_build_query($parameters).'&parse_mode=Markdown');
 }
-function sendKeyboard($token,$chat_id,$buttons,$reply){
-    $keyboard =  json_encode($keyboard = ['keyboard' => $buttons, 
-                                          'resize_keyboard' => true, 
-                                          'one_time_keyboard' => false, 
-                                          'selective' => false]);  
-    $parameters = [
-        'chat_id' => $chat_id, 
-        'text' => $reply, 
-        'reply_markup' => $keyboard,
-    ];
-    file_get_contents('https://api.telegram.org/bot' . $token . '/sendMessage?' . http_build_query($parameters).'&parse_mode=Markdown');
-}
+// function sendKeyboard($token,$chat_id,$buttons,$reply){
+//     $keyboard =  json_encode($keyboard = ['keyboard' => $buttons, 
+//                                           'resize_keyboard' => true, 
+//                                           'one_time_keyboard' => false, 
+//                                           'selective' => false]);  
+//     $parameters = [
+//         'chat_id' => $chat_id, 
+//         'text' => $reply, 
+//         'reply_markup' => $keyboard,
+//     ];
+//     file_get_contents('https://api.telegram.org/bot' . $token . '/sendMessage?' . http_build_query($parameters).'&parse_mode=Markdown');
+// }
 function inlineKeyboard($token,$chat_id,$reply,$buttons){
     $inlineKeyboard = json_encode(array("inline_keyboard" => $buttons),true);
     $parameters = [
@@ -156,14 +156,14 @@ function editMassage($token,$chat_id,$message_id,$message,$buttons){
     ];
     file_get_contents('https://api.telegram.org/bot' . $token . '/editMessageText?' . http_build_query($parameters).'&parse_mode=Markdown');
 }
-function deleteMessage($token,$chat_id,$message_id){     
-    $parameters = [
-        'chat_id' => $chat_id, 
-        'message_id' => $message_id, 
-    ];
-    file_get_contents('https://api.telegram.org/bot' . $token . '/deleteMessage?' . http_build_query($parameters));
-}
-$dbconnect->close();
+// function deleteMessage($token,$chat_id,$message_id){     
+//     $parameters = [
+//         'chat_id' => $chat_id, 
+//         'message_id' => $message_id, 
+//     ];
+//     file_get_contents('https://api.telegram.org/bot' . $token . '/deleteMessage?' . http_build_query($parameters));
+// }
+// $dbconnect->close();
 //     $buttons = [["Позвать официанта"],["Позвать кальянщика"],["Меню"]];
 //     sendKeyboard($klient,$chat_id,$buttons,$reply_klient);
 //     inlineKeyboard($klient,$chat_id,'Выберете номер своего стола',tables($user_id));
