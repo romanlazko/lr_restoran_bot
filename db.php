@@ -26,13 +26,13 @@ function showPos($klient,$chat_id,$dbconnect,$table){
         inlineKeyboard($klient,$chat_id,$row['pos_name'],order($table,1,$row['pos_id']));        
     }     
 }
-// function posData($pos_id,$dbconnect,$from){
+function posData($pos_id,$dbconnect){
     
-//     $result = $dbconnect->query("SELECT more,posName FROM $from WHERE pos_id = '$pos_id'");
-//     while($row = $result->fetch_assoc()){        
-//         return $row;
-//     }   
-// }
+    $result = $dbconnect->query("SELECT pos_name FROM restoran WHERE pos_id = '$pos_id'");
+    while($row = $result->fetch_assoc()){        
+        return $row;
+    }   
+}
 // function promocodeInsert($token,$chat_id,$dbconnect,$pos_id,$user_id,$promocode){
 //     $promocodeInsert = "INSERT INTO promocodes(pos_id,user_id,promocode) VALUES('$pos_id','$user_id','$promocode')";            
 //     if($dbconnect->query($promocodeInsert) === TRUE){
