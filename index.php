@@ -44,9 +44,8 @@ if($button =='/start'){
     inlineKeyboard($klient,$chat_id,$reply_klient,$buttons);
 }
 if($button =='continue'){
-    sendMessage($klient,$chat_id,$button.$pos_id.$table.$pos_name);
-    //$reply_klient = "Что бы вы хотели выбрать?";
-    //inlineKeyboard($klient,$chat_id,$reply_klient,menu($table,$pos_name,$pos_id));
+    $reply_klient = "Что бы вы хотели выбрать?";
+    inlineKeyboard($klient,$chat_id,$reply_klient,menu($table,$pos_name,$pos_id));
 }
 // if($button =='menu'){     
 //     showPos($klient,$chat_id,$dbconnect,$table);
@@ -77,7 +76,7 @@ if($button =='continue'){
 // }
 function menu($table,$pos_name,$pos_id){
     $buttons = [
-         [array('text' => 'Меню', 'callback_data' => 'menu/'.$table.'/'.$pos_name.'/'.$pos_id)]
+         [array('text' => "Меню", 'callback_data' => 'menu/'.$table.'/'.$pos_name.'/'.$pos_id)]
     ];  
     return $buttons;
 }
