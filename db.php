@@ -20,10 +20,10 @@
 //     }
    
 // };
-function showPos($token,$dbconnect,$chat_id,$table){
+function showPos($dbconnect){
     $result = $dbconnect->query("SELECT bear FROM restoran");
     while($row = $result->fetch_assoc()){
-        inlineKeyboard($token,$chat_id,$row['bear'],order($table,$row['bear']));        
+        return $row;        
     }   
 }
 // function posData($pos_id,$dbconnect,$from){
