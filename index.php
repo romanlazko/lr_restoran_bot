@@ -66,10 +66,10 @@ if($button =='order'){
     ]; 
     editMassage($klient,$chat_id,$message_id,$reply_klient,$button);
 }
-if(){
+// if(){
     
-    editMassage($klient,$chat_id,$message_id,$reply_klient,$button);
-}
+//     editMassage($klient,$chat_id,$message_id,$reply_klient,$button);
+// }
 if($button =='confirm'){
     $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id;
     $button = [
