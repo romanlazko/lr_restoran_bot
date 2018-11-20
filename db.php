@@ -21,9 +21,9 @@
    
 // };
 function showPos($klient,$chat_id,$dbconnect,$table){
-    $result = $dbconnect->query("SELECT bear FROM restoran");
+    $result = $dbconnect->query("SELECT pos_name,pos_id FROM restoran");
     while($row = $result->fetch_assoc()){
-        inlineKeyboard($klient,$chat_id,$row['bear'],order($table,$chat_id));        
+        inlineKeyboard($klient,$chat_id,$row['pos_name'],order($table,1,$row['pos_id']));        
     }     
 }
 // function posData($pos_id,$dbconnect,$from){
