@@ -16,7 +16,7 @@ $latitude = $output['message']['location']['latitude'];
 $longitude = $output['message']['location']['longitude'];
 $first_name = $output['message']['from']['first_name'];
 
-   include 'db.php';
+//    include 'db.php';
 
 
 if(isset($inline_data)){
@@ -41,7 +41,7 @@ if($button =='/start'){
     ];
     inlineKeyboard($klient,$chat_id,$reply_klient,$button);
 }
-elseif($button =='continue'){
+if($button =='continue'){
     $reply_klient = "Что бы вы хотели выбрать?";
     $menu = array('text' => 'Меню', 'callback_data' => 'menu/'.$table.'/'.$user_id);
     $button = [
@@ -50,13 +50,13 @@ elseif($button =='continue'){
     inlineKeyboard($klient,$chat_id,$reply_klient,$button);
     //sendMessage($restoran,387145540,$reply_restoran);
 }
-elseif($button =='menu'){    
+if($button =='menu'){    
 // //     showPos($klient,$dbconnect,$chat_id,$table);
 //     $reply_klient = showPos($dbconnect)['bear'];
     
 //     inlineKeyboard($klient,$chat_id,$reply_klient,order($table,showPos($dbconnect)['bear']));
 }
-elseif($button =='order'){
+if($button =='order'){
     $reply_klient = "Вы точно хотите заказать ".$pos_id." ?";
     $confirm = array('text' => "Подтвердить заказ", 'callback_data' => 'confirm/'.$table.'/'.$pos_id);
 //     $noconfirm = array('text' => "Отмена", 'callback_data' => 'noconfirm/'.$table.'/'.$pos_id);
@@ -66,18 +66,18 @@ elseif($button =='order'){
     ]; 
     editMassage($klient,$chat_id,$message_id,$reply_klient,$button);
 }
-elseif(){
+if(){
     
     editMassage($klient,$chat_id,$message_id,$reply_klient,$button);
 }
-elseif($button =='confirm'){
+if($button =='confirm'){
     $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id;
     $button = [
          [array('text' => "Принять заказ", 'callback_data' => 'accept/'.$table.'/'.$pos_id)]
     ];  
     inlineKeyboard($restoran,$chat_id,$reply_restoran,$button);
 }
-elseif($button =='accept'){
+if($button =='accept'){
     $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id;
     $button = [
          [array('text' => "Готово", 'callback_data' => 'done/'.$table.'/'.$pos_id)]
