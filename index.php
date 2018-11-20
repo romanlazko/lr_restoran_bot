@@ -11,29 +11,29 @@ $inline_data = $output['callback_query']['data'];
 $message_id = $output['callback_query']['message']['message_id'];
 $message = $output['callback_query']['message']['text'];
 $first_name = $output['message']['from']['first_name'];
-function showPos($klient,$chat_id,$dbconnect,$table){
-    $servername="db4free.net: 3306";
-    $username="romanlazko";
-    $password="zdraste123";
-    $dbname="promocoder1";
-    $dbconnect = new mysqli($servername, $username, $password, $dbname);
-    $result = $dbconnect->query("SELECT pos_name,pos_id FROM restoran");
-    while($row = $result->fetch_assoc()){
-        inlineKeyboard($klient,$chat_id,$row['pos_name'],order($table,1,$row['pos_id']));        
-    }     
-}
-function posData($pos_id,$dbconnect){
-    $servername="db4free.net: 3306";
-    $username="romanlazko";
-    $password="zdraste123";
-    $dbname="promocoder1";
-    $dbconnect = new mysqli($servername, $username, $password, $dbname);
+// function showPos($klient,$chat_id,$dbconnect,$table){
+//     $servername="db4free.net: 3306";
+//     $username="romanlazko";
+//     $password="zdraste123";
+//     $dbname="promocoder1";
+//     $dbconnect = new mysqli($servername, $username, $password, $dbname);
+//     $result = $dbconnect->query("SELECT pos_name,pos_id FROM restoran");
+//     while($row = $result->fetch_assoc()){
+//         inlineKeyboard($klient,$chat_id,$row['pos_name'],order($table,1,$row['pos_id']));        
+//     }     
+// }
+// function posData($pos_id,$dbconnect){
+//     $servername="db4free.net: 3306";
+//     $username="romanlazko";
+//     $password="zdraste123";
+//     $dbname="promocoder1";
+//     $dbconnect = new mysqli($servername, $username, $password, $dbname);
     
-    $result = $dbconnect->query("SELECT pos_name FROM restoran WHERE pos_id = '$pos_id'");
-    while($row = $result->fetch_assoc()){        
-        return $row;
-    }   
-}
+//     $result = $dbconnect->query("SELECT pos_name FROM restoran WHERE pos_id = '$pos_id'");
+//     while($row = $result->fetch_assoc()){        
+//         return $row;
+//     }   
+// }
 
 
 if(isset($inline_data)){
