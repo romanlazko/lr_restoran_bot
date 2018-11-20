@@ -45,7 +45,7 @@ if($button =='/start'){
 }
 if($button =='continue'){
     $reply_klient = "Что бы вы хотели выбрать?";
-    inlineKeyboard($klient,$chat_id,$reply_klient,menu($table,'1','1'));
+    inlineKeyboard($klient,$chat_id,$reply_klient,menu($table,$pos_name,$pos_id));
 }
 if($button =='menu'){     
     showPos($klient,$chat_id,$dbconnect,$table);
