@@ -12,6 +12,7 @@ $klient = "738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI";
 $output = json_decode(file_get_contents('php://input'),true);
 $inline_data = $output['callback_query']['data'];
 $message_id = $output['callback_query']['message']['message_id'];
+$message = $output['callback_query']['message']['text'];
 $first_name = $output['message']['from']['first_name'];
 function showPos($klient,$chat_id,$dbconnect,$table){
     $result = $dbconnect->query("SELECT pos_name,pos_id FROM restoran");
@@ -51,6 +52,7 @@ if($button =='/start'){
       [array('text' => 'Сканировать QR код', 'url' => 'https://lrrestoranbot.herokuapp.com/qr.php?'.$chat_id)]
     ];
     inlineKeyboard($klient,$chat_id,$reply_klient,$buttons);
+    
 }
 if($button =='continue'){
     $reply_klient = "Что бы вы хотели выбрать?";
@@ -68,7 +70,8 @@ if($button =='minus'){
     if($pos_name > 0)editMassage($klient,$chat_id,$message_id,posData($pos_id,$dbconnect)['pos_name'],order($table,$pos_name,$pos_id));
 }
 if($button =='order'){
-    $reply_klient = "Ваш заказ:\n".posData($pos_id,$dbconnect)['pos_name']."\n
+//     $reply_klient = "Ваш заказ:\n".posData($pos_id,$dbconnect)['pos_name']."\n
+    $reply_klient = "Ваш заказ:\n".$message."\n
     Количество: " .$pos_name."\n
     Подтвердить заказ?";
     $buttons = [
