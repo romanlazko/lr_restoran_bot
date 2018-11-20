@@ -68,17 +68,18 @@ if($button =='minus'){
     if($pos_name > 0)editMassage($klient,$chat_id,$message_id,posData($pos_id,$dbconnect)['pos_name'],order($table,$pos_name,$pos_id));
 }
 if($button =='order'){
-    $reply_klient = "Ваш заказ ".$pos_id."\n
+    $reply_klient = "Ваш заказ:\n".posData($pos_id,$dbconnect)['pos_name']."\n
+    Количество: " .$pos_name."\n
     Подтвердить заказ?";
     $buttons = [
-         [array('text' => "Подтвердить заказ", 'callback_data' => 'confirm/'.$table.'/'.$pos_id)],
-         [array('text' => "Отмена", 'callback_data' => 'noconfirm/'.$table.'/'.$pos_id)]
+         [array('text' => "Подтвердить заказ", 'callback_data' => 'confirm/'.$table.'/'.$pos_name.'/'.$pos_id)],
+         [array('text' => "Отмена", 'callback_data' => 'noconfirm/'.$table.'/'.$pos_name.'/'.$pos_id)]
     ]; 
     editMassage($klient,$chat_id,$message_id,$reply_klient,$buttons);
 }
 if($button =='noconfirm'){
-    $reply_klient = $pos_id;
-    editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,$pos_id));
+    $reply_klient = posData($pos_id,$dbconnect)['pos_name'];
+    editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
 }
 if($button =='confirm'){
     $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id; 
