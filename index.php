@@ -12,11 +12,20 @@ $klient = "738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI";
 $output = json_decode(file_get_contents('php://input'),true);
 $inline_data = $output['callback_query']['data'];
 $message_id = $output['callback_query']['message']['message_id'];
-$latitude = $output['message']['location']['latitude'];
-$longitude = $output['message']['location']['longitude'];
 $first_name = $output['message']['from']['first_name'];
-
-    include 'db.php';
+function showPos($klient,$chat_id,$dbconnect,$table){
+    $result = $dbconnect->query("SELECT pos_name,pos_id FROM restoran");
+    while($row = $result->fetch_assoc()){
+        inlineKeyboard($klient,$chat_id,$row['pos_name'],order($table,1,$row['pos_id']));        
+    }     
+}
+function posData($pos_id,$dbconnect){
+    
+    $result = $dbconnect->query("SELECT pos_name FROM restoran WHERE pos_id = '$pos_id'");
+    while($row = $result->fetch_assoc()){        
+        return $row;
+    }   
+}
 
 
 if(isset($inline_data)){
