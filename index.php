@@ -50,11 +50,10 @@ if($button =='continue'){
     inlineKeyboard($klient,$chat_id,$reply_klient,$button);
     //sendMessage($restoran,387145540,$reply_restoran);
 }
-if($button =='menu'){    
-// //     showPos($klient,$dbconnect,$chat_id,$table);
-    $reply_klient = showPos($dbconnect)['bear'];
-    
-    inlineKeyboard($klient,$chat_id,$reply_klient,order($table,showPos($dbconnect)['bear']));
+if($button =='menu'){     
+    while($row = showPos($dbconnect)->fetch_assoc()){
+        inlineKeyboard($klient,$chat_id,$row['bear'],order($table,$row['bear']));        
+    }
 }
 if($button =='order'){
     $reply_klient = "Вы точно хотите заказать ".$pos_id." ?";
@@ -67,8 +66,8 @@ if($button =='order'){
     editMassage($klient,$chat_id,$message_id,$reply_klient,$button);
 }
 if($button =='noconfirm'){
-    $reply_klient = showPos($dbconnect)['bear'];
-    editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,showPos($dbconnect)['bear']));
+    $reply_klient = $pos_id;
+    editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,$pos_id));
 }
 if($button =='confirm'){
     $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id;
