@@ -24,8 +24,10 @@ if(isset($inline_data)){
     $user_id = $output['callback_query']['from']['id'];
 
     $str = substr($inline_data, 0, strrpos($inline_data, '/'));
-    $button = substr($str, 0, strrpos($str, '/'));
-    $table = substr($str, strrpos($str,"/")+1);    
+    $str2 = substr($str, 0, strrpos($str, '/'));
+    $button = substr($str2, 0, strrpos($str2, '/'));
+    $table = substr($str2, strrpos($str2,"/")+1);    
+    $pos_name = substr($str, strrpos($str,"/")+1);
     $pos_id = substr($inline_data, strrpos($inline_data,"/")+1);
 }else{
     $button = $output['message']['text'];
@@ -43,12 +45,7 @@ if($button =='/start'){
 }
 if($button =='continue'){
     $reply_klient = "Что бы вы хотели выбрать?";
-    $menu = array('text' => 'Меню', 'callback_data' => 'menu/'.$table.'/'.$user_id);
-    $button = [
-         [$menu]
-    ];
-    inlineKeyboard($klient,$chat_id,$reply_klient,$button);
-    //sendMessage($restoran,387145540,$reply_restoran);
+    inlineKeyboard($klient,$chat_id,$reply_klient,menu($table,1,1));
 }
 if($button =='menu'){     
     showPos($klient,$chat_id,$dbconnect,$table);
@@ -56,11 +53,9 @@ if($button =='menu'){
 if($button =='order'){
     $reply_klient = "Ваш заказ ".$pos_id."\n
     Подтвердить заказ?";
-    $confirm = array('text' => "Подтвердить заказ", 'callback_data' => 'confirm/'.$table.'/'.$pos_id);
-    $noconfirm = array('text' => "Отмена", 'callback_data' => 'noconfirm/'.$table.'/'.$pos_id);
-    $button = [
-         [$confirm],
-         [$noconfirm]
+    $buttons = [
+         [array('text' => "Подтвердить заказ", 'callback_data' => 'confirm/'.$table.'/'.$pos_id)],
+         [array('text' => "Отмена", 'callback_data' => 'noconfirm/'.$table.'/'.$pos_id)]
     ]; 
     editMassage($klient,$chat_id,$message_id,$reply_klient,$button);
 }
@@ -69,11 +64,8 @@ if($button =='noconfirm'){
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,$pos_id));
 }
 if($button =='confirm'){
-    $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id;
-    $button = [
-         [array('text' => "Принять заказ", 'callback_data' => 'accept/'.$table.'/'.$pos_id)]
-    ];  
-    inlineKeyboard($restoran,$chat_id,$reply_restoran,$button);
+    $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id; 
+    inlineKeyboard($restoran,$chat_id,$reply_restoran,buttons("Принять заказ",'accept',$table,));
 }
 if($button =='accept'){
     $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id;
@@ -82,10 +74,18 @@ if($button =='accept'){
     ];
     editMassage($restoran,$chat_id,$message_id,$reply_restoran,$button);
 }
-function order($table,$bear){
-    $order = array('text' => "Заказать", 'callback_data' => 'order/'.$table.'/'.$bear);
+function menu($table,$pos_name,$pos_id){
     $buttons = [
-         [$order]
+         [array('text' => 'Меню', 'callback_data' => 'menu/'.$table.'/'.$pos_name.'/'.$pos_id)]
+    ];  
+    return $buttons;
+}
+function order($table,$pos_num,$pos_id){
+    $buttons = [
+         [array('text' => 'Заказать', 'callback_data' => 'order/'.$table.'/'.$pos_num.'/'.$pos_id)]
+         [array('text' => '-', 'callback_data' => 'minus/'.$table.'/'.$pos_num.'/'.$pos_id),
+          array('text' => $pos_num, 'callback_data' => 'minus/'.$table.'/'.$pos_num.'/'.$pos_id),
+          array('text' => '+', 'callback_data' => 'plus/'.$table.'/'.$pos_num.'/'.$pos_id)]
     ];  
     return $buttons;
 }
