@@ -38,10 +38,10 @@ if(isset($inline_data)){
 if($button =='/start'){        
     $reply_klient = "Привет ".$first_name.".\n".
         "Добро пожаловать в бота!\nЧто бы начать заказывать, отсканируй QR код на столе.";
-    $button = [
+    $buttons = [
       [array('text' => 'Сканировать QR код', 'url' => 'https://lrrestoranbot.herokuapp.com/qr.php?'.$chat_id)]
     ];
-    inlineKeyboard($klient,$chat_id,$reply_klient,$button);
+    inlineKeyboard($klient,$chat_id,$reply_klient,$buttons);
 }
 if($button =='continue'){
     $reply_klient = "Что бы вы хотели выбрать?";
@@ -69,10 +69,10 @@ if($button =='confirm'){
 }
 if($button =='accept'){
     $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id;
-    $button = [
+    $buttons = [
          [array('text' => "Готово", 'callback_data' => 'done/'.$table.'/'.$pos_id)]
     ];
-    editMassage($restoran,$chat_id,$message_id,$reply_restoran,$button);
+    editMassage($restoran,$chat_id,$message_id,$reply_restoran,$buttons);
 }
 function menu($table,$pos_name,$pos_id){
     $buttons = [
