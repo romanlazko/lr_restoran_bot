@@ -54,7 +54,7 @@ elseif($button =='menu'){
 //     showPos($klient,$dbconnect,$chat_id,$table);
     $reply_klient = showPos($dbconnect)['bear'];
     
-    inlineKeyboard($klient,$chat_id,$reply_klient,order($table,showPos($dbconnect)['bear']))
+    inlineKeyboard($klient,$chat_id,$reply_klient,order($table,showPos($dbconnect)['bear']));
 }
 elseif($button =='order'){
     $reply_klient = "Вы точно хотите заказать ".$pos_id." ?";
