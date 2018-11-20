@@ -50,6 +50,9 @@ if($button =='continue'){
 if($button =='menu'){     
     showPos($klient,$chat_id,$dbconnect,$table);
 }
+if($button =='plus'){
+    editMassage($klient,$chat_id,$message_id,posData($pos_id,$dbconnect)['pos_name'],order($table,$pos_name+1,$pos_id));
+}
 if($button =='order'){
     $reply_klient = "Ваш заказ ".$pos_id."\n
     Подтвердить заказ?";
