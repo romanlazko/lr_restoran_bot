@@ -6,4 +6,4 @@
     $table = substr($str2, strrpos($str2,"/")+1);    
     $pos_name = substr($str, strrpos($str,"/")+1);
     $pos_id = substr($inline_data, strrpos($inline_data,"/")+1);
-    echo $str.' '.$button.' '.$table.' '.$pos_name.' ';
+    echo $button.' '.$table.' '.$pos_name.' '.$pos_id.' ';
