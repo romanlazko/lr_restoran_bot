@@ -51,10 +51,7 @@ if($button =='continue'){
     //sendMessage($restoran,387145540,$reply_restoran);
 }
 if($button =='menu'){     
-    $result = $dbconnect->query("SELECT bear FROM restoran");
-    while($row = $result->fetch_assoc()){
-        inlineKeyboard($klient,$chat_id,$row['bear'],order($table,$row['bear']));        
-    }
+    showPos($klient,$chat_id,$dbconnect,$table);
 }
 if($button =='order'){
     $reply_klient = "Вы точно хотите заказать ".$pos_id." ?";
