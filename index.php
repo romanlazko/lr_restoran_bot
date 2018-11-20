@@ -16,7 +16,7 @@ $latitude = $output['message']['location']['latitude'];
 $longitude = $output['message']['location']['longitude'];
 $first_name = $output['message']['from']['first_name'];
 
-//    include 'db.php';
+    include 'db.php';
 
 
 if(isset($inline_data)){
