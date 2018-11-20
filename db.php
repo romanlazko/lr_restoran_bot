@@ -22,9 +22,8 @@
 // };
 function showPos($dbconnect){
     $result = $dbconnect->query("SELECT bear FROM restoran");
-    while($row = $result->fetch_assoc()){
-        return $row;        
-    }   
+    return $result;        
+      
 }
 // function posData($pos_id,$dbconnect,$from){
     
