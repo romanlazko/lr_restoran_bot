@@ -57,7 +57,7 @@ if($button =='order'){
          [array('text' => "Подтвердить заказ", 'callback_data' => 'confirm/'.$table.'/'.$pos_id)],
          [array('text' => "Отмена", 'callback_data' => 'noconfirm/'.$table.'/'.$pos_id)]
     ]; 
-    editMassage($klient,$chat_id,$message_id,$reply_klient,$button);
+    editMassage($klient,$chat_id,$message_id,$reply_klient,$buttons);
 }
 if($button =='noconfirm'){
     $reply_klient = $pos_id;
@@ -65,7 +65,7 @@ if($button =='noconfirm'){
 }
 if($button =='confirm'){
     $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id; 
-    inlineKeyboard($restoran,$chat_id,$reply_restoran,buttons("Принять заказ",'accept',$table,));
+    //inlineKeyboard($restoran,$chat_id,$reply_restoran,buttons("Принять заказ",'accept',$table,));
 }
 if($button =='accept'){
     $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id;
