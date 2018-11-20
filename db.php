@@ -23,7 +23,7 @@
 function showPos($klient,$chat_id,$dbconnect,$table){
     $result = $dbconnect->query("SELECT bear FROM restoran");
     while($row = $result->fetch_assoc()){
-        inlineKeyboard($klient,$chat_id,$row['bear'],order($table,$row['bear']));        
+        inlineKeyboard($klient,$chat_id,$row['bear'],order($table,$chat_id));        
     }     
 }
 // function posData($pos_id,$dbconnect,$from){
