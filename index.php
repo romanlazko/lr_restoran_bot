@@ -19,7 +19,7 @@ function showPos($klient,$chat_id,$dbconnect,$table){
     $dbconnect = new mysqli($servername, $username, $password, $dbname);
     $result = $dbconnect->query("SELECT pos_name,pos_id FROM restoran");
     while($row = $result->fetch_assoc()){
-        inlineKeyboard($klient,$chat_id,$row['pos_name'],order($table,1,$row['pos_name']));        
+        inlineKeyboard($klient,$chat_id,$row['pos_name'],order($table,1,$row['pos_id']));        
     }    
     $dbconnect->close();
 }
