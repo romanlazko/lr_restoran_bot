@@ -93,7 +93,8 @@ if($button =='noconfirm'){
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
 }
 if($button =='confirm'){
-    
+    $reply_klient = posData($pos_id)['pos_name'];
+    editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
     $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id; 
     inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
 }
