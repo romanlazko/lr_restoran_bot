@@ -11,7 +11,7 @@ $inline_data = $output['callback_query']['data'];
 $message_id = $output['callback_query']['message']['message_id'];
 $message = $output['callback_query']['message']['text'];
 $first_name = $output['message']['from']['first_name'];
-function showPos($klient,$chat_id,$dbconnect,$table){
+function showPos($klient,$chat_id,$table){
     $servername="db4free.net: 3306";
     $username="romanlazko";
     $password="zdraste123";
@@ -23,7 +23,7 @@ function showPos($klient,$chat_id,$dbconnect,$table){
     }    
     $dbconnect->close();
 }
-function posData($pos_id,$dbconnect){
+function posData($pos_id){
     $servername="db4free.net: 3306";
     $username="romanlazko";
     $password="zdraste123";
@@ -67,7 +67,7 @@ if($button =='continue'){
     inlineKeyboard($klient,$chat_id,$reply_klient,menu($table,$pos_name,$pos_id));
 }
 if($button =='menu'){     
-    showPos($klient,$chat_id,$dbconnect,$table);
+    showPos($klient,$chat_id,$table);
 }
 if($button =='plus'){
     $pos_name=$pos_name+1;
@@ -89,7 +89,7 @@ if($button =='order'){
     editMassage($klient,$chat_id,$message_id,$reply_klient,$buttons);
 }
 if($button =='noconfirm'){
-    $reply_klient = $message;
+    $reply_klient = posData($pos_id)['pos_name'];
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
 }
 if($button =='confirm'){
