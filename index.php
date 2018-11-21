@@ -79,8 +79,7 @@ if($button =='minus'){
 }
 if($button =='order'){
 //     $reply_klient = "Ваш заказ:\n".posData($pos_id,$dbconnect)['pos_name']."\n
-    $reply_klient = "Ваш заказ:\n".$message."\n
-    Количество: " .$pos_name."\n
+    $reply_klient = "Ваш заказ:\n".$message."\nКоличество: ".$pos_name."\n
     Подтвердить заказ?";
     $buttons = [
          [array('text' => "Подтвердить заказ", 'callback_data' => 'confirm/'.$table.'/'.$pos_name.'/'.$pos_id)],
