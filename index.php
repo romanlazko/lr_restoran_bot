@@ -144,7 +144,7 @@ function inlineKeyboard($token,$chat_id,$reply,$buttons){
         'text' => $reply, 
         'reply_markup' => $inlineKeyboard,
     ];
-    file_get_contents('https://api.telegram.org/bot' . $token . '/sendMessage?' . http_build_query($parameters).'&parse_mode=Markdown');
+    file_get_contents('https://api.telegram.org/bot' . $token . '/sendMessage?' . http_build_query($parameters).'&parse_mode=HTML');
 }
 function editMassage($token,$chat_id,$message_id,$message,$buttons){
     $inlineKeyboard = array("inline_keyboard" => $buttons);
@@ -155,7 +155,7 @@ function editMassage($token,$chat_id,$message_id,$message,$buttons){
         'text' => $message,
         'reply_markup' => $inlineKeyboard,
     ];
-    file_get_contents('https://api.telegram.org/bot' . $token . '/editMessageText?' . http_build_query($parameters).'&parse_mode=Markdown');
+    file_get_contents('https://api.telegram.org/bot' . $token . '/editMessageText?' . http_build_query($parameters).'&parse_mode=HTML');
 }
 // function deleteMessage($token,$chat_id,$message_id){     
 //     $parameters = [
