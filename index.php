@@ -79,7 +79,7 @@ if($button =='minus'){
 }
 if($button =='order'){
 //     $reply_klient = "Ваш заказ:\n".posData($pos_id,$dbconnect)['pos_name']."\n
-    $reply_klient = "Ваш заказ:\n".$message."\nКоличество: ".$pos_name."\n
+    $reply_klient = "Ваш заказ:\n".$pos_id."\nКоличество: ".$pos_name."\n
     Подтвердить заказ?";
     $buttons = [
          [array('text' => "Подтвердить заказ", 'callback_data' => 'confirm/'.$table.'/'.$pos_name.'/'.$pos_id)],
@@ -94,7 +94,7 @@ if($button =='noconfirm'){
 if($button =='confirm'){
     $reply_klient = posData($pos_id)['pos_name'];
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
-    $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id; 
+    $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id."\nКоличество: ".$pos_name; 
     inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
 }
 if($button =='accept'){
