@@ -23,18 +23,18 @@ function showPos($klient,$chat_id,$dbconnect,$table){
     }    
     $dbconnect->close();
 }
-// function posData($pos_id,$dbconnect){
-//     $servername="db4free.net: 3306";
-//     $username="romanlazko";
-//     $password="zdraste123";
-//     $dbname="promocoder1";
-//     $dbconnect = new mysqli($servername, $username, $password, $dbname);
+function posData($pos_id,$dbconnect){
+    $servername="db4free.net: 3306";
+    $username="romanlazko";
+    $password="zdraste123";
+    $dbname="promocoder1";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
     
-//     $result = $dbconnect->query("SELECT pos_name FROM restoran WHERE pos_id = '$pos_id'");
-//     while($row = $result->fetch_assoc()){        
-//         return $row;
-//     }   
-// }
+    $result = $dbconnect->query("SELECT pos_name FROM restoran WHERE pos_id = '$pos_id'");
+    while($row = $result->fetch_assoc()){        
+        return $row;
+    }   
+}
 
 
 if(isset($inline_data)){
@@ -92,17 +92,24 @@ if($button =='noconfirm'){
     $reply_klient = $message;
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
 }
-// if($button =='confirm'){
-//     $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id; 
-//     //inlineKeyboard($restoran,$chat_id,$reply_restoran,buttons("Принять заказ",'accept',$table,));
-// }
-// if($button =='accept'){
-//     $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id;
-//     $buttons = [
-//          [array('text' => "Готово", 'callback_data' => 'done/'.$table.'/'.$pos_id)]
-//     ];
-//     editMassage($restoran,$chat_id,$message_id,$reply_restoran,$buttons);
-// }
+if($button =='confirm'){
+    
+    $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id; 
+    inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
+}
+if($button =='accept'){
+    $reply_restoran = $message;
+    $buttons = [
+         [array('text' => "Готово", 'callback_data' => 'done/'.$table.'/'.$pos_id)]
+    ];
+    editMassage($restoran,$chat_id,$message_id,$reply_restoran,$buttons);
+}
+function confirm($table,$pos_name,$pos_id){
+    $buttons = [
+         [array('text' => "Принять заказ", 'callback_data' => 'accept/'.$table.'/'.$pos_name.'/'.$pos_id)]
+    ];  
+    return $buttons;
+}
 function menu($table,$pos_name,$pos_id){
     $buttons = [
          [array('text' => "Меню", 'callback_data' => 'menu/'.$table.'/'.$pos_name.'/'.$pos_id)]
