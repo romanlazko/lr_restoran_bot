@@ -56,12 +56,11 @@ if(isset($inline_data)){
 if($button =='/start'){        
     $reply_klient = "Привет ".$first_name.".\n".
         "Добро пожаловать в бота!";
-    $buttons = [['text'=>"ОТПРАВИТЬ ГЕОЛОКАЦИЮ"],["Категории"]];
+    $buttons = [["Новый сеанс"]];
     sendKeyboard($klient,$chat_id,$buttons,$reply_klient);
 }
-if($button =='/start'){        
-    $reply_klient = "Привет ".$first_name.".\n".
-        "Добро пожаловать в бота!\nЧто бы начать заказывать, отсканируй QR код на столе.";
+if($button =='Новый сеанс'){        
+    $reply_klient = "Что бы начать заказывать, отсканируй QR код на столе.";
     $buttons = [
       [array('text' => 'Сканировать QR код', 'url' => 'https://lrrestoranbot.herokuapp.com/qr.php?'.$chat_id)]
     ];
