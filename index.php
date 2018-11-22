@@ -138,9 +138,7 @@ function sendMessage($token,$chat_id,$reply){
 }
 function sendKeyboard($token,$chat_id,$buttons,$reply){
     $keyboard =  json_encode($keyboard = ['keyboard' => $buttons, 
-                                          'resize_keyboard' => true, 
-                                          'one_time_keyboard' => true, 
-                                          'selective' => false]);  
+                                          'resize_keyboard' => true]);  
     $parameters = [
         'chat_id' => $chat_id, 
         'text' => $reply, 
