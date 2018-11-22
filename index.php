@@ -55,12 +55,17 @@ if(isset($inline_data)){
 
 if($button =='/start'){        
     $reply_klient = "Привет ".$first_name.".\n".
+        "Добро пожаловать в бота!";
+    $buttons = [['text'=>"ОТПРАВИТЬ ГЕОЛОКАЦИЮ"],["Категории"]];
+    sendKeyboard($klient,$chat_id,$buttons,$reply_klient);
+}
+if($button =='/start'){        
+    $reply_klient = "Привет ".$first_name.".\n".
         "Добро пожаловать в бота!\nЧто бы начать заказывать, отсканируй QR код на столе.";
     $buttons = [
       [array('text' => 'Сканировать QR код', 'url' => 'https://lrrestoranbot.herokuapp.com/qr.php?'.$chat_id)]
     ];
     inlineKeyboard($klient,$chat_id,$reply_klient,$buttons);
-    
 }
 if($button =='continue'){
     $reply_klient = "Что бы вы хотели выбрать?";
@@ -132,18 +137,18 @@ function sendMessage($token,$chat_id,$reply){
     ];
     file_get_contents('https://api.telegram.org/bot' . $token . '/sendMessage?' . http_build_query($parameters).'&parse_mode=Markdown');
 }
-// function sendKeyboard($token,$chat_id,$buttons,$reply){
-//     $keyboard =  json_encode($keyboard = ['keyboard' => $buttons, 
-//                                           'resize_keyboard' => true, 
-//                                           'one_time_keyboard' => false, 
-//                                           'selective' => false]);  
-//     $parameters = [
-//         'chat_id' => $chat_id, 
-//         'text' => $reply, 
-//         'reply_markup' => $keyboard,
-//     ];
-//     file_get_contents('https://api.telegram.org/bot' . $token . '/sendMessage?' . http_build_query($parameters).'&parse_mode=Markdown');
-// }
+function sendKeyboard($token,$chat_id,$buttons,$reply){
+    $keyboard =  json_encode($keyboard = ['keyboard' => $buttons, 
+                                          'resize_keyboard' => true, 
+                                          'one_time_keyboard' => true, 
+                                          'selective' => false]);  
+    $parameters = [
+        'chat_id' => $chat_id, 
+        'text' => $reply, 
+        'reply_markup' => $keyboard,
+    ];
+    file_get_contents('https://api.telegram.org/bot' . $token . '/sendMessage?' . http_build_query($parameters).'&parse_mode=Markdown');
+}
 function inlineKeyboard($token,$chat_id,$reply,$buttons){
     $inlineKeyboard = json_encode(array("inline_keyboard" => $buttons),true);
     $parameters = [
