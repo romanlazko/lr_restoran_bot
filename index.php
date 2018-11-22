@@ -75,11 +75,11 @@ if($button =='menu'){
 }
 if($button =='plus'){
     $pos_name=$pos_name+1;
-    if($pos_name < 5)editMessageReplyMarkup(($klient,$chat_id,$message_id,order($table,$pos_name,$pos_id)));
+    if($pos_name < 5)editMessageReplyMarkup($klient,$chat_id,$message_id,order($table,$pos_name,$pos_id));
 }
 if($button =='minus'){
     $pos_name=$pos_name-1;
-    if($pos_name > 0)editMessageReplyMarkup(($klient,$chat_id,$message_id,order($table,$pos_name,$pos_id)));
+    if($pos_name > 0)editMessageReplyMarkup($klient,$chat_id,$message_id,order($table,$pos_name,$pos_id));
 }
 if($button =='order'){
 //     $reply_klient = "Ваш заказ:\n".posData($pos_id,$dbconnect)['pos_name']."\n
