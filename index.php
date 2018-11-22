@@ -75,11 +75,11 @@ if($button =='menu'){
 }
 if($button =='plus'){
     $pos_name=$pos_name+1;
-    if($pos_name < 5)editMassage($klient,$chat_id,$message_id,$message,order($table,$pos_name,$pos_id));
+    if($pos_name < 5)editMessageReplyMarkup(($klient,$chat_id,$message_id,order($table,$pos_name,$pos_id)));
 }
 if($button =='minus'){
     $pos_name=$pos_name-1;
-    if($pos_name > 0)editMassage($klient,$chat_id,$message_id,$message,order($table,$pos_name,$pos_id));
+    if($pos_name > 0)editMessageReplyMarkup(($klient,$chat_id,$message_id,order($table,$pos_name,$pos_id)));
 }
 if($button =='order'){
 //     $reply_klient = "Ваш заказ:\n".posData($pos_id,$dbconnect)['pos_name']."\n
@@ -167,6 +167,16 @@ function editMassage($token,$chat_id,$message_id,$message,$buttons){
         'reply_markup' => $inlineKeyboard,
     ];
     file_get_contents('https://api.telegram.org/bot' . $token . '/editMessageText?' . http_build_query($parameters).'&parse_mode=HTML');
+}
+function editMessageReplyMarkup($token,$chat_id,$message_id,$buttons){
+    $inlineKeyboard = array("inline_keyboard" => $buttons);
+    $inlineKeyboard = json_encode($inlineKeyboard,true);        
+    $parameters = [
+        'chat_id' => $chat_id, 
+        'message_id' => $message_id, 
+        'reply_markup' => $inlineKeyboard,
+    ];
+    file_get_contents('https://api.telegram.org/bot' . $token . '/editMessageReplyMarkup?' . http_build_query($parameters).'&parse_mode=HTML');
 }
 // function deleteMessage($token,$chat_id,$message_id){     
 //     $parameters = [
