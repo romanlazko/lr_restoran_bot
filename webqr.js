@@ -60,7 +60,7 @@ function read(a)
 			console.log(Http.responseText)
 		}
 		var ok = 'QR код отсканирован. Нажмите "Готово" что бы продолжить';
-		document.getElementById("result").innerHTML='<a href="tg://resolve?domain=<USERNAME>">Telegram</a>';
+		document.getElementById("result").innerHTML='<a href="tg://resolve?domain=@lr_klient_bot">Telegram</a>';
 	}	
 }	
 
