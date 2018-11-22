@@ -124,7 +124,7 @@ function order($table,$pos_num,$pos_id){
     $buttons = [
          [array('text' => 'Заказать', 'callback_data' => 'order/'.$table.'/'.$pos_num.'/'.$pos_id)],
          [array('text' => '-', 'callback_data' => 'minus/'.$table.'/'.$pos_num.'/'.$pos_id),
-          array('text' => $pos_num, 'callback_data' => 'minus/'.$table.'/'.$pos_num.'/'.$pos_id),
+          array('text' => $pos_num, 'callback_data' => '0/'.$table.'/'.$pos_num.'/'.$pos_id),
           array('text' => '+', 'callback_data' => 'plus/'.$table.'/'.$pos_num.'/'.$pos_id)]
     ];  
     return $buttons;
