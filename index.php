@@ -103,9 +103,11 @@ if($button =='confirm'){
     $buttons =[
         [array('text'=>"Ждите",'callback_data'=>"o/1/2/3")]
     ];
-    if(editMessageReplyMarkup($klient,$chat_id,$message_id,$buttons)=== TRUE){
-        $reply_klient = posData($pos_id)['pos_name'];
-        editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
+    
+    editMessageReplyMarkup($klient,$chat_id,$message_id,$buttons)
+    $reply_klient = posData($pos_id)['pos_name'];
+    editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
+    if($message ==$reply_klient){
         $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id."\nКоличество: ".$pos_name; 
         inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
     }        
