@@ -92,6 +92,10 @@ if($button =='order'){
     editMassage($klient,$chat_id,$message_id,$reply_klient,$buttons);
 }
 if($button =='noconfirm'){
+    $buttons =[
+        [array('text'=>"Ждите",'callback_data'=>"o/1/2/3")]
+    ];
+    editMessageReplyMarkup($klient,$chat_id,$message_id,$buttons);
     $reply_klient = posData($pos_id)['pos_name'];
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
 }
