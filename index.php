@@ -174,8 +174,9 @@ function editMassage($token,$chat_id,$message_id,$message,$buttons){
         'text' => $message,
         'reply_markup' => $inlineKeyboard,
     ];
-    return TRUE;
+    
     file_get_contents('https://api.telegram.org/bot' . $token . '/editMessageText?' . http_build_query($parameters).'&parse_mode=Markdown');
+    return TRUE;
 }
 function editMessageReplyMarkup($token,$chat_id,$message_id,$buttons){
     $inlineKeyboard = array("inline_keyboard" => $buttons);
