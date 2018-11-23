@@ -105,9 +105,10 @@ if($button =='confirm'){
     ];
     editMessageReplyMarkup($klient,$chat_id,$message_id,$buttons);
     $reply_klient = posData($pos_id)['pos_name'];
-    editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
-    $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id."\nКоличество: ".$pos_name; 
-    inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
+    if(editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id)) === TRUE){
+        $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id."\nКоличество: ".$pos_name; 
+        inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
+    }        
 }
 if($button =='accept'){
     $reply_restoran = $message;
@@ -173,6 +174,7 @@ function editMassage($token,$chat_id,$message_id,$message,$buttons){
         'text' => $message,
         'reply_markup' => $inlineKeyboard,
     ];
+    return TRUE;
     file_get_contents('https://api.telegram.org/bot' . $token . '/editMessageText?' . http_build_query($parameters).'&parse_mode=Markdown');
 }
 function editMessageReplyMarkup($token,$chat_id,$message_id,$buttons){
