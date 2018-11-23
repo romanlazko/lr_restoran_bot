@@ -104,7 +104,7 @@ if($button =='confirm'){
         [array('text'=>"Ждите",'callback_data'=>"o/1/2/3")]
     ];
     
-    editMessageReplyMarkup($klient,$chat_id,$message_id,$buttons)
+    editMessageReplyMarkup($klient,$chat_id,$message_id,$buttons);
     $reply_klient = posData($pos_id)['pos_name'];
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
     if($message ==$reply_klient){
