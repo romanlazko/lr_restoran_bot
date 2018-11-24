@@ -201,7 +201,10 @@ function answerCallbackQuery($token, $callback_query_id, $text, $show_alert, $ur
         'show_alert'=>$show_alert,       
         'url' => $url,
     ];
-    file_get_contents("https://api.telegram.org/bot".$token."/answerCallbackQuery?".http_build_query($parameters));
+    file_get_contents("https://api.telegram.org/bot".$token."/answerCallbackQuery?".
+                      "&callback_query_id=".$callback_query_id.
+                      "&text=".$text.
+                      "&show_alert=".$show_alert);
 }
 // function deleteMessage($token,$chat_id,$message_id){     
 //     $parameters = [
