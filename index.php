@@ -196,9 +196,12 @@ function editMessageReplyMarkup($token,$chat_id,$message_id,$buttons){
 }
 function answerCallbackQuery($token, $callback_query_id, $text, $show_alert, $url){
     $parameters = [ 
+        'show_alert'=>$show_alert,
+        'text'=>$text,
+        'callback_query_id'=>$callback_query_id,
         'url' => $url,
     ];
-    file_get_contents("https://api.telegram.org/bot".$token."/answerCallbackQuery?callback_query_id=".$callback_query_id."&text=".$text."&show_alert=".$show_alert.http_build_query($parameters));
+    file_get_contents("https://api.telegram.org/bot".$token."/answerCallbackQuery?".http_build_query($parameters));
 }
 // function deleteMessage($token,$chat_id,$message_id){     
 //     $parameters = [
