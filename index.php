@@ -100,7 +100,7 @@ if($button =='noconfirm'){
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
 }
 if($button =='confirm'){
-    answerCallbackQuery($klient, $output['callback_query']['id'], "проверка ", false);
+    answerCallbackQuery($klient, $output['callback_query']['id'], "проверка ", true);
 //     $buttons =[
 //         [array('text'=>"Ждите",'callback_data'=>"o/1/2/3")]
 //     ];
