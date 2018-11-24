@@ -204,7 +204,7 @@ function answerCallbackQuery($token, $callback_query_id, $text, $show_alert, $ur
                       "&callback_query_id=".$callback_query_id.
                       "&text=".$text.
                       "&show_alert=".$show_alert.
-                      "&url=".$url
+                      "&url:".$url
                     );
     return TRUE;
 }
