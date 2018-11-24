@@ -105,7 +105,7 @@ if($button =='noconfirm'){
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
 }
 if($button =='confirm'){
-    answerCallbackQuery($klient, $output['callback_query']['id'], "Добавлено", false,'https://lrrestoranbot.herokuapp.com/qr.php?');
+    answerCallbackQuery($klient, $output['callback_query']['id'], "Добавлено", true,'https://lrrestoranbot.herokuapp.com/qr.php?');
     
     
 //     if(posData($klient,$chat_id,$message_id,$pos_id)===true){
