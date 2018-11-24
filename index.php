@@ -100,6 +100,7 @@ if($button =='noconfirm'){
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
 }
 if($button =='confirm'){
+    sendMessage($klient,$chat_id,$output['callback_query']['id']);
     $url= 'https://lrrestoranbot.herokuapp.com/qr.php?544883527';
     answerCallbackQuery($klient, $output['callback_query']['id'], "проверка ", true,$url);
 //     $buttons =[
