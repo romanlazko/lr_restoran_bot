@@ -37,6 +37,7 @@ function posData($pos_id){
 }
 
 
+
 if(isset($inline_data)){
     $chat_id = $output['callback_query']['message']['chat']['id'];
     $user_id = $output['callback_query']['from']['id'];
@@ -86,7 +87,7 @@ if($button =='order'){
     $reply_klient = "Ваш заказ:\n".$pos_id."\nКоличество: ".$pos_name."\n
     Подтвердить заказ?";
     $buttons = [
-         [array('text' => "Подтвердить заказ", 'callback_data' => 'confirm/'.$table.'/'.$pos_name.'/'.$pos_id)],
+         [array('text' => "Добавить к заказу", 'callback_data' => 'confirm/'.$table.'/'.$pos_name.'/'.$pos_id)],
          [array('text' => "Отмена", 'callback_data' => 'noconfirm/'.$table.'/'.$pos_name.'/'.$pos_id)]
     ]; 
     editMassage($klient,$chat_id,$message_id,$reply_klient,$buttons);
@@ -100,22 +101,14 @@ if($button =='noconfirm'){
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
 }
 if($button =='confirm'){
-    //sendMessage($klient,$chat_id,$output['callback_query']['id']);
-//     $url= 'url: https://lrrestoranbot.herokuapp.com/qr.php?544883527';
-//     if(answerCallbackQuery($klient, $output['callback_query']['id'], "проверка ", true,$url)===TRUE){
-    $buttons =[
-        [array('text'=>"Ждите",'callback_data'=>"o/1/2/3")]
-    ];
-    $output = json_decode(file_get_contents('php://input'),true);
-    editMessageReplyMarkup($klient,$chat_id,$message_id,$buttons);
+    //answerCallbackQuery($klient, $output['callback_query']['id'], "Добавлено", false,$url);
+    
+    
     $reply_klient = posData($pos_id)['pos_name'];
-    editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
-    $output = json_decode(file_get_contents('php://input'),true);
-    $message = $output['callback_query']['message']['text'];
-     if($message !=$reply_klient){
-        $reply_restoran = $message."Стол: ".$table."\nЗаказ: ".$pos_id."\nКоличество: ".$pos_name; 
-        inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
-    }
+    editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,2));
+    $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id."\nКоличество: ".$pos_name; 
+    inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
+
     
 }
 if($button =='accept'){
