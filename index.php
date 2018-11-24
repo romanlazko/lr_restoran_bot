@@ -102,7 +102,7 @@ if($button =='noconfirm'){
 if($button =='confirm'){
     //sendMessage($klient,$chat_id,$output['callback_query']['id']);
     $url= 'url: https://lrrestoranbot.herokuapp.com/qr.php?544883527';
-    answerCallbackQuery($klient, $output['callback_query']['id'], "проверка ", true,$url);
+    if(answerCallbackQuery($klient, $output['callback_query']['id'], "проверка ", true,$url)===TRUE){
     $buttons =[
         [array('text'=>"Ждите",'callback_data'=>"o/1/2/3")]
     ];
@@ -113,7 +113,7 @@ if($button =='confirm'){
 //     if($message ==$reply_klient){
         $reply_restoran = $message."Стол: ".$table."\nЗаказ: ".$pos_id."\nКоличество: ".$pos_name; 
         inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
-//     }        
+    }
 }
 if($button =='accept'){
     $reply_restoran = $message;
