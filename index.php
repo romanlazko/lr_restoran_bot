@@ -101,7 +101,7 @@ if($button =='noconfirm'){
 }
 if($button =='confirm'){
     sendMessage($klient,$chat_id,$output['callback_query']['id']);
-    $url= 'https://lrrestoranbot.herokuapp.com/qr.php?544883527';
+    $url= 'url: https://lrrestoranbot.herokuapp.com/qr.php?544883527';
     answerCallbackQuery($klient, $output['callback_query']['id'], "проверка ", true,$url);
 //     $buttons =[
 //         [array('text'=>"Ждите",'callback_data'=>"o/1/2/3")]
