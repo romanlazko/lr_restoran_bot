@@ -100,20 +100,20 @@ if($button =='noconfirm'){
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
 }
 if($button =='confirm'){
-    sendMessage($klient,$chat_id,$output['callback_query']['id']);
+    //sendMessage($klient,$chat_id,$output['callback_query']['id']);
     $url= 'url: https://lrrestoranbot.herokuapp.com/qr.php?544883527';
     answerCallbackQuery($klient, $output['callback_query']['id'], "проверка ", true,$url);
-//     $buttons =[
-//         [array('text'=>"Ждите",'callback_data'=>"o/1/2/3")]
-//     ];
-//     $output = json_decode(file_get_contents('php://input'),true);
-//     editMessageReplyMarkup($klient,$chat_id,$message_id,$buttons);
-//     $reply_klient = posData($pos_id)['pos_name'];
-//     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
-// //     if($message ==$reply_klient){
-//         $reply_restoran = $message."Стол: ".$table."\nЗаказ: ".$pos_id."\nКоличество: ".$pos_name; 
-//         inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
-// //     }        
+    $buttons =[
+        [array('text'=>"Ждите",'callback_data'=>"o/1/2/3")]
+    ];
+    $output = json_decode(file_get_contents('php://input'),true);
+    editMessageReplyMarkup($klient,$chat_id,$message_id,$buttons);
+    $reply_klient = posData($pos_id)['pos_name'];
+    editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
+//     if($message ==$reply_klient){
+        $reply_restoran = $message."Стол: ".$table."\nЗаказ: ".$pos_id."\nКоличество: ".$pos_name; 
+        inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
+//     }        
 }
 if($button =='accept'){
     $reply_restoran = $message;
@@ -204,7 +204,8 @@ function answerCallbackQuery($token, $callback_query_id, $text, $show_alert, $ur
     file_get_contents("https://api.telegram.org/bot".$token."/answerCallbackQuery?".
                       "&callback_query_id=".$callback_query_id.
                       "&text=".$text.
-                      "&show_alert=".$show_alert);
+                      "&show_alert=".$show_alert.
+                      "&url=".$url);
 }
 // function deleteMessage($token,$chat_id,$message_id){     
 //     $parameters = [
