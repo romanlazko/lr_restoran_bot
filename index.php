@@ -101,8 +101,8 @@ if($button =='noconfirm'){
 }
 if($button =='confirm'){
     //sendMessage($klient,$chat_id,$output['callback_query']['id']);
-    $url= 'url: https://lrrestoranbot.herokuapp.com/qr.php?544883527';
-    if(answerCallbackQuery($klient, $output['callback_query']['id'], "проверка ", true,$url)===TRUE){
+//     $url= 'url: https://lrrestoranbot.herokuapp.com/qr.php?544883527';
+//     if(answerCallbackQuery($klient, $output['callback_query']['id'], "проверка ", true,$url)===TRUE){
     $buttons =[
         [array('text'=>"Ждите",'callback_data'=>"o/1/2/3")]
     ];
@@ -110,11 +110,13 @@ if($button =='confirm'){
     editMessageReplyMarkup($klient,$chat_id,$message_id,$buttons);
     $reply_klient = posData($pos_id)['pos_name'];
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
+    $output = json_decode(file_get_contents('php://input'),true);
+    $message = $output['callback_query']['message']['text'];
      if($message !=$reply_klient){
         $reply_restoran = $message."Стол: ".$table."\nЗаказ: ".$pos_id."\nКоличество: ".$pos_name; 
         inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
     }
-    }
+    
 }
 if($button =='accept'){
     $reply_restoran = $message;
