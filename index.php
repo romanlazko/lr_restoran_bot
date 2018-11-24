@@ -23,7 +23,7 @@ function showPos($klient,$chat_id,$table){
     }    
     $dbconnect->close();
 }
-function posData($pos_id){
+function posData($klient,$chat_id,$message_id,$pos_id){
     $servername="db4free.net: 3306";
     $username="romanlazko";
     $password="zdraste123";
@@ -107,7 +107,7 @@ if($button =='confirm'){
     //answerCallbackQuery($klient, $output['callback_query']['id'], "Добавлено", false,$url);
     
     
-    if(posData($pos_id)===true){
+    if(posData($klient,$chat_id,$message_id,$pos_id)===true){
         $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id."\nКоличество: ".$pos_name; 
         inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
     }
