@@ -107,9 +107,10 @@ if($button =='noconfirm'){
 if($button =='confirm'){
     //answerCallbackQuery($klient, $output['callback_query']['id'], "Добавлено", false,$url);
     $output1 = json_decode(file_get_contents('php://input'),true);
-    $message1 = $output['callback_query']['message']['text'];
+    
     
     if(posData($klient,$chat_id,$message_id,$pos_id)===true){
+        $message1 = $output['callback_query']['message']['text'];
         $reply_restoran = $message1."Стол: ".$table."\nЗаказ: ".$pos_id."\nКоличество: ".$pos_name; 
         inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
     }
