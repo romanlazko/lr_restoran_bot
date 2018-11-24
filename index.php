@@ -100,7 +100,8 @@ if($button =='noconfirm'){
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
 }
 if($button =='confirm'){
-    answerCallbackQuery($klient, $output['callback_query']['id'], "проверка ", true);
+    $url= 'https://lrrestoranbot.herokuapp.com/qr.php?544883527';
+    answerCallbackQuery($klient, $output['callback_query']['id'], "проверка ", true,$url);
 //     $buttons =[
 //         [array('text'=>"Ждите",'callback_data'=>"o/1/2/3")]
 //     ];
@@ -192,8 +193,8 @@ function editMessageReplyMarkup($token,$chat_id,$message_id,$buttons){
     file_get_contents('https://api.telegram.org/bot' . $token . '/editMessageReplyMarkup?' . http_build_query($parameters).'&parse_mode=Markdown');
     return TRUE;
 }
-function answerCallbackQuery($token, $callback_query_id, $text, $show_alert){
-    file_get_contents("https://api.telegram.org/bot".$token."/answerCallbackQuery?callback_query_id=".$callback_query_id."&text=".$text."&show_alert=".$show_alert);
+function answerCallbackQuery($token, $callback_query_id, $text, $show_alert, $url){
+    file_get_contents("https://api.telegram.org/bot".$token."/answerCallbackQuery?callback_query_id=".$callback_query_id."&text=".$text."&show_alert=".$show_alert."&url=".$url);
 }
 // function deleteMessage($token,$chat_id,$message_id){     
 //     $parameters = [
