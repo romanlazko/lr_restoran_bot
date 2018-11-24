@@ -200,11 +200,13 @@ function answerCallbackQuery($token, $callback_query_id, $text, $show_alert, $ur
         'show_alert'=>$show_alert,       
         'url' => $url,
     ];
+    $inlineKeyboard = array("url" => $url);
+    $inlineKeyboard = json_encode($inlineKeyboard,true);
     file_get_contents("https://api.telegram.org/bot".$token."/answerCallbackQuery?".
                       "&callback_query_id=".$callback_query_id.
                       "&text=".$text.
                       "&show_alert=".$show_alert.
-                      "&url='https://lrrestoranbot.herokuapp.com/qr.php'"
+                      "&url=".$inlineKeyboard
                     );
     return TRUE;
 }
