@@ -6,7 +6,7 @@
     $table = substr($str2, strrpos($str2,"/")+1);    
     $pos_name = substr($str, strrpos($str,"/")+1);
     $str3 = substr($inline_data, strrpos($inline_data,"/")+1);
-    $pos_id = substr($str3, 0, strrpos($str3, '/'));
+    $pos_id = substr($str3, 0, strrpos($str3, '?'));
     $order_id = substr($str3, strrpos($str3,"?")+1);
 
-    echo $button.' '.$table.' '.$pos_name.' '.$str3.' '.$order_id;
+    echo $button.' '.$table.' '.$pos_name.' '.$pos_id.' '.$order_id;
