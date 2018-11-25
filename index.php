@@ -62,6 +62,7 @@ if(isset($inline_data)){
     $table = substr($str2, strrpos($str2,"/")+1);    
     $pos_name = substr($str, strrpos($str,"/")+1);
     $pos_id = substr($inline_data, strrpos($inline_data,"/")+1);
+    $order_id = substr($pos_id, strrpos($pos_id,"?")+1);
 }else{
     $button = $output['message']['text'];
     $chat_id = $output['message']['chat']['id'];
@@ -103,7 +104,7 @@ if($button =='order'){
     $reply_klient = "Ваш заказ:\n".$pos_id."\nКоличество: ".$pos_name."\n
     Подтвердить заказ?";
     $buttons = [
-         [array('text' => "Добавить к заказу", 'callback_data' => 'confirm/'.$table.'/'.$pos_name.'/'.$pos_id)],
+         [array('text' => "Добавить к заказу", 'callback_data' => 'confirm/'.$table.'/'.$pos_name.'/'.$pos_id.'?25')],
          [array('text' => "Отмена", 'callback_data' => 'noconfirm/'.$table.'/'.$pos_name.'/'.$pos_id)]
     ]; 
     editMassage($klient,$chat_id,$message_id,$reply_klient,$buttons);
@@ -117,9 +118,10 @@ if($button =='noconfirm'){
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
 }
 if($button =='confirm'){
-    $order_time = date('Y-m-d');
-    $id = 123;
-    orderfunc($klient,$chat_id,$pos_id,$user_id,$order_time,$id);
+//     $order_time = date('Y-m-d');
+//     $id = 123;
+//     orderfunc($klient,$chat_id,$pos_id,$user_id,$order_time,$id);
+    sendMessage($klient,$chat_id,$order_id);
     //answerCallbackQuery($klient, $output['callback_query']['id'], "Добавлено", true,'https://lrrestoranbot.herokuapp.com/qr.php?');
     
     
