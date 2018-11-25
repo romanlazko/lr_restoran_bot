@@ -134,7 +134,7 @@ if($button =='noconfirm'){
 if($button =='confirm'){
     
     answerCallbackQuery($klient, $output['callback_query']['id'], "Добавлено", true);
-    $reply_klient = $str.' '. $str3.' '.$pos_id; //posData($pos_id)['pos_name'];
+    $reply_klient = 'str='$str.' str3='. $str3.' pos_id='.$pos_id; //posData($pos_id)['pos_name'];
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
     orderfunc($klient,$restoran,$chat_id,$pos_id,$user_id,date('Y-m-d'),$order_id,$table,$pos_name);
     
