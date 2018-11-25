@@ -23,7 +23,7 @@ function showPos($klient,$chat_id,$table){
     }    
     $dbconnect->close();
 }
-function posData($klient,$chat_id,$message_id,$pos_id){
+function posData($pos_id){
     $servername="db4free.net: 3306";
     $username="romanlazko";
     $password="zdraste123";
@@ -32,8 +32,7 @@ function posData($klient,$chat_id,$message_id,$pos_id){
     
     $result = $dbconnect->query("SELECT pos_name FROM restoran WHERE pos_id = '$pos_id'");
     while($row = $result->fetch_assoc()){        
-        editMassage($klient,$chat_id,$message_id,$row['pos_name'],order($table,1,$pos_id));
-        return true;
+        return $row;
     }   
     $dbconnect->close();
 }
@@ -132,13 +131,12 @@ if($button =='noconfirm'){
 }
 if($button =='confirm'){
     orderfunc($klient,$chat_id,$pos_id,$user_id,date('Y-m-d'),$order_id);
-    //answerCallbackQuery($klient, $output['callback_query']['id'], "Добавлено", true,'https://lrrestoranbot.herokuapp.com/qr.php?');
-    
-    
-//     if(posData($klient,$chat_id,$message_id,$pos_id)===true){
-//         $reply_restoran = $message1."Стол: ".$table."\nЗаказ: ".$pos_id."\nКоличество: ".$pos_name; 
-//         inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
-//     }
+    answerCallbackQuery($klient, $output['callback_query']['id'], "Добавлено", true);
+    $reply_klient = posData($pos_id)['pos_name'];
+    editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
+
+    $reply_restoran = $message1."Стол: ".$table."\nЗаказ: ".$pos_id."\nКоличество: ".$pos_name; 
+    inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
     
 }
 if($button =='accept'){
@@ -220,22 +218,12 @@ function editMessageReplyMarkup($token,$chat_id,$message_id,$buttons){
     file_get_contents('https://api.telegram.org/bot' . $token . '/editMessageReplyMarkup?' . http_build_query($parameters).'&parse_mode=Markdown');
     return TRUE;
 }
-function answerCallbackQuery($token, $callback_query_id, $text, $show_alert, $url){
-    $parameters = [ 
-        'callback_query_id'=>$callback_query_id,
-        'text'=>$text,
-        'show_alert'=>$show_alert,       
-        'url' => $url,
-    ];
-    $inlineKeyboard = array("url" => $url);
-    $inlineKeyboard = json_encode($inlineKeyboard,true);
+function answerCallbackQuery($token, $callback_query_id, $text, $show_alert){
     file_get_contents("https://api.telegram.org/bot".$token."/answerCallbackQuery?".
                       "&callback_query_id=".$callback_query_id.
                       "&text=".$text.
-                      "&show_alert=".$show_alert.
-                      "&url=".$inlineKeyboard
+                      "&show_alert=".$show_alert
                     );
-    return TRUE;
 }
 // function deleteMessage($token,$chat_id,$message_id){     
 //     $parameters = [
