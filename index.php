@@ -44,10 +44,22 @@ function orderfunc($klient,$chat_id,$pos_id,$user_id,$order_time,$id){
     $dbname="promocoder1";
     $dbconnect = new mysqli($servername, $username, $password, $dbname);
     
-    $orderInsert = "INSERT INTO order_id(user_id,id,order_text,order_time) VALUES('$user_id','$id','$pos_id','$order_time')";            
-    if($dbconnect->query($orderInsert) === TRUE){
-        sendMessage($klient,$chat_id,'Заказ записан'); 
-    } 
+    $new_id = true;
+    $result = $dbconnect->query("SELECT id FROM order_id");
+    while($row = $result->fetch_assoc()){
+        
+        if($row['id']==$id){
+            $new_id = false;
+            break;
+        }
+    }   
+    if($new_id !== false){
+        $orderInsert = "INSERT INTO order_id(user_id,id,order_text,order_time) VALUES('$user_id','$id','$pos_id','$order_time')";            
+        if($dbconnect->query($orderInsert) === TRUE){
+            sendMessage($klient,$chat_id,'Заказ записан'); 
+        } 
+    }
+        
     $dbconnect->close();
 }
 
@@ -119,10 +131,7 @@ if($button =='noconfirm'){
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
 }
 if($button =='confirm'){
-//     $order_time = date('Y-m-d');
-//     $id = 123;
-//     orderfunc($klient,$chat_id,$pos_id,$user_id,$order_time,$id);
-    sendMessage($klient,$chat_id,$order_id);
+    orderfunc($klient,$chat_id,$pos_id,$user_id,date('Y-m-d'),$order_id);
     //answerCallbackQuery($klient, $output['callback_query']['id'], "Добавлено", true,'https://lrrestoranbot.herokuapp.com/qr.php?');
     
     
