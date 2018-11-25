@@ -103,8 +103,9 @@ if($button =='order'){
 //     $reply_klient = "Ваш заказ:\n".posData($pos_id,$dbconnect)['pos_name']."\n
     $reply_klient = "Ваш заказ:\n".$pos_id."\nКоличество: ".$pos_name."\n
     Подтвердить заказ?";
+    $order_id = rand();
     $buttons = [
-         [array('text' => "Добавить к заказу", 'callback_data' => 'confirm/'.$table.'/'.$pos_name.'/'.$pos_id.'?25')],
+         [array('text' => "Добавить к заказу", 'callback_data' => 'confirm/'.$table.'/'.$pos_name.'/'.$pos_id.'?'.$order_id)],
          [array('text' => "Отмена", 'callback_data' => 'noconfirm/'.$table.'/'.$pos_name.'/'.$pos_id)]
     ]; 
     editMassage($klient,$chat_id,$message_id,$reply_klient,$buttons);
