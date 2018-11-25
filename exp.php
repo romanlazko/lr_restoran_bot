@@ -1,5 +1,5 @@
 <?php
-//     $inline_data = 'кнопка/стол/имя/айди/09876';
+    $inline_data = 'кнопка/стол/имя/айди/09876';
 //     $p = substr_count($inline_data,'/');
 //     echo $p;
 //     for($i = 1; $i <= $p; $i++) {
