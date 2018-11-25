@@ -36,7 +36,7 @@ function posData($pos_id){
     }   
     $dbconnect->close();
 }
-function orderfunc($klient,$chat_id,$pos_id,$user_id,$order_time,$id){
+function orderfunc($klient,$restoran,$chat_id,$pos_id,$user_id,$order_time,$id,$table,$pos_name){
     $servername="db4free.net: 3306";
     $username="romanlazko";
     $password="zdraste123";
@@ -55,7 +55,8 @@ function orderfunc($klient,$chat_id,$pos_id,$user_id,$order_time,$id){
     if($new_id !== false){
         $orderInsert = "INSERT INTO order_id(user_id,id,order_text,order_time) VALUES('$user_id','$id','$pos_id','$order_time')";            
         if($dbconnect->query($orderInsert) === TRUE){
-            sendMessage($klient,$chat_id,'Заказ записан'); 
+            $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id."\nКоличество: ".$pos_name; 
+            inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
         } 
     }
         
@@ -130,13 +131,12 @@ if($button =='noconfirm'){
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
 }
 if($button =='confirm'){
-    orderfunc($klient,$chat_id,$pos_id,$user_id,date('Y-m-d'),$order_id);
+    
     answerCallbackQuery($klient, $output['callback_query']['id'], "Добавлено", true);
     $reply_klient = posData($pos_id)['pos_name'];
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
-
-    $reply_restoran = $message1."Стол: ".$table."\nЗаказ: ".$pos_id."\nКоличество: ".$pos_name; 
-    inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
+    orderfunc($klient,$restoran,$chat_id,$pos_id,$user_id,date('Y-m-d'),$order_id,$table,$pos_name);
+    
     
 }
 if($button =='accept'){
