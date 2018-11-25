@@ -70,12 +70,12 @@ if(isset($inline_data)){
 
     $str = substr($inline_data, 0, strrpos($inline_data, '/'));
     $str2 = substr($str, 0, strrpos($str, '/'));
-    $button = substr($str2, 0, strrpos($str2, '/'));
-    $table = substr($str2, strrpos($str2,"/")+1);    
-    $pos_name = substr($str, strrpos($str,"/")+1);
-    $str3 = substr($inline_data, strrpos($inline_data,"/")+1);
-    $pos_id = substr($str3, 0, strrpos($str3, '?'));
-    $order_id = substr($str3, strrpos($str3,"?")+1);
+    $str3 = substr($str2, 0, strrpos($str2, '/'));
+    $button = substr($str3, 0, strrpos($str3, '/'));
+    $table = substr($str3, strrpos($str3,"/")+1);    
+    $pos_name = substr($str2, strrpos($str2,"/")+1);    
+    $pos_id = substr($str, strrpos($str,"/")+1);
+    $order_id = substr($inline_data, strrpos($inline_data,"/")+1);
 }else{
     $button = $output['message']['text'];
     $chat_id = $output['message']['chat']['id'];
@@ -118,21 +118,16 @@ if($button =='order'){
     Подтвердить заказ?";
     $order_id = rand();
     $buttons = [
-         [array('text' => "Добавить к заказу", 'callback_data' => 'confirm/'.$table.'/'.$pos_name.'/'.$pos_id.'?'.$order_id)],
-         [array('text' => "Отмена", 'callback_data' => 'noconfirm/'.$table.'/'.$pos_name.'/'.$pos_id)]
+         [array('text' => "Добавить к заказу", 'callback_data' => 'confirm/'.$table.'/'.$pos_name.'/'.$pos_id.'/'.$order_id)],
+         [array('text' => "Отмена", 'callback_data' => 'noconfirm/'.$table.'/'.$pos_name.'/'.$pos_id.'/1')]
     ]; 
     editMassage($klient,$chat_id,$message_id,$reply_klient,$buttons);
 }
-if($button =='noconfirm'){
-    $buttons =[
-        [array('text'=>"Ждите",'callback_data'=>"o/1/2/3")]
-    ];
-    editMessageReplyMarkup($klient,$chat_id,$message_id,$buttons);
+if($button =='noconfirm'){    
     $reply_klient = posData($pos_id)['pos_name'];
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
 }
-if($button =='confirm'){
-    
+if($button =='confirm'){    
     answerCallbackQuery($klient, $output['callback_query']['id'], "Добавлено", true);
     $reply_klient = 'str='.$str.' str3='. $str3.' pos_id='.$pos_id; //posData($pos_id)['pos_name'];
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
@@ -149,22 +144,22 @@ if($button =='accept'){
 }
 function confirm($table,$pos_name,$pos_id){
     $buttons = [
-         [array('text' => "Принять заказ", 'callback_data' => 'accept/'.$table.'/'.$pos_name.'/'.$pos_id)]
+         [array('text' => "Принять заказ", 'callback_data' => 'accept/'.$table.'/'.$pos_name.'/'.$pos_id.'/1')]
     ];  
     return $buttons;
 }
 function menu($table,$pos_name,$pos_id){
     $buttons = [
-         [array('text' => "Меню", 'callback_data' => 'menu/'.$table.'/'.$pos_name.'/'.$pos_id)]
+         [array('text' => "Меню", 'callback_data' => 'menu/'.$table.'/'.$pos_name.'/'.$pos_id.'/1')]
     ];  
     return $buttons;
 }
 function order($table,$pos_num,$pos_id){
     $buttons = [
-         [array('text' => 'Заказать', 'callback_data' => 'order/'.$table.'/'.$pos_num.'/'.$pos_id)],
-         [array('text' => '-', 'callback_data' => 'minus/'.$table.'/'.$pos_num.'/'.$pos_id),
-          array('text' => $pos_num, 'callback_data' => '0/'.$table.'/'.$pos_num.'/'.$pos_id),
-          array('text' => '+', 'callback_data' => 'plus/'.$table.'/'.$pos_num.'/'.$pos_id)]
+         [array('text' => 'Заказать', 'callback_data' => 'order/'.$table.'/'.$pos_num.'/'.$pos_id.'/1')],
+         [array('text' => '-', 'callback_data' => 'minus/'.$table.'/'.$pos_num.'/'.$pos_id.'/1'),
+          array('text' => $pos_num, 'callback_data' => '0/'.$table.'/'.$pos_num.'/'.$pos_id.'/1'),
+          array('text' => '+', 'callback_data' => 'plus/'.$table.'/'.$pos_num.'/'.$pos_id.'/1')]
     ];  
     return $buttons;
 }
