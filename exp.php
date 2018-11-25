@@ -16,5 +16,5 @@
     $pos_id = substr($str3, 0, strrpos($str3, '?'));
     $order_id = substr($inline_data, strrpos($inline_data,"/")+1);
 
-    echo $str.' '.$str2.' '.$pos_name.' '.$pos_id.' '.$order_id;
+    echo $str.' '.$str2.' '.$str3.' ';
 ?>
