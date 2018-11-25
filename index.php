@@ -45,7 +45,7 @@ function orderfunc($klient,$restoran,$chat_id,$pos_id,$user_id,$order_time,$id,$
     
     $new_id = true;
     $result = $dbconnect->query("SELECT id FROM order_id");
-    if ($result->num_rows = 0) {
+    if ($result->num_rows < 1) {
         $orderInsert = "INSERT INTO order_id(user_id,id,order_text,order_time) VALUES('$user_id','$id','$pos_id','$order_time')";            
         if($dbconnect->query($orderInsert) === TRUE){
             $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id."\nКоличество: ".$pos_name; 
