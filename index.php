@@ -73,8 +73,9 @@ if(isset($inline_data)){
     $button = substr($str2, 0, strrpos($str2, '/'));
     $table = substr($str2, strrpos($str2,"/")+1);    
     $pos_name = substr($str, strrpos($str,"/")+1);
-    $pos_id = substr($inline_data, strrpos($inline_data,"/")+1);
-    $order_id = substr($pos_id, strrpos($pos_id,"?")+1);
+    $str3 = substr($inline_data, strrpos($inline_data,"/")+1);
+    $pos_id = substr($str3, 0, strrpos($str3, '?'));
+    $order_id = substr($str3, strrpos($str3,"?")+1);
 }else{
     $button = $output['message']['text'];
     $chat_id = $output['message']['chat']['id'];
@@ -133,7 +134,7 @@ if($button =='noconfirm'){
 if($button =='confirm'){
     
     answerCallbackQuery($klient, $output['callback_query']['id'], "Добавлено", true);
-    $reply_klient = posData($pos_id)['pos_name'];
+    $reply_klient = $str.' '. $str3.' '.$pos_id; //posData($pos_id)['pos_name'];
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
     orderfunc($klient,$restoran,$chat_id,$pos_id,$user_id,date('Y-m-d'),$order_id,$table,$pos_name);
     
