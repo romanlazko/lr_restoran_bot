@@ -9,4 +9,4 @@
     $pos_id = substr($str3, 0, strrpos($str3, '/'));
     $order_id = substr($str3, strrpos($str3,"?")+1);
 
-    echo $button.' '.$table.' '.$pos_name.' '.$pos_id.' '.$order_id;
+    echo $button.' '.$table.' '.$pos_name.' '.$str3.' '.$order_id;
