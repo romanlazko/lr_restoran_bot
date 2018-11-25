@@ -1,9 +1,10 @@
 <?php
     $inline_data = 'кнопка/стол/имя/айди/09876';
-    substr_count($inline_data,'/');
+    $p = substr_count($inline_data,'/');
 
-    for ($i = 1; $i <= substr_count($inline_data,'/'); $i++) {
-        echo substr($inline_data, 0, strrpos($inline_data, '/');
+    for ($i = 1; $i <= $p; $i++) {
+        $a = substr($inline_data, 0, strrpos($inline_data, '/');
+        echo $a;
     }
 //     $str = substr($inline_data, 0, strrpos($inline_data, '/'));
 //     $str2 = substr($str, 0, strrpos($str, '/'));
@@ -15,3 +16,4 @@
 //     $order_id = substr($inline_data, strrpos($inline_data,"/")+1);
 
     //echo $button.' '.$table.' '.$pos_name.' '.$pos_id.' '.$order_id;
+?>
