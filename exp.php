@@ -1,5 +1,5 @@
 <?php
-    $inline_data = 'кнопка/стол/имя/айди?098087';
+    $inline_data = 'кнопка/стол/имя/айди';
     $str = substr($inline_data, 0, strrpos($inline_data, '/'));
     $str2 = substr($str, 0, strrpos($str, '/'));
     $button = substr($str2, 0, strrpos($str2, '/'));
