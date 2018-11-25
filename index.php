@@ -43,18 +43,23 @@ function orderfunc($klient,$restoran,$chat_id,$pos_id,$user_id,$order_time,$id,$
     $dbname="promocoder1";
     $dbconnect = new mysqli($servername, $username, $password, $dbname);
     
-    $new_id = true;
     $result = $dbconnect->query("SELECT id FROM order_id");
     if ($result->num_rows > 0) {
-        sendMessage($klient,$chat_id,'уже заказано');
+        while($row = $result->fetch_assoc()){        
+            if($row['id'] == $id){
+                sendMessage($klient,$chat_id,'уже заказано');
+            }
+            else {
+                $orderInsert = "INSERT INTO order_id(user_id,id,order_text,order_time) VALUES('$user_id','$id','$pos_id','$order_time')";            
+                if($dbconnect->query($orderInsert) === TRUE){
+                    $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id."\nКоличество: ".$pos_name; 
+                    inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
+                } 
+            }
+        }
+        
     }
-    else {
-        $orderInsert = "INSERT INTO order_id(user_id,id,order_text,order_time) VALUES('$user_id','$id','$pos_id','$order_time')";            
-        if($dbconnect->query($orderInsert) === TRUE){
-            $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id."\nКоличество: ".$pos_name; 
-            inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
-        } 
-    }
+    
 //     else {
 //         $promocodeInsert = $dbconnect->query("INSERT INTO promocodes(pos_id,user_id,promocode) 
 //                                               VALUES('$pos_id','$user_id','$promocode')");
