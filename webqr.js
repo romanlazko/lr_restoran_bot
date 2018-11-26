@@ -53,14 +53,14 @@ function read(a)
 		var html='Нажимая на кнопку продолжить, Вы подтверждаете что согласны с условиями использования бота.%0A Вы находитесь за столом под номером '+table+'. Пожалуйста оставайсь за столом под номером '+table;
 		const Http = new XMLHttpRequest();
 		const url='https://api.telegram.org/bot738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI/sendMessage?chat_id='
-		+user+'&text='+html+'&reply_markup={"inline_keyboard":[[{"text":"Согласен","callback_data":"continue/'+table+'/a/a/a"}]]}';
+		+user+'&text='+html+'&reply_markup={"inline_keyboard":[[{"text":"Продолжить","callback_data":"continue/'+table+'/a/a/a"}]]}';
 		Http.open("GET", url);
 		Http.send();
 		Http.onreadystatechange=(e)=>{
 			console.log(Http.responseText)
 		}
 		var ok = 'QR код отсканирован. Нажмите "Готово" что бы продолжить';
-		document.getElementById("result").innerHTML='<a href="tg://resolve?domain=@lr_klient_bot">Telegram</a>';
+		document.getElementById("result").innerHTML=ok;
 	}	
 }	
 
