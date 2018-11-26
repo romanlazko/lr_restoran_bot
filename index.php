@@ -1,10 +1,5 @@
 <?php
 
-$servername="db4free.net: 3306";
-    $username="romanlazko";
-    $password="zdraste123";
-    $dbname="promocoder1";
-    $dbconnect = new mysqli($servername, $username, $password, $dbname);
 
 // define('EARTH_RADIUS', 6372795);
 
@@ -15,20 +10,32 @@ $inline_data = $output['callback_query']['data'];
 $message_id = $output['callback_query']['message']['message_id'];
 $message = $output['callback_query']['message']['text'];
 $first_name = $output['message']['from']['first_name'];
-function showPos($klient,$chat_id,$table,$dbconnect){
+function showPos($klient,$chat_id,$table){
+    $servername="db4free.net: 3306";
+    $username="romanlazko";
+    $password="zdraste123";
+    $dbname="promocoder1";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
+
     $result = $dbconnect->query("SELECT pos_name,pos_id FROM restoran");
     while($row = $result->fetch_assoc()){
         inlineKeyboard($klient,$chat_id,$row['pos_name'],order($table,1,$row['pos_id']));        
     }    
+    $dbconnect->close();
 }
-function posData($pos_id,$dbconnect){
-    
+function posData($pos_id){
+    $servername="db4free.net: 3306";
+    $username="romanlazko";
+    $password="zdraste123";
+    $dbname="promocoder1";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
+
     
     $result = $dbconnect->query("SELECT pos_name FROM restoran WHERE pos_id = '$pos_id'");
     while($row = $result->fetch_assoc()){        
         return $row;
     }   
-    
+    $dbconnect->close();
 }
 function orderfunc($klient,$restoran,$chat_id,$pos_id,$user_id,$order_time,$id,$table,$pos_name,$dbconnect){
     
@@ -87,7 +94,7 @@ if($button =='continue'){
     inlineKeyboard($klient,$chat_id,$reply_klient,menu($table,$pos_name,$pos_id));
 }
 if($button =='menu'){     
-    showPos($klient,$chat_id,$table,$dbconnect);
+    showPos($klient,$chat_id,$table);
 }
 if($button =='plus'){
     $pos_name=$pos_name+1;
@@ -111,15 +118,21 @@ if($button =='order'){
     editMassage($klient,$chat_id,$message_id,$reply_klient,$buttons);
 }
 if($button =='noconfirm'){    
-    $reply_klient = posData($pos_id,$dbconnect)['pos_name'];
+    $reply_klient = posData($pos_id)['pos_name'];
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
 }
-if($button =='confirm'){    
+if($button =='confirm'){  
+    $servername="db4free.net: 3306";
+    $username="romanlazko";
+    $password="zdraste123";
+    $dbname="promocoder1";
+    $dbconnect = new mysqli($servername, $username, $password, $dbname);
+
     answerCallbackQuery($klient, $output['callback_query']['id'], "Добавлено", true);
-    $reply_klient = posData($pos_id,$dbconnect)['pos_name'];
+    $reply_klient = posData($pos_id)['pos_name'];
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
     orderfunc($klient,$restoran,$chat_id,$pos_id,$user_id,date('Y-m-d'),$order_id,$table,$pos_name,$dbconnect);
-    
+    $dbconnect->close();
     
 }
 if($button =='accept'){
@@ -208,7 +221,7 @@ function answerCallbackQuery($token, $callback_query_id, $text, $show_alert){
                       "&show_alert=".$show_alert
                     );
 }
-$dbconnect->close();
+
 // function deleteMessage($token,$chat_id,$message_id){     
 //     $parameters = [
 //         'chat_id' => $chat_id, 
