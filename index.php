@@ -86,8 +86,8 @@ if($button =='/start'){
     sendKeyboard($klient,$chat_id,$buttons,$reply_klient);
 }
 if($button =='Новый сеанс'){        
-    $reply_klient = "Что бы начать заказывать, отсканируй QR код на столе.";
-    remove($klient,$chat_id,$reply_klient);
+    $reply_klient1 = "Что бы начать заказывать, отсканируй QR код на столе.";
+    remove($klient,$chat_id,$reply_klient1);
     $reply_klient = "Нажми на кнопку, что бы перейти к сканированию.";
     $buttons = [
       [array('text' => 'Сканировать QR код', 'url' => 'https://lrrestoranbot.herokuapp.com/qr.php?'.$chat_id)]
@@ -187,13 +187,13 @@ function sendKeyboard($token,$chat_id,$buttons,$reply){
     file_get_contents('https://api.telegram.org/bot' . $token . '/sendMessage?' . http_build_query($parameters).'&parse_mode=Markdown');
 }
 function remove($token,$chat_id,$reply){
-//     $removeKeyboard = array('remove_keyboard' => true);
-//     $removeKeyboardEncoded = json_encode($removeKeyboard);
-    $keyboard =  json_encode($keyboard = ['remove_keyboard' => true]);  
+    $removeKeyboard = array('remove_keyboard' => true);
+    $removeKeyboardEncoded = json_encode($removeKeyboard);
+//     $keyboard =  json_encode($keyboard = ['remove_keyboard' => true]);  
     $parameters = [
         'chat_id' => $chat_id, 
         'text' => $reply, 
-        'reply_markup' => $keyboard,
+        'reply_markup' => $removeKeyboardEncoded,
     ];
     file_get_contents('https://api.telegram.org/bot' . $token . '/sendMessage?' . http_build_query($parameters).'&parse_mode=Markdown');
 }
