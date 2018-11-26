@@ -87,7 +87,7 @@ if($button =='continue'){
     inlineKeyboard($klient,$chat_id,$reply_klient,menu($table,$pos_name,$pos_id));
 }
 if($button =='menu'){     
-    showPos($klient,$chat_id,$table);
+    showPos($klient,$chat_id,$table,$dbconnect);
 }
 if($button =='plus'){
     $pos_name=$pos_name+1;
