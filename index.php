@@ -87,7 +87,7 @@ if($button =='/start'){
 }
 if($button =='Новый сеанс'){        
     $reply_klient = "Что бы начать заказывать, отсканируй QR код на столе.";
-    remove($token,$chat_id,$reply_klient);
+    remove($klient,$chat_id,$reply_klient);
     $reply_klient = "Нажми на кнопку, что бы перейти к сканированию.";
     $buttons = [
       [array('text' => 'Сканировать QR код', 'url' => 'https://lrrestoranbot.herokuapp.com/qr.php?'.$chat_id)]
