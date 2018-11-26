@@ -186,7 +186,7 @@ function sendKeyboard($token,$chat_id,$buttons,$reply){
     ];
     file_get_contents('https://api.telegram.org/bot' . $token . '/sendMessage?' . http_build_query($parameters).'&parse_mode=Markdown');
 }
-function remove($token,$chat_id,$reply){
+function remove($token,$chat_id){
     $removeKeyboard = array('remove_keyboard' => true);
     $removeKeyboardEncoded = json_encode($removeKeyboard);
 //     $keyboard =  json_encode($keyboard = ['remove_keyboard' => true]);  
