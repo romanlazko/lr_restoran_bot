@@ -25,7 +25,7 @@
                 <div id="imghelp">
                     <label for="button">Отсканировать QR код</label>
 
-                    <input type="file" accept="image/*" id="button" onchange="handleFiles(this.files)"/>
+                    <input type="file" capture="camera" accept="image/*" id="button" onchange="handleFiles(this.files)"/>
                 </div>
                 <div id="result">
                 </div>
