@@ -3,7 +3,7 @@
 <head>
 <title>How to decode QR code | PHPGang.com</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<link href="qrcss.css" rel="stylesheet">
+<!-- <link href="qrcss.css" rel="stylesheet"> -->
 </head>
    <body>
         <script type="text/javascript" src="llqrcode.js"></script>
@@ -25,7 +25,7 @@
                 <div id="imghelp">
                     <label for="button">Отсканировать QR код</label>
 
-                    <input type="file" accept="image/* id="button" onchange="handleFiles(this.files)"/>
+                    <input type="file"  id="button" onchange="handleFiles(this.files)"/>
                 </div>
                 <div id="result">
                 </div>
