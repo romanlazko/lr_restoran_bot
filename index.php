@@ -55,6 +55,9 @@ function orderfunc($klient,$restoran,$chat_id,$pos_id,$user_id,$order_time,$id,$
             inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
         } 
     }
+    else{
+        answerCallbackQuery($klient, $output['callback_query']['id'], "Ваш заказ уже подтвержден, ожидайте!", true);
+    }
 }
 
 
@@ -112,7 +115,7 @@ if($button =='order'){
     Подтвердить заказ?";
     $order_id = rand();
     $buttons = [
-         [array('text' => "Добавить к заказу", 'callback_data' => 'confirm/'.$table.'/'.$pos_name.'/'.$pos_id.'/'.$order_id)],
+         [array('text' => "Подтвердить заказ", 'callback_data' => 'confirm/'.$table.'/'.$pos_name.'/'.$pos_id.'/'.$order_id)],
          [array('text' => "Отмена", 'callback_data' => 'noconfirm/'.$table.'/'.$pos_name.'/'.$pos_id.'/1')]
     ]; 
     editMassage($klient,$chat_id,$message_id,$reply_klient,$buttons);
@@ -128,7 +131,7 @@ if($button =='confirm'){
     $dbname="promocoder1";
     $dbconnect = new mysqli($servername, $username, $password, $dbname);
 
-    answerCallbackQuery($klient, $output['callback_query']['id'], "Добавлено", true);
+    answerCallbackQuery($klient, $output['callback_query']['id'], "Заказ подтвержден", true);
     $reply_klient = posData($pos_id)['pos_name'];
     editMassage($klient,$chat_id,$message_id,$reply_klient,order($table,1,$pos_id));
     orderfunc($klient,$restoran,$chat_id,$pos_id,$user_id,date('Y-m-d'),$order_id,$table,$pos_name,$dbconnect);
