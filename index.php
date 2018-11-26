@@ -27,6 +27,7 @@ function posData($pos_id){
     $servername="db4free.net: 3306";
     $username="romanlazko";
     $password="zdraste123";
+    
     $dbname="promocoder1";
     $dbconnect = new mysqli($servername, $username, $password, $dbname);
 
