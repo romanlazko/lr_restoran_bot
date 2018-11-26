@@ -81,9 +81,9 @@ if(isset($inline_data)){
 }
 
 if($button =='/start'){        
-    $reply_klient = "Привет ".$first_name.".\n".
-        "Добро пожаловать в бота!\n\n
-        Что бы начать заказывать, отсканируй QR код на столе.";
+    $reply_klient = "Привет, ".$first_name.".\n".
+        "Добро пожаловать в бота!\n\n".
+        "Что бы начать заказывать, отсканируй QR код на столе.";
     $buttons = [
       [array('text' => 'Сканировать QR код', 'url' => 'https://lrrestoranbot.herokuapp.com/qr.php?'.$chat_id)]
     ];
@@ -148,7 +148,9 @@ function confirm($table,$pos_name,$pos_id){
 }
 function menu($table,$pos_name,$pos_id){
     $buttons = [
-         [array('text' => "Меню", 'callback_data' => 'menu/'.$table.'/'.$pos_name.'/'.$pos_id.'/1')]
+         [array('text' => "Сделать заказ самостоятельно", 'callback_data' => 'menu/'.$table.'/'.$pos_name.'/'.$pos_id.'/1')],
+         [array('text' => "Позвать официанта", 'callback_data' => 'waiter/'.$table.'/'.$pos_name.'/'.$pos_id.'/1')],
+         [array('text' => "Позвать кальянщика", 'callback_data' => 'hookahman/'.$table.'/'.$pos_name.'/'.$pos_id.'/1')]
     ];  
     return $buttons;
 }
