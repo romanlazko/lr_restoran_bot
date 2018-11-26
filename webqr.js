@@ -53,7 +53,7 @@ function read(a)
 		var html='Нажимая на кнопку продолжить, Вы подтверждаете что согласны с условиями использования бота.%0A%0AВы находитесь за столом под номером '+table+'.%0A%0AПожалуйста оставайсь за столом под номером '+table;
 		const Http = new XMLHttpRequest();
 		const url='https://api.telegram.org/bot738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI/sendMessage?chat_id='
-		+user+'&text='+html+'&reply_markup={"inline_keyboard":[[{"text":"Продолжить","callback_data":"continue/'+table+'/a/a/a"}]]}';
+		+user+'&text='+html+'&reply_markup={"inline_keyboard":[[{"text":"Продолжить","callback_data":"continue/'+table+'/a/a/a"}],[{"text":"Меню","callback_data":"menu/'+table+'/a/a/a"}]]}';
 		Http.open("GET", url);
 		Http.send();
 		Http.onreadystatechange=(e)=>{
