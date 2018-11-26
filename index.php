@@ -89,10 +89,6 @@ if($button =='/start'){
     ];
     inlineKeyboard($klient,$chat_id,$reply_klient,$buttons);
 }
-if($button =='continue'){
-    $reply_klient = "Что бы вы хотели выбрать?";
-    inlineKeyboard($klient,$chat_id,$reply_klient,menu($table,$pos_name,$pos_id));
-}
 if($button =='menu'){     
     showPos($klient,$chat_id,$table);
 }
@@ -146,14 +142,7 @@ function confirm($table,$pos_name,$pos_id){
     ];  
     return $buttons;
 }
-function menu($table,$pos_name,$pos_id){
-    $buttons = [
-         [array('text' => "Сделать заказ самостоятельно", 'callback_data' => 'menu/'.$table.'/'.$pos_name.'/'.$pos_id.'/1')],
-         [array('text' => "Позвать официанта", 'callback_data' => 'waiter/'.$table.'/'.$pos_name.'/'.$pos_id.'/1')],
-         [array('text' => "Позвать кальянщика", 'callback_data' => 'hookahman/'.$table.'/'.$pos_name.'/'.$pos_id.'/1')]
-    ];  
-    return $buttons;
-}
+
 function order($table,$pos_num,$pos_id){
     $buttons = [
          [array('text' => 'Заказать', 'callback_data' => 'order/'.$table.'/'.$pos_num.'/'.$pos_id.'/1')],
