@@ -50,7 +50,7 @@ function read(a)
 		var currentLocation = window.location.search;
 		var user = currentLocation.split('?')[1];
 		var table = a.split('?')[1];
-		var html='Вы находитесь за столом под номером '+table+'.%0A%0AЧто бы вы хотели выбрать?;
+		var html='Вы находитесь за столом под номером '+table+'.%0A%0AЧто бы вы хотели выбрать?';
 		const Http = new XMLHttpRequest();
 		const url='https://api.telegram.org/bot738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI/sendMessage?chat_id='
 		+user+'&text='+html+'&reply_markup={"inline_keyboard":[[{"text":"Меню","callback_data":"menu/'+table+'/a/a/a"}],[{"text":"Позвать официанта","callback_data":"waiter/'+table+'/a/a/a"}],,[{"text":"Позвать кальянщика","callback_data":"hookahman/'+table+'/a/a/a"}]]}';
