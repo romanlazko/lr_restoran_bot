@@ -50,10 +50,10 @@ function read(a)
 		var currentLocation = window.location.search;
 		var user = currentLocation.split('?')[1];
 		var table = a.split('?')[1];
-		var html='Нажимая на кнопку продолжить, Вы подтверждаете что согласны с условиями использования бота.%0A%0AВы находитесь за столом под номером '+table+'.%0A%0AПожалуйста оставайсь за столом под номером '+table;
+		var html='Вы находитесь за столом под номером '+table+'.%0A%0AЧто бы вы хотели выбрать?;
 		const Http = new XMLHttpRequest();
 		const url='https://api.telegram.org/bot738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI/sendMessage?chat_id='
-		+user+'&text='+html+'&reply_markup={"inline_keyboard":[[{"text":"Продолжить","callback_data":"continue/'+table+'/a/a/a"}],[{"text":"Меню","callback_data":"menu/'+table+'/a/a/a"}]]}';
+		+user+'&text='+html+'&reply_markup={"inline_keyboard":[[{"text":"Меню","callback_data":"menu/'+table+'/a/a/a"}],[{"text":"Позвать официанта","callback_data":"waiter/'+table+'/a/a/a"}],,[{"text":"Позвать кальянщика","callback_data":"hookahman/'+table+'/a/a/a"}]]}';
 		Http.open("GET", url);
 		Http.send();
 		Http.onreadystatechange=(e)=>{
