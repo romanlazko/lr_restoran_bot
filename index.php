@@ -181,12 +181,7 @@ function sendKeyboard($token,$chat_id,$buttons,$reply){
     ];
     file_get_contents('https://api.telegram.org/bot' . $token . '/sendMessage?' . http_build_query($parameters).'&parse_mode=Markdown');
 }
-function remove($token,$chat_id){
-    $removeKeyboard = array('remove_keyboard' => true);
-    $removeKeyboardEncoded = json_encode($removeKeyboard);
-//  
-    file_get_contents('https://api.telegram.org/bot' . $token . '/sendMessage?chat_id='.$chat_id .'&reply_markup='.$removeKeyboardEncoded);
-}
+
 function inlineKeyboard($token,$chat_id,$reply,$buttons){
     $inlineKeyboard = json_encode(array("inline_keyboard" => $buttons),true);
     $parameters = [
