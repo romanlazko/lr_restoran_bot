@@ -1,8 +1,5 @@
 <?php
 
-
-// define('EARTH_RADIUS', 6372795);
-
 $restoran = "780647425:AAH5bmyGITVXverN4VIns4Z4VlT03W-sGtM";
 $klient = "738988528:AAH9NXpv9RdgUiUKLE5hYB8nheHSLWW4aOI";
 $output = json_decode(file_get_contents('php://input'),true);
@@ -10,62 +7,11 @@ $inline_data = $output['callback_query']['data'];
 $message_id = $output['callback_query']['message']['message_id'];
 $message = $output['callback_query']['message']['text'];
 $first_name = $output['message']['from']['first_name'];
-function showPos($klient,$chat_id,$table){
-    $servername="db4free.net: 3306";
-    $username="romanlazko";
-    $password="zdraste123";
-    $dbname="promocoder1";
-    $dbconnect = new mysqli($servername, $username, $password, $dbname);
-
-    $result = $dbconnect->query("SELECT pos_name,pos_id FROM restoran");
-    while($row = $result->fetch_assoc()){
-        inlineKeyboard($klient,$chat_id,$row['pos_name'],order($table,1,$row['pos_id']));        
-    }    
-    $dbconnect->close();
-}
-function posData($pos_id){
-    $servername="db4free.net: 3306";
-    $username="romanlazko";
-    $password="zdraste123";
-    
-    $dbname="promocoder1";
-    $dbconnect = new mysqli($servername, $username, $password, $dbname);
-
-    
-    $result = $dbconnect->query("SELECT pos_name FROM restoran WHERE pos_id = '$pos_id'");
-    while($row = $result->fetch_assoc()){        
-        return $row;
-    }   
-    $dbconnect->close();
-}
-function orderfunc($klient,$restoran,$chat_id,$pos_id,$user_id,$order_time,$id,$table,$pos_name,$dbconnect){
-    
-    $result = $dbconnect->query("SELECT id FROM order_id");
-    
-    while($row = $result->fetch_assoc()){
-        
-        if($row['id']==$id){
-            $new_id = false;
-            break;
-        }
-    }   
-    if($new_id !== false){
-        $orderInsert = "INSERT INTO order_id(user_id,id,order_text,order_time) VALUES('$user_id','$id','$pos_id','$order_time')";            
-        if($dbconnect->query($orderInsert) === TRUE){
-            $reply_restoran = "Стол: ".$table."\nЗаказ: ".$pos_id."\nКоличество: ".$pos_name; 
-            inlineKeyboard($restoran,$chat_id,$reply_restoran,confirm($table,$pos_name,$pos_id));
-        } 
-    }
-    else{
-        answerCallbackQuery($klient, $output['callback_query']['id'], "Ваш заказ уже подтвержден, ожидайте!", true);
-    }
-}
-
+include 'db.php';
 
 if(isset($inline_data)){
     $chat_id = $output['callback_query']['message']['chat']['id'];
     $user_id = $output['callback_query']['from']['id'];
-
     $str = substr($inline_data, 0, strrpos($inline_data, '/'));
     $str2 = substr($str, 0, strrpos($str, '/'));
     $str3 = substr($str2, 0, strrpos($str2, '/'));
