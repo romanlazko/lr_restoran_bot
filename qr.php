@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <title>How to decode QR code | PHPGang.com</title>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+   <meta name="apple-mobile-web-app-capable" content="yes">
+<!-- <meta http-equiv="Content-Type" content="text/html;charset=utf-8" /> -->
 <!-- <link href="qrcss.css" rel="stylesheet"> -->
 </head>
    <body>
