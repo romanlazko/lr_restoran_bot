@@ -14,4 +14,5 @@
 require __DIR__ . "/vendor/autoload.php";
 $qrcode = new QrReader('qrcode.jpg');
 $text = $qrcode->text();
+echo $text;
 ?>
