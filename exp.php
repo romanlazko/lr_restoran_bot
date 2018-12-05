@@ -11,7 +11,7 @@
 //     $order_id = substr($inline_data, strrpos($inline_data,"/")+1);
 
 //     echo $button.' '.$table.' '.$pos_name.' '.$pos_id.' '.$order_id.' ';
-include __DIR__ ."/vendor/autoload.php";
+include "/vendor/autoload.php";
 $qrcode = new QrReader("qrcode.jpg");
 $text = $qrcode->text();
 //echo $text;
