@@ -13,7 +13,7 @@
 //     echo $button.' '.$table.' '.$pos_name.' '.$pos_id.' '.$order_id.' ';
 include __DIR__ ."/vendor/autoload.php";
 $image = __DIR__ . "/qrcode.jpg";
-$qrcode = new QrReader($image);
-$text = $qrcode->text();
+//$qrcode = new QrReader($image);
+//$text = $qrcode->text();
 //echo $text;
 ?>
